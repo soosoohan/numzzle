@@ -46,6 +46,12 @@ z-index: 1;
 position: relative;
 z-index: 1;
 }
+  .operator-card {
+    font-size: 40px;
+    font-weight: 300; /* 얇게 */
+    line-height: 1;
+  }
+
 </style>
 </head>
 <body class="bg-blue-50 min-h-screen">
@@ -56,7 +62,6 @@ z-index: 1;
   <div class="bg-white rounded-lg shadow-lg p-8">
     <h1 class="text-4xl font-bold text-center mb-4 text-blue-600">넘즐업 (NUMZZLE UP)</h1>
     <p class="text-center text-sm mb-8 text-gray-600">NUMZZLE UP is a combination of "NUMBER" and "PUZZLE".</p>
-
 
 <div class="p-6 bg-yellow-50 rounded-lg mb-6">
   <h3 class="text-xl font-bold mb-2 text-center">게임 규칙 (Game Rules)</h3>
@@ -108,7 +113,6 @@ z-index: 1;
 </div>
 
 <p class="text-center text-sm mt-6 text-gray-400">© 2025 한수수. All rights reserved.</p>
-```
 
   </div>
 </div>
@@ -122,7 +126,6 @@ z-index: 1;
       <p class="text-xl mb-4">🎯<span id="targetDisplay" class="font-bold text-red-600"></span></p>
     </div>
 
-```
 <div class="grid grid-cols-3 gap-4 mb-6">
   <div class="text-center p-4 bg-blue-100 rounded-lg">
     <h3 class="font-bold">라운드<br>Round</h3>
@@ -202,15 +205,15 @@ z-index: 1;
     </span>
   </button>
 
-  <button onclick="goHome()"
-    class="cloud-btn text-blue-800 text-lg font-bold py-3 px-6 transition-colors relative">
-    <span class="cloud-text">
-      <span class="cloud-icon">🏠</span>
-      홈으로 / Go to Index
-    </span>
-  </button>
-</div>
+<button onclick="goHome()"
+class="cloud-btn text-blue-800 text-lg font-bold py-3 px-6 transition-colors relative">
+<span class="cloud-text">
+<span class="cloud-icon">🏠</span>
+홈으로 / Go to Index
+</span>
+</button>
 
+</div>
 
   </div>
 </div>
@@ -318,49 +321,7 @@ const calculateValue = (expression) => {
   return eval(processedExpr);
 };
 
-// 카드 렌더링
-const renderCards = () => {
-  const cardsArea = document.getElementById('cardsArea');
-  cardsArea.innerHTML = '';
-  userCards.forEach((card, index) => {
-    const btn = document.createElement('button');
-    btn.className = 'bg-white border-2 border-blue-300 rounded-lg p-3 text-xl font-bold hover:bg-blue-50';
-    
-    let displayText = card;
-    if (card === '*') displayText = '×';
-    else if (card === '/') displayText = '÷';
-    
-    btn.textContent = displayText;
-    btn.onclick = () => {
-      if (!roundCompleted) {
-        userExpression += displayText;
-        document.getElementById('userExpression').textContent = userExpression;
-        userCards.splice(index, 1);
-        renderCards();
-      }
-    };
-    cardsArea.appendChild(btn);
-  });
-};
-
-// 컴퓨터 카드 렌더링
-const renderComputerCards = () => {
-  const computerCardsArea = document.getElementById('computerCardsArea');
-  computerCardsArea.innerHTML = '';
-  computerCards.forEach(card => {
-    const span = document.createElement('span');
-    span.className = 'bg-white border-2 border-red-300 rounded-lg p-3 text-xl font-bold';
-    
-    let displayText = card;
-    if (card === '*') displayText = '×';
-    else if (card === '/') displayText = '÷';
-    
-    span.textContent = displayText;
-    computerCardsArea.appendChild(span);
-  });
-};
-
-// 컴퓨터 AI
+// 컴퓨터 AI - 모든 가능한 조합을 탐색하여 최적해 찾기
 const findBestExpression = (cards) => {
   const numbers = cards.filter(c => !isNaN(c) || c === 'π');
   const operators = cards.filter(c => isNaN(c) && c !== 'π');
@@ -380,24 +341,152 @@ const findBestExpression = (cards) => {
     } catch (e) {}
   };
 
-  // 단순한 시도들
+  // 디스플레이용 연산자 변환
+  const getDisplayOp = (op) => {
+    if (op === '*') return '×';
+    if (op === '/') return '÷';
+    return op;
+  };
+
+  // 1. 단일 숫자들
   numbers.forEach(num => tryExpression(num.toString()));
-  
-  if (numbers.length >= 2) {
-    const basicOps = operators.filter(op => op !== '√');
-    numbers.forEach((a, i) => {
-      numbers.forEach((b, j) => {
-        if (i !== j) {
-          basicOps.forEach(op => {
-            const opDisplay = op === '*' ? '×' : op === '/' ? '÷' : op;
-            tryExpression(`${a}${opDisplay}${b}`);
-          });
-        }
-      });
+
+  // 2. 제곱근 연산들
+  if (operators.includes('√')) {
+    numbers.forEach(num => {
+      if (num !== 'π' && num >= 0) {
+        tryExpression(`√${num}`);
+        // 숫자√숫자 형태
+        numbers.forEach(num2 => {
+          if (num !== num2 && num2 !== 'π' && num2 >= 0) {
+            tryExpression(`${num}√${num2}`);
+          }
+        });
+      }
     });
   }
 
-  return { expr: bestExpr, usedCards: [numbers[0]] };
+  // 3. 두 숫자 + 한 연산자
+  const basicOps = operators.filter(op => op !== '√');
+  for (let i = 0; i < numbers.length; i++) {
+    for (let j = 0; j < numbers.length; j++) {
+      if (i !== j) {
+        basicOps.forEach(op => {
+          const expr = `${numbers[i]}${getDisplayOp(op)}${numbers[j]}`;
+          tryExpression(expr);
+        });
+      }
+    }
+  }
+
+  // 4. 세 숫자 + 두 연산자
+  if (numbers.length >= 3 && basicOps.length >= 2) {
+    for (let i = 0; i < numbers.length; i++) {
+      for (let j = 0; j < numbers.length; j++) {
+        for (let k = 0; k < numbers.length; k++) {
+          if (i !== j && j !== k && i !== k) {
+            for (let op1 of basicOps) {
+              for (let op2 of basicOps) {
+                const expr = `${numbers[i]}${getDisplayOp(op1)}${numbers[j]}${getDisplayOp(op2)}${numbers[k]}`;
+                tryExpression(expr);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // 5. 제곱근과 다른 연산 조합
+  if (operators.includes('√')) {
+    numbers.forEach(sqrtNum => {
+      if (sqrtNum !== 'π' && sqrtNum >= 0) {
+        numbers.forEach(otherNum => {
+          if (sqrtNum !== otherNum) {
+            basicOps.forEach(op => {
+              tryExpression(`√${sqrtNum}${getDisplayOp(op)}${otherNum}`);
+              tryExpression(`${otherNum}${getDisplayOp(op)}√${sqrtNum}`);
+              numbers.forEach(multiplier => {
+                if (multiplier !== sqrtNum && multiplier !== otherNum && multiplier !== 'π') {
+                  tryExpression(`${multiplier}√${sqrtNum}${getDisplayOp(op)}${otherNum}`);
+                  tryExpression(`${otherNum}${getDisplayOp(op)}${multiplier}√${sqrtNum}`);
+                }
+              });
+            });
+          }
+        });
+      }
+    });
+  }
+
+  return { expr: bestExpr, usedCards: [] };
+};
+
+
+// 카드 렌더링
+const renderCards = () => {
+  const cardsArea = document.getElementById('cardsArea');
+  cardsArea.innerHTML = '';
+  userCards.forEach((card, index) => {
+    const btn = document.createElement('button');
+    
+btn.className = 'card-button bg-white border-2 border-blue-300 rounded-lg p-3 text-2xl font-bold hover:bg-blue-50';
+
+let displayText = card;
+    
+
+if (card === '*') displayText = '×';
+    else if (card === '/') displayText = '÷';
+if (displayText === '+' || displayText === '-' || displayText === '×' || displayText === '÷') {
+  btn.classList.add('operator-card');
+}
+
+console.log('displayText:',displayText);
+if (displayText === '+'||displayText === '-'||displayText === '×'||displayText === '÷'){ 
+btn.style.fontsize = '50px !important';
+btn.style.lineHeight ='1';
+console.log('연산기호변경:',displayText);
+}
+
+btn.textContent = displayText;
+    btn.onclick = () => {
+      if (!roundCompleted) {
+        userExpression += displayText;
+        document.getElementById('userExpression').textContent = userExpression;
+        userCards.splice(index, 1);
+        renderCards();
+      }
+    };
+    cardsArea.appendChild(btn);
+  });
+};
+
+// 컴퓨터 카드 렌더링
+const renderComputerCards = () => {
+  const computerCardsArea = document.getElementById('computerCardsArea');
+  computerCardsArea.innerHTML = '';
+  computerCards.forEach(card => {
+    const span = document.createElement('span');
+    span.className = 'bg-white border-2 border-red-300 rounded-lg p-3 text-2xl font-bold';
+    
+    let displayText = card;
+    if (card === '*') displayText = '×';
+    else if (card === '/') displayText = '÷';
+if (displayText === '+' || displayText === '-' || displayText === '×' || displayText === '÷') {
+  span.classList.add('operator-card');
+}
+
+console.log('displayText:',displayText);
+if (displayText === '+'||displayText === '-'||displayText === '×'||displayText === '÷'){ 
+span.style.fontsize = '40px !important';
+span.style.lineHeight ='1';
+console.log('연산기호변경:',displayText);
+}
+
+
+    span.textContent = displayText;
+    computerCardsArea.appendChild(span);
+  });
 };
 
 // 홈으로 이동
