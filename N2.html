@@ -51,6 +51,11 @@ z-index: 1;
 position: relative;
 z-index: 1;
 }
+.operator-card {
+    font-size: 40px;
+    font-weight: 300; /* 얇게 */
+    line-height: 1;
+  }
 </style>
 
 </head>
@@ -262,13 +267,16 @@ const renderCards = () => {
   cardsArea.innerHTML = '';
   userCards.forEach((card, index) => {
     const btn = document.createElement('button');
-    btn.className = 'bg-white border-2 border-blue-300 rounded-lg p-3 text-xl font-bold';
-    
+    btn.className = 'bg-white border-2 border-blue-300 rounded-lg p-3 text-2xl font-bold';
+
     // 표시용 텍스트 변환
     let displayText = card;
     if (card === '*') displayText = '×';
     else if (card === '/') displayText = '÷';
-    
+if (displayText === '+' || displayText === '-' || displayText === '×' || displayText === '÷') {
+  btn.classList.add('operator-card');
+}
+
     btn.textContent = displayText;
     btn.onclick = () => {
       if (!roundCompleted) {
