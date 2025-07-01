@@ -112,7 +112,7 @@ allowing players to choose based on their skill and learning level.---
 
 - **모음 퀴즈(Moeum Quiz)**  
     모음과 힌트를 보고 자음을 맞추어 단어나 구절이나 문장을 완성하는 퍼즐 게임   
-  *Guess the missing consonants to complete words, phrases, or sentences using vowels and hints   
+  *Guess the missing consonants to complete words, phrases, or sentences using vowels and hints*   
   👉 http://soosoohan.github.io/moeum-quiz
 
 
