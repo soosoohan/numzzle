@@ -106,7 +106,7 @@ allowing players to choose based on their skill and learning level.---
   👉 http://soosoohan.github.io/worpuzzmate
 
 - **워퍼즈 (Worpuzz )**  
-  격자 속에 숨어있는 단어를 찾으며 어휘력을 키우는 게임. 워퍼즈의 업그레이드 버전  
+  격자 속에 숨어있는 단어를 찾으며 컴퓨터와 겨루면서 어휘력을 키우는 게임. 
   *Compete to guess or uncover words hidden in the grid*  
   👉 http://soosoohan.github.io/worpuzz
 
