@@ -136,8 +136,7 @@
         transition: all 0.3s ease;
         box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
-
-    .main-game-button:hover {
+ .main-game-button:hover {
         background: #f0f8ff;
         transform: translateY(-3px);
         box-shadow: 0 6px 15px rgba(0,0,0,0.3);
@@ -154,6 +153,62 @@
         color: #d84315 !important;
     }
 
+.finger-card {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 8px;
+padding: 12px;
+background: white;
+border: 2px solid #3b82f6;
+border-radius: 12px;
+min-width: 80px;
+font-size: 18px;
+font-weight: bold;
+cursor: pointer;
+transition: all 0.2s ease;
+}
+
+.finger-card:hover {
+transform: translateY(-2px);
+box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.finger-card.used {
+opacity: 0.5;
+background: #f0f0f0;
+border-color: #ccc;
+}
+
+.finger-emoji {
+font-size: 24px;
+line-height: 1;
+}
+
+.operator-card {
+background: white;
+border: 2px solid #ef4444;
+border-radius: 12px;
+padding: 12px 20px;
+font-size: 24px;
+font-weight: bold;
+cursor: pointer;
+transition: all 0.2s ease;
+min-width: 60px;
+text-align: center;
+}
+
+.operator-card:hover {
+transform: translateY(-2px);
+box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.operator-card.used {
+opacity: 0.5;
+background: #f0f0f0;
+border-color: #ccc;
+}
+
     @media (max-height: 800px) {
         .blackboard {
             border: none;
@@ -163,12 +218,12 @@
         }
     }
 </style>
-
+ 
 </head>
 <body>
     <div class="blackboard">
         <div id="startScreen">
-            <h1 class="chalk-text main-title">넘즐 잼</h1>
+            <h1 class="chalk-text main-title">넘즐초 (NUMZZLE CHO)</h1>
 
 
         <div class="language-toggle">
@@ -178,25 +233,33 @@
         
 <div class="game-description chalk-text" id="korean-description">
             <h3>🎮 게임 소개</h3>
-            <p>넘즐잼 (NUMZZLE JAM)=넘버(NUMBER) + 퍼즐(PUZZLE) + 잼 (JAM)</p>
+            <p>넘즐초 (NUMZZLE CHO)=넘버(NUMBER) + 퍼즐(PUZZLE) + 초(BEGINNER)</p>
             <p><br></p>
 
             <h3>📋 게임 규칙</h3>
             <ul>
-            <li>넘즐잼은 주어진 숫자와 연산기호를 이용하여 목표 숫자에 가장 가까운 결과를 만드는 게임입니다.</li>
+            <li>목표 숫자에 가깝게 만들기 위해 숫자 카드 3장과 연산기호 카드 2장 중
+필요한 만큼 선택해서 수식을 만들어 보세요! </li>
             <li>수식의 결과가 목표 숫자에 딱 맞거나 가장 근접하면 10점을 받습니다.</li>           
-            </ul>
+            <li>수식의 결과가 목표 숫자에 딱 맞거나 가장 근접하면 10점을 받습니다.</li>
+<li>연습 모드에서는 컴퓨터와 같은 카드를 받고, 실전 모드에서는 컴퓨터와 다른 카드를 받습니다.</li>
+</ul>
         </div>
 
-        <div class="game-description chalk-text hidden" id="english-description">
+<div class="game-description chalk-text hidden" id="english-description">
             <h3>🎮 Game Overview</h3>
-            <p>NUMZZLE is a combination of "NUMBER" and "PUZZLE".</p>
+            <p>넘즐초 (NUMZZLE CHO)=넘버(NUMBER) + 퍼즐(PUZZLE) + 초(BEGINNER)</p>
             
             <h3>📋 Game Rules</h3>
             <ul>
-<li>NUMZZLE JAM is a game where you use given numbers and operators to create an expression as close as possible to the target number.</li>
+<li>Number cards range from 1 to 20, and each card shows a cute emoji.</li>
+<li>You must use **at least 1 number card**, but other cards are optional!</li>
+<li>The game runs in practice mode and challenge mode, and the computer tries to find the best combination</li>
+<li>NUMZZLE is a game where you use given numbers and operators to create an expression as close as possible to the target number.</li>
 <li>The closer you get, the more points you score!</li>
-<li></li>
+<li>Practice Mode gives you the same cards as the computer.</li>
+<li>Challenge Mode gives you different cards.</li>
+
 </ul>
         </div>
 
@@ -219,17 +282,13 @@
     </div>
 
 
-    
-    
-
-
 <!-- 게임 화면 -->
     <div id="gameScreen" class="hidden max-w-6xl mx-auto p-6">
         <div  style="background-color: #2e8b8b;" 추가
 
 
 <div class="text-center mb-6">
-                <h1 class="text-4xl font-bold text-white mb-2">넘즐잼 (NUMZZLE UP)</h1>
+                <h1 class="text-4xl font-bold text-white mb-2">넘즐초 (NUMZZLE CHO)</h1>
                 <p class="text-3xl  text-yellow-400 mb-4">🎯 목표: <span id="targetDisplay" class="font-bold text-pink-300"></span></p>
             </div>
 
@@ -358,25 +417,55 @@ let userExpression = '';
 let userCards = [];
 let computerCards = [];
 let roundCompleted = false;
-let isBuildingNumber = false;
 let originalUserCards = [];
+let usedCardIndices = [];
 
-// 카드덱 생성
+// 숫자에 따른 손가락 이모지 매핑
+const getFingerEmoji = (num) => {
+  const emojiMap = {
+    1: '☝️',
+    2: '✌️',
+    3: '🤟',
+    4: '✌️✌️',
+    5: '✋',
+    6: '☝️✋',
+    7: '✌️✋',
+    8: '🤟✋',
+    9: '✌️✌️✋',
+    10: '✋✋',
+    11: '☝️✋✋',
+    12: '✌️✋✋',
+    13: '🤟✋✋',
+    14: '✌️✌️✋✋',
+    15: '✋✋✋',
+    16: '☝️✋✋✋',
+    17: '✌️✋✋✋',
+    18: '🤟✋✋✋',
+    19: '✌️✌️✋✋✋',
+    20: '✋✋✋✋'
+  };
+  return emojiMap[num] || '☝️';
+};
+
+// 카드덱 생성 - 넘즐초용 (1~20 숫자카드)
 const createNumberDeck = () => {
   const deck = [];
-  // 0~9: 각 8장씩
-  for (let num = 0; num <= 9; num++) {
-    for (let i = 0; i < 8; i++) deck.push(num);
+  // 1~10: 각 2장씩
+  for (let num = 1; num <= 10; num++) {
+    for (let i = 0; i < 2; i++) deck.push(num);
+  }
+  // 11~20: 각 1장씩
+  for (let num = 11; num <= 20; num++) {
+    deck.push(num);
   }
   return deck;
 };
 
 const createOperatorDeck = () => {
   const deck = [];
-  // +: 30장, -: 30장, ×: 20장
-  for (let i = 0; i < 30; i++) deck.push('+');
-  for (let i = 0; i < 30; i++) deck.push('-');
-  for (let i = 0; i < 20; i++) deck.push('*');
+  // +: 20장, -: 20장 (× 제거)
+  for (let i = 0; i < 20; i++) deck.push('+');
+  for (let i = 0; i < 20; i++) deck.push('-');
   return deck;
 };
 
@@ -386,13 +475,13 @@ const shuffleAndDraw = (deck, count) => {
   return shuffled.slice(0, count);
 };
 
-// 카드 생성 (7장: 숫자 4장 + 연산 3장)
+// 카드 생성 (5장: 숫자 3장 + 연산 2장)
 const generateCards = () => {
   const numberDeck = createNumberDeck();
   const operatorDeck = createOperatorDeck();
   
-  const numbers = shuffleAndDraw(numberDeck, 4);
-  const operators = shuffleAndDraw(operatorDeck, 3);
+  const numbers = shuffleAndDraw(numberDeck, 3);
+  const operators = shuffleAndDraw(operatorDeck, 2);
   
   return [...numbers, ...operators];
 };
@@ -402,23 +491,29 @@ const renderCards = () => {
   cardsArea.innerHTML = '';
   userCards.forEach((card, index) => {
     const btn = document.createElement('button');
-    btn.className = 'bg-white border-2 border-blue-300 rounded-lg p-3 text-xl font-bold';
-    btn.textContent = card === '*' ? '×' : card;
+    
+    if (!isNaN(card)) {
+      // 숫자 카드
+      btn.className = `finger-card ${usedCardIndices.includes(index) ? 'used' : ''}`;
+      btn.innerHTML = `
+        <div class="finger-emoji">${getFingerEmoji(card)}</div>
+        <div>${card}</div>
+      `;
+    } else {
+      // 연산자 카드
+      btn.className = `operator-card ${usedCardIndices.includes(index) ? 'used' : ''}`;
+      btn.textContent = card;
+    }
+    
     btn.onclick = () => {
-      if (!roundCompleted) {
-        if (!isNaN(card)) {
-          if (isBuildingNumber) {
-            userExpression = userExpression.slice(0, -1) + userExpression.slice(-1) + card;
-          } else {
-            userExpression += card;
-            isBuildingNumber = true;
-          }
+      if (!roundCompleted && !usedCardIndices.includes(index)) {
+        if (userExpression === '(카드를 클릭하세요)') {
+          userExpression = card.toString();
         } else {
-          userExpression += (card === '*' ? '×' : card);
-          isBuildingNumber = false;
+          userExpression += ' ' + card;
         }
         document.getElementById('userExpression').textContent = userExpression;
-        userCards.splice(index, 1);
+        usedCardIndices.push(index);
         renderCards();
       }
     };
@@ -431,194 +526,97 @@ const renderComputerCards = () => {
   computerCardsArea.innerHTML = '';
   computerCards.forEach(card => {
     const span = document.createElement('span');
-    span.className = 'bg-white border-2 border-red-300 rounded-lg p-3 text-xl font-bold';
-    span.textContent = card === '*' ? '×' : card;
+    
+    if (!isNaN(card)) {
+      // 숫자 카드
+      span.className = 'finger-card';
+      span.style.cursor = 'default';
+      span.innerHTML = `
+        <div class="finger-emoji">${getFingerEmoji(card)}</div>
+        <div>${card}</div>
+      `;
+    } else {
+      // 연산자 카드
+      span.className = 'operator-card';
+      span.style.cursor = 'default';
+      span.textContent = card;
+    }
+    
     computerCardsArea.appendChild(span);
   });
 };
 
-// 컴퓨터가 최적의 답을 찾는 함수
+// 컴퓨터가 최적의 답을 찾는 함수 - 모든 가능한 조합 시도
 const findBestExpression = (cards) => {
   const numbers = cards.filter(c => !isNaN(c));
   const operators = cards.filter(c => isNaN(c));
+  
+  if (numbers.length === 0) {
+    return { expr: '0', usedCards: [] };
+  }
+  
   let bestExpr = '';
-  let bestVal = Infinity;
   let bestDiff = Infinity;
-  let usedCards = [];
+  let bestUsedCards = [];
 
-  // 숫자 하나만 내는 경우
+  // 모든 가능한 조합 시도
+  // 1. 숫자 1개만 사용
   numbers.forEach(num => {
-    const val = Number(num);
-    const diff = Math.abs(targetNumber - val);
+    const diff = Math.abs(targetNumber - num);
     if (diff < bestDiff) {
       bestDiff = diff;
-      bestVal = val;
-      bestExpr = `${num}`;
-      usedCards = [num];
+      bestExpr = num.toString();
+      bestUsedCards = [num];
     }
   });
 
-  // 2자리 숫자 만들기 (연속 숫자 결합)
-  if (numbers.length >= 2) {
-    numbers.forEach((a, i) => {
-      numbers.forEach((b, j) => {
-        if (i !== j) {
-          const combined = Number(`${a}${b}`);
-          const diff = Math.abs(targetNumber - combined);
-          if (diff < bestDiff) {
-            bestDiff = diff;
-            bestVal = combined;
-            bestExpr = `${a}${b}`;
-            usedCards = [a, b];
-          }
-        }
-      });
-    });
-  }
-
-  // 3자리 숫자 만들기
-  if (numbers.length >= 3) {
-    numbers.forEach((a, i) => {
-      numbers.forEach((b, j) => {
-        numbers.forEach((c, k) => {
-          if (i !== j && j !== k && i !== k) {
-            const combined = Number(`${a}${b}${c}`);
-            const diff = Math.abs(targetNumber - combined);
+  // 2. 숫자 2개 + 연산자 1개 사용
+  for (let i = 0; i < numbers.length; i++) {
+    for (let j = 0; j < numbers.length; j++) {
+      if (i !== j) {
+        operators.forEach(op => {
+          try {
+            const expr = `${numbers[i]} ${op} ${numbers[j]}`;
+            const val = eval(expr);
+            const diff = Math.abs(targetNumber - val);
             if (diff < bestDiff) {
               bestDiff = diff;
-              bestVal = combined;
-              bestExpr = `${a}${b}${c}`;
-              usedCards = [a, b, c];
+              bestExpr = expr;
+              bestUsedCards = [numbers[i], numbers[j], op];
             }
-          }
+          } catch {}
         });
-      });
-    });
+      }
+    }
   }
 
-  // 2개 숫자 + 1개 연산자
-  if (numbers.length >= 2 && operators.length >= 1) {
-    numbers.forEach((a, i) => {
-      numbers.forEach((b, j) => {
-        if (i !== j) {
-          operators.forEach(op => {
-            try {
-              const expr = `${a}${op}${b}`;
-              const val = eval(expr);
-              const diff = Math.abs(targetNumber - val);
-              if (diff < bestDiff) {
-                bestDiff = diff;
-                bestVal = val;
-                bestExpr = expr.replace(/\*/g, '×');
-                usedCards = [a, b, op];
+  // 3. 숫자 3개 + 연산자 2개 사용 (모든 순열)
+  for (let i = 0; i < numbers.length; i++) {
+    for (let j = 0; j < numbers.length; j++) {
+      for (let k = 0; k < numbers.length; k++) {
+        if (i !== j && j !== k && i !== k) {
+          for (let x = 0; x < operators.length; x++) {
+            for (let y = 0; y < operators.length; y++) {
+              if (x !== y) {
+                try {
+                  const expr = `${numbers[i]} ${operators[x]} ${numbers[j]} ${operators[y]} ${numbers[k]}`;
+                  const val = eval(expr);
+                  const diff = Math.abs(targetNumber - val);
+                  if (diff < bestDiff) {
+                    bestDiff = diff;
+                    bestExpr = expr;
+                    bestUsedCards = [numbers[i], numbers[j], numbers[k], operators[x], operators[y]];
+                  }
+                } catch {}
               }
-            } catch {}
-          });
-        }
-      });
-    });
-  }
-
-  // 2자리 숫자 + 연산자 + 숫자
-  if (numbers.length >= 3 && operators.length >= 1) {
-    numbers.forEach((a, i) => {
-      numbers.forEach((b, j) => {
-        numbers.forEach((c, k) => {
-          if (i !== j && j !== k && i !== k) {
-            operators.forEach(op => {
-              try {
-                // ab + c, ab - c, ab * c
-                const expr1 = `${a}${b}${op}${c}`;
-                const val1 = eval(expr1);
-                const diff1 = Math.abs(targetNumber - val1);
-                if (diff1 < bestDiff) {
-                  bestDiff = diff1;
-                  bestVal = val1;
-                  bestExpr = expr1.replace(/\*/g, '×');
-                  usedCards = [a, b, c, op];
-                }
-
-                // a + bc, a - bc, a * bc
-                const expr2 = `${a}${op}${b}${c}`;
-                const val2 = eval(expr2);
-                const diff2 = Math.abs(targetNumber - val2);
-                if (diff2 < bestDiff) {
-                  bestDiff = diff2;
-                  bestVal = val2;
-                  bestExpr = expr2.replace(/\*/g, '×');
-                  usedCards = [a, b, c, op];
-                }
-              } catch {}
-            });
-          }
-        });
-      });
-    });
-  }
-
-  // 3개 숫자 + 2개 연산자
-  if (numbers.length >= 3 && operators.length >= 2) {
-    numbers.forEach((a, i) => {
-      numbers.forEach((b, j) => {
-        numbers.forEach((c, k) => {
-          if (i !== j && j !== k && i !== k) {
-            operators.forEach((op1, x) => {
-              operators.forEach((op2, y) => {
-                if (x !== y) {
-                  try {
-                    const expr = `${a}${op1}${b}${op2}${c}`;
-                    const val = eval(expr);
-                    const diff = Math.abs(targetNumber - val);
-                    if (diff < bestDiff) {
-                      bestDiff = diff;
-                      bestVal = val;
-                      bestExpr = expr.replace(/\*/g, '×');
-                      usedCards = [a, b, c, op1, op2];
-                    }
-                  } catch {}
-                }
-              });
-            });
-          }
-        });
-      });
-    });
-  }
-
-  // 4개 숫자 + 3개 연산자 (모든 카드 사용)
-  if (numbers.length >= 4 && operators.length >= 3) {
-    numbers.forEach((a, i) => {
-      numbers.forEach((b, j) => {
-        numbers.forEach((c, k) => {
-          numbers.forEach((d, l) => {
-            if (new Set([i, j, k, l]).size === 4) {
-              operators.forEach((op1, w) => {
-                operators.forEach((op2, x) => {
-                  operators.forEach((op3, y) => {
-                    if (new Set([w, x, y]).size === 3) {
-                      try {
-                        const expr = `${a}${op1}${b}${op2}${c}${op3}${d}`;
-                        const val = eval(expr);
-                        const diff = Math.abs(targetNumber - val);
-                        if (diff < bestDiff) {
-                          bestDiff = diff;
-                          bestVal = val;
-                          bestExpr = expr.replace(/\*/g, '×');
-                          usedCards = [a, b, c, d, op1, op2, op3];
-                        }
-                      } catch {}
-                    }
-                  });
-                });
-              });
             }
-          });
-        });
-      });
-    });
+          }
+        }
+      }
+    }
   }
 
-  return { expr: bestExpr, usedCards };
+  return { expr: bestExpr, usedCards: bestUsedCards };
 };
 
 const startPracticeGame = () => {
@@ -638,7 +636,7 @@ const startGame = () => {
   computerScore = 0;
   userExpression = '';
   roundCompleted = false;
-  isBuildingNumber = false;
+  usedCardIndices = [];
 
   if (isPracticeMode) {
     userCards = generateCards();
@@ -664,25 +662,23 @@ const startGame = () => {
 };
 
 const submitExpression = () => {
-  if (!userExpression) return alert('수식을 만들어주세요!');
+  if (!userExpression || userExpression === '(카드를 클릭하세요)') {
+    return alert('최소 1장의 숫자카드는 사용해야 합니다!\nYou must use at least 1 number card!');
+  }
+  
+  // 숫자카드가 최소 1장 사용되었는지 확인
+  const hasNumber = usedCardIndices.some(index => !isNaN(userCards[index]));
+  if (!hasNumber) {
+    return alert('최소 1장의 숫자카드는 사용해야 합니다!\nYou must use at least 1 number card!');
+  }
+  
   try {
-    const evalExpression = userExpression.replace(/×/g, '*');
-    const userVal = eval(evalExpression);
+    const userVal = eval(userExpression);
     
     const computerCardsClone = [...computerCards];
     const { expr: computerExpr, usedCards } = findBestExpression(computerCardsClone);
-    const computerVal = eval(computerExpr.replace(/×/g, '*'));
+    const computerVal = eval(computerExpr);
     document.getElementById('computerExpression').textContent = computerExpr;
-
-    const newComputerCards = [...computerCards];
-    usedCards.forEach(usedCard => {
-      const index = newComputerCards.indexOf(usedCard);
-      if (index > -1) {
-        newComputerCards.splice(index, 1);
-      }
-    });
-    computerCards = newComputerCards;
-    renderComputerCards();
 
     const pointsPerRound = 10;
     let userRoundScore = 0;
@@ -726,7 +722,6 @@ const nextRound = () => {
   
   currentRound++;
   document.getElementById('roundDisplay').textContent = `${currentRound} / 10`;
-  isBuildingNumber = false;
 
   if (isPracticeMode) {
     userCards = generateCards();
@@ -736,6 +731,7 @@ const nextRound = () => {
     computerCards = generateCards();
   }
   originalUserCards = [...userCards];
+  usedCardIndices = [];
 
   renderCards();
   renderComputerCards();
@@ -750,8 +746,7 @@ const nextRound = () => {
 const resetExpression = () => {
   if (!roundCompleted) {
     userExpression = '';
-    isBuildingNumber = false;
-    userCards = [...originalUserCards];
+    usedCardIndices = [];
     renderCards();
     document.getElementById('userExpression').textContent = '(카드를 클릭하세요)';
   }
@@ -771,8 +766,8 @@ const backToStart = () => {
   userCards = [];
   computerCards = [];
   roundCompleted = false;
-  isBuildingNumber = false;
   originalUserCards = [];
+  usedCardIndices = [];
   
   document.getElementById('nextRoundArea').classList.add('hidden');
   document.getElementById('resultArea').classList.add('hidden');
