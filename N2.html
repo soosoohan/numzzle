@@ -56,7 +56,7 @@
         transform: translateX(-50%);
         width: 60%;
         color: #f0f8ff;
-        font-size: 1.3em;
+        font-size: 1.5em;
         text-align: left;
         z-index: 10;
         line-height: 1.3;
@@ -65,7 +65,7 @@
     .game-description h3 {
         color: #add8e6;
         margin-bottom: 10px;
-        font-size: 1.4em;
+        font-size: 1.5em;
         border-bottom: 2px solid #add8e6;
         padding-bottom: 5px;
     }
@@ -149,34 +149,6 @@
         display: none !important;
     }
 
-    .city-btn {
-        background: linear-gradient(145deg, #4a90e2, #357abd);
-        color: white;
-        border: none;
-        padding: 12px 20px;
-        border-radius: 10px;
-        font-size: 1.1em;
-        font-family: 'Nanum Pen Script', cursive;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-
-    .city-btn:hover {
-        background: linear-gradient(145deg, #357abd, #2a5a8a);
-        transform: translateY(-2px);
-        box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-    }
-
-    .city-btn.large {
-        padding: 15px 25px;
-        font-size: 1.2em;
-    }
-
-    .city-btn.small {
-        padding: 10px 15px;
-        font-size: 1em;
-    }
 
     .operator-card {
         background: #ffeb3b !important;
@@ -235,9 +207,9 @@
 
         <div class="game-menu">
             <div class="space-y-4">
-                <label id="target-label" class="block text-lg font-semibold mb-2">🎯 목표 숫자 (Target Number):</label>
+                <label id="target-label" class="block text-2xl font-semibold mb-2">🎯 목표 숫자 (Target Number):</label>
                 <input id="targetInput" type="number" value="20" min="1" max="100"
-                       class="w-full p-3 border border-gray-300 rounded-lg text-lg" />
+                       class="w-full p-3 border border-gray-300 rounded-lg text-2xl" />
             </div>
 
             <button class="main-game-button" onclick="startPracticeGame()">
