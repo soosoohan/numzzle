@@ -2,223 +2,365 @@
 
 <html lang="ko">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>넘즐업 (NUMZZLE UP)</title>
-<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-<style>
-.cloud-btn {
-  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 50%, #90caf9 100%);
-  border-radius: 50px;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 8px 32px rgba(33, 150, 243, 0.3);
-  transition: all 0.3s ease;
-  border: none;
-}
-.cloud-btn:hover {
-transform: translateY(-2px);
-box-shadow: 0 12px 40px rgba(33, 150, 243, 0.4);
-}
-.cloud-btn::before {
-content: '';
-position: absolute;
-top: -50%;
-left: -50%;
-width: 200%;
-height: 200%;
-background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
-animation: float 3s ease-in-out infinite;
-}
-@keyframes float {
-0%, 100% { transform: translate(0, 0) rotate(0deg); }
-33% { transform: translate(10px, -10px) rotate(1deg); }
-66% { transform: translate(-5px, 5px) rotate(-1deg); }
-}
-.cloud-icon {
-display: inline-block;
-margin-right: 8px;
-font-size: 1.2em;
-position: relative;
-z-index: 1;
-}
-.cloud-text {
-position: relative;
-z-index: 1;
-}
-  .operator-card {
-    font-size: 40px;
-    font-weight: 300; /* 얇게 */
-    line-height: 1;
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>넘즐업</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script:wght@400&display=swap');
 
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Nanum Pen Script', cursive;
+        background: #2e8b8b;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .blackboard {
+        width: 98vw;
+        height: 95vh;
+        background: #2e8b8b;
+        position: relative;
+    }
+
+    .chalk-text {
+        color: #f0f8ff;
+        font-family: 'Nanum Pen Script', cursive;
+    }
+.main-title {
+        position: absolute;
+        top: 4%;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 3em;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 4px;
+    }
+
+    .game-description {
+        position: absolute;
+        top: 18%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60%;
+        color: #f0f8ff;
+        font-size: 1.3em;
+        text-align: left;
+        z-index: 10;
+        line-height: 1.3;
+    }
+
+    .game-description h3 {
+        color: #add8e6;
+        margin-bottom: 10px;
+        font-size: 1.4em;
+        border-bottom: 2px solid #add8e6;
+        padding-bottom: 5px;
+    }
+
+    .game-description p {
+        margin-bottom: 15px;
+    }
+
+    .game-description ul {
+        margin-bottom: 15px;
+        padding-left: 20px;
+    }
+
+    .game-description li {
+        margin-bottom: 8px;
+    }
+
+    
+    .language-toggle {
+        position: absolute;
+        top: 15%;
+        right: 3%;
+        background: rgba(255,255,255,0.9);
+        padding: 10px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .language-button {
+        background: #2e8b8b;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        margin: 2px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-family: 'Nanum Pen Script', cursive;
+        font-size: 1.1em;
+        transition: all 0.3s ease;
+    }
+
+    .language-button:hover {
+        background: #20b2aa;
+    }
+
+    .language-button.active {
+        background: #ff69b4;
+    }
+
+    .game-menu {
+        position: absolute;
+        bottom: 6%;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 50px;
+    }
+
+
+    .main-game-button {
+        background: rgba(255,255,255,0.9);
+        color: #2e8b8b;
+        padding: 15px 25px;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.3em;
+        font-family: 'Nanum Pen Script', cursive;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .main-game-button:hover {
+        background: #f0f8ff;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    }
+
+    .hidden {
+        display: none !important;
+    }
+
+    
+
+    .operator-card {
+        background: #ffeb3b !important;
+        color: #d84315 !important;
+    }
+
+    @media (max-height: 800px) {
+        .blackboard {
+            border: none;
+            width: 100vw;
+            height: 100vh;
+            border-radius: 0;
+        }
+    }
 </style>
+
+
+
 </head>
-<body class="bg-blue-50 min-h-screen">
+<body>
+    <div class="blackboard">
+        <div id="startScreen">
+            <h1 class="chalk-text main-title">넘즐 업</h1>
 
-<!-- 초기화면 -->
 
-<div id="startScreen" class="max-w-4xl mx-auto p-6">
-  <div class="bg-white rounded-lg shadow-lg p-8">
-    <h1 class="text-4xl font-bold text-center mb-4 text-blue-600">넘즐업 (NUMZZLE UP)</h1>
-    <p class="text-center text-sm mb-8 text-gray-600">NUMZZLE UP is a combination of "NUMBER" and "PUZZLE".</p>
+        <div class="language-toggle">
+            <button class="language-button active" onclick="toggleLanguage('ko')">한국어</button>
+            <button class="language-button" onclick="toggleLanguage('en')">English</button>
+        </div>
+        
+<div class="game-description chalk-text" id="korean-description">
+            <h3>🎮 게임 소개</h3>
+            <p>넘즐업 (NUMZZLE UP)=넘버(NUMBER) + 퍼즐(PUZZLE) + 업 (UP)</p>
+            <p><br></p>
 
-<div class="p-6 bg-yellow-50 rounded-lg mb-6">
-  <h3 class="text-xl font-bold mb-2 text-center">게임 규칙 (Game Rules)</h3>
-  <p class="text-lg leading-relaxed text-gray-700">
-    넘즐업은 주어진 숫자와 연산기호를 이용하여 목표 숫자에 가장 가까운 결과를 만드는 고급 게임입니다.
-    <br>수식의 결과가 목표 숫자에 딱 맞거나 가장 근접하면 10점을 받습니다.
-    <br><br>
-    <strong>계산 규칙 (Calculation Rules):</strong>
-    <br>• π = 3.14로 계산합니다
-    <br>• √(제곱근)은 소수점 둘째자리에서 반올림합니다
-    <br>• 숫자 바로 뒤에 √가 오면 곱셈으로 계산됩니다 (2√3 = 2×√3)
-    <br>• 예: √3 = 1.73, 2√3 = 3.46, π × 2 = 6.28
-    <br>연습 모드에서는 컴퓨터와 같은 카드를 받습니다. 
-    <br>실전 모드에서는 컴퓨터와 다른 카드를 받습니다. 
-    <br><br>
-    NUMZZLE UP is an advanced game where you use given numbers and operators to create an expression as close as possible to the target number.
-    <br>The closer you get, the more points you score!<br>
-    <br><strong>Calculation Rules:</strong>
-    <br>• π is treated as 3.14
-    <br>• Square roots (√) are rounded to the nearest hundredth
-    <br>• Number directly before √ means multiplication (2√3 = 2×√3)
-    <br>• Examples: √3 = 1.73, 2√3 = 3.46, π × 2 = 6.28
-    <br>Practice Mode gives you the same cards as the computer. 
-    <br>Challenge Mode gives you different cards. 
-  </p>
-</div>
+            <h3>📋 게임 규칙</h3>
+            <ul>
+            <li>넘즐업은 주어진 숫자와 연산기호를 이용하여 목표 숫자에 가장 가까운 결과를 만드는 고급 게임입니다.</li>
+            <li>수식의 결과가 목표 숫자에 딱 맞거나 가장 근접하면 10점을 받습니다.</li>
+            <li>π = 3.14로 계산합니다.</li>
+            <li>√(제곱근)은 소수점 둘째자리에서 반올림합니다.</li>
+<li>숫자 바로 뒤에 √가 오면 곱셈으로 계산됩니다. (2√3 = 2×√3)</li>
+<li>예: √3 = 1.73, 2√3 = 3.46, π × 2 = 6.28</li>
+            <li>연습 모드에서는 컴퓨터와 같은 카드를 받습니다. </li>
+            <li>실전 모드에서는 컴퓨터와 다른 카드를 받습니다. </li>
+                       
+            </ul>
+        </div>
 
-<div class="space-y-4">
-  <label class="block text-lg font-semibold mb-2">🎯 목표 숫자 (Target Number):</label>
-  <input id="targetInput" type="number" value="10" min="1" max="100"
-         class="w-full p-3 border border-gray-300 rounded-lg text-lg" />
-</div>
+        <div class="game-description chalk-text hidden" id="english-description">
+            <h3>🎮 Game Overview</h3>
+            <p>NUMZZLE is a combination of "NUMBER" and "PUZZLE".</p>
+            
+            <h3>📋 Game Rules</h3>
+            <ul>
+  <li>NUMZZLE UP is an advanced game where you use given numbers and operators to create an expression as close as possible to the target number.</li>
+<li>The closer you get, the more points you score!</li>
+<li>π is treated as 3.14</li>
+<li>Square roots (√) are rounded to the nearest hundredth</li>
+<li>Number directly before √ means multiplication (2√3 = 2×√3)</li>
+<li>Examples: √3 = 1.73, 2√3 = 3.46, π × 2 = 6.28</li>
+<li>Practice Mode gives you the same cards as the computer.</li>
+<li>Challenge Mode gives you different cards.</li>
 
-<div class="flex justify-center gap-4 mt-8">
-  <button onclick="startPracticeGame()"
-    class="cloud-btn flex-1 text-blue-800 text-xl font-bold py-4 px-6 transition-colors relative">
-    <span class="cloud-text">
-      <span class="cloud-icon">☁️</span>
-      연습<br>Practice
-    </span>
-  </button>
-  <button onclick="startBattleGame()"
-    class="cloud-btn flex-1 text-red-800 text-xl font-bold py-4 px-6 transition-colors relative">
-    <span class="cloud-text">
-      <span class="cloud-icon">⛅</span>
-      실전<br>Battle
-    </span>
-  </button>
-</div>
+</ul>
+        </div>
 
-<p class="text-center text-sm mt-6 text-gray-400">© 2025 한수수. All rights reserved.</p>
 
-  </div>
-</div>
+        <div class="game-menu">
+            <div class="space-y-4">
+                <label id="target-label" class="block text-lg font-semibold mb-2">🎯 목표 숫자 (Target Number):</label>
+                <input id="targetInput" type="number" value="20" min="1" max="100"
+                       class="w-full p-3 border border-gray-300 rounded-lg text-lg" />
+            </div>
 
-<!-- 게임 화면 -->
-
-<div id="gameScreen" class="hidden max-w-6xl mx-auto p-6">
-  <div class="bg-white rounded-lg shadow-lg p-6">
-    <div class="text-center mb-6">
-      <h1 class="text-3xl font-bold text-blue-600 mb-2">넘즐업 (NUMZZLE UP)</h1>
-      <p class="text-xl mb-4">🎯<span id="targetDisplay" class="font-bold text-red-600"></span></p>
+            <button class="main-game-button" onclick="startPracticeGame()">
+                <span class="cloud-icon">☁️</span>
+                <span id="practice-text">연습<br>Practice</span>
+            </button>
+            <button class="main-game-button" onclick="startBattleGame()">
+                <span class="cloud-icon">⛅</span>
+                <span id="battle-text">실전<br>Battle</span>
+            </button>
+        </div>
     </div>
+<!-- 게임 화면 -->
+    <div id="gameScreen" class="hidden max-w-6xl mx-auto p-6">
+        <div  style="background-color: #2e8b8b;" 추가
 
-<div class="grid grid-cols-3 gap-4 mb-6">
-  <div class="text-center p-4 bg-blue-100 rounded-lg">
-    <h3 class="font-bold">라운드<br>Round</h3>
-    <p id="roundDisplay" class="text-2xl"></p>
-  </div>
-  <div class="text-center p-4 bg-green-100 rounded-lg">
-    <h3 class="font-bold">사용자<br>USER</h3>
-    <p id="userScore" class="text-2xl">0</p>
-  </div>
-  <div class="text-center p-4 bg-red-100 rounded-lg">
-    <h3 class="font-bold">컴퓨터<br>Computer</h3>
-    <p id="computerScore" class="text-2xl">0</p>
-  </div>
-</div>
 
-<div class="mb-6">
-  <h3 class="text-xl font-bold mb-3">내 카드 (My Cards):</h3>
-  <div id="cardsArea" class="flex flex-wrap gap-2"></div>
-</div>
+<div class="text-center mb-6">
+                <h1 class="text-4xl font-bold text-white mb-2">넘즐업 (NUMZZLE UP)</h1>
+                <p class="text-3xl  text-yellow-400 mb-4">🎯 목표: <span id="targetDisplay" class="font-bold text-pink-300"></span></p>
+            </div>
 
-<div class="mb-6">
-  <h3 class="text-lg font-bold mb-2">내 수식 (My Expression):</h3>
-  <div id="userExpression" class="bg-white p-3 border-2 border-green-300 rounded-lg text-xl font-mono">
-    (카드를 클릭하세요)
-  </div>
-</div>
+            <div class="grid grid-cols-3 gap-4 mb-6">
+                <div class="text-center p-4 bg-blue-100 rounded-lg">
+                    <h3 class="font-bold text-2xl ">라운드<br>Round</h3>
+                    <p id="roundDisplay" class="text-3xl"></p>
+                </div>
+                <div class="text-center p-4 bg-green-100 rounded-lg">
+                    <h3 class="font-bold text-2xl ">사용자<br>USER</h3>
+                    <p id="userScore" class="text-3xl">0</p>
+                </div>
+                <div class="text-center p-4 bg-red-100 rounded-lg">
+                    <h3 class="font-bold text-2xl ">컴퓨터<br>Computer</h3>
+                    <p id="computerScore" class="text-3xl">0</p>
+                </div>
+            </div>
 
-<div class="mb-6">
-  <h3 class="text-xl font-bold mb-3">컴퓨터 카드 (Computer Cards):</h3>
-  <div id="computerCardsArea" class="flex flex-wrap gap-2"></div>
-</div>
+            <div class="mb-6">
+                <h3 class="text-2xl font-bold text-white mb-3">내 카드 (My Cards):</h3>
+                <div id="cardsArea" class="flex flex-wrap gap-2"></div>
+            </div>
 
-<div class="mb-6">
-  <h3 class="text-lg font-bold mb-2">컴퓨터 수식 (Computer Expression):</h3>
-  <div id="computerExpression" class="bg-white p-3 border-2 border-red-300 rounded-lg text-xl font-mono">
-    컴퓨터가 생각 중...<br>Computer is thinking...
-  </div>
-</div>
+            <div class="mb-6">
+                <h3 class="text-lg font-bold text-white mb-2">내 수식 (My Expression):</h3>
+                <div id="userExpression" class="bg-white p-3 border-2 border-green-300 rounded-lg text-2xl ">
+                    (카드를 클릭하세요)
+                </div>
+            </div>
 
-<div id="actionButtons" class="flex gap-4 mb-6">
-  <button onclick="submitExpression()"
-    class="cloud-btn flex-1 text-green-800 text-lg font-bold py-3 px-6 transition-colors relative">
-    <span class="cloud-text">
-      <span class="cloud-icon">✅</span>
-      제출<br>Submit
+            <div class="mb-6">
+                <h3 class="text-2xl text-white font-bold mb-3">컴퓨터 카드 (Computer Cards):</h3>
+                <div id="computerCardsArea" class="flex flex-wrap gap-2"></div>
+            </div>
+
+            <div class="mb-6">
+                <h3 class="text-lg text-white font-bold mb-2">컴퓨터 수식 (Computer Expression):</h3>
+                <div id="computerExpression" class="bg-white p-3 border-2 border-red-300 rounded-lg text-2xl ">
+                    컴퓨터가 생각 중...<br>Computer is thinking...
+                </div>
+            </div>
+
+            <div id="actionButtons" class="flex gap-4 mb-6">
+                <button onclick="submitExpression()" class="main-game-button">
+                    <span class="cloud-text">
+                        <span class="cloud-icon">✅</span>
+                        제출<br>Submit
+                    </span>
+                </button>
+                <button onclick="resetExpression()" class="main-game-button">
+                    <span class="cloud-text">
+                        <span class="cloud-icon">🔄</span>
+                        초기화<br>Reset
+                    </span>
+                </button>
+            </div>
+
+            <div id="nextRoundArea" class="hidden text-center mb-6">
+                <button onclick="nextRound()" class="main-game-button">
+                    <span class="cloud-text">
+                        <span class="cloud-icon">➡️</span>
+                        다음 라운드<br>Next Round
+                    </span>
+                </button>
+            </div>
+
+            <div id="resultArea" class="hidden text-center p-6 bg-gray-100 rounded-lg">
+                <h2 class="text-2xl font-bold mb-4">게임 종료!</h2>
+                <p class="text-lg text-gray-600">최종 점수</p>
+                <p class="text-2xl">사용자: <span id="finalUserScore"></span>점</p>
+                <p class="text-2xl">컴퓨터: <span id="finalComputerScore"></span>점</p>
+            </div>
+
+            <div class="flex justify-center gap-4 mt-6">
+                <button onclick="backToStart()" class="main-game-button">
+                    <span class="cloud-text">
+                        <span class="cloud-icon">☁️</span>
+                        설정으로 / Go to Settings
+                    </span>
+                </button>
+            <button onclick="index.html"
+    class="main-game-button">
+      <span class="cloud-icon">🏠</span>
+      홈으로 / Go to Index
     </span>
-  </button>
-  <button onclick="resetExpression()"
-    class="cloud-btn flex-1 text-gray-800 text-lg font-bold py-3 px-6 transition-colors relative">
-    <span class="cloud-text">
-      <span class="cloud-icon">🔄</span>
-      초기화<br>Reset
-    </span>
-  </button>
-</div>
-
-<div id="nextRoundArea" class="hidden text-center mb-6">
-  <button onclick="nextRound()"
-    class="cloud-btn text-blue-800 text-lg font-bold py-3 px-8 transition-colors relative">
-    <span class="cloud-text">
-      <span class="cloud-icon">➡️</span>
-      다음 라운드<br>Next Round
-    </span>
-  </button>
-</div>
-
-<div id="resultArea" class="hidden text-center p-6 bg-gray-100 rounded-lg">
-  <p class="text-lg text-gray-600">게임 종료</p>
-</div>
-
-<div class="flex justify-center gap-4 mt-6">
-  <button onclick="backToStart()"
-    class="cloud-btn text-gray-800 text-lg font-bold py-3 px-6 transition-colors relative">
-    <span class="cloud-text">
-      <span class="cloud-icon">☁️</span>
-      설정으로 / Go to Settings
-    </span>
-  </button>
-
-<button onclick="goHome()"
-class="cloud-btn text-blue-800 text-lg font-bold py-3 px-6 transition-colors relative">
-<span class="cloud-text">
-<span class="cloud-icon">🏠</span>
-홈으로 / Go to Index
-</span>
-</button>
-
-</div>
-
   </div>
+        </div>
+    </div>
 </div>
 
 <script>
+    function toggleLanguage(lang) {
+        const koreanDesc = document.getElementById('korean-description');
+        const englishDesc = document.getElementById('english-description');
+        const targetLabel = document.getElementById('target-label');
+        const practiceText = document.getElementById('practice-text');
+        const battleText = document.getElementById('battle-text');
+        const koBtn = document.querySelector('.language-button[onclick="toggleLanguage(\'ko\')"]');
+        const enBtn = document.querySelector('.language-button[onclick="toggleLanguage(\'en\')"]');
+        
+        if (lang === 'ko') {
+            koreanDesc.classList.remove('hidden');
+            englishDesc.classList.add('hidden');
+            targetLabel.textContent = '🎯 목표 숫자 (Target Number):';
+            practiceText.innerHTML = '연습<br>Practice';
+            battleText.innerHTML = '실전<br>Battle';
+            koBtn.classList.add('active');
+            enBtn.classList.remove('active');
+        } else {
+            koreanDesc.classList.add('hidden');
+            englishDesc.classList.remove('hidden');
+            targetLabel.textContent = '🎯 Target Number:';
+            practiceText.innerHTML = 'Practice<br>연습';
+            battleText.innerHTML = 'Battle<br>실전';
+            koBtn.classList.remove('active');
+            enBtn.classList.add('active');
+        }
+    }
 // 게임 변수
 let isPracticeMode = true;
 let targetNumber = 10;
