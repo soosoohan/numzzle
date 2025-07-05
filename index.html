@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>넘즐 인덱스</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script:wght@400&display=swap');
+     @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
 
 * {
@@ -16,7 +16,7 @@
 }
 
 body {
-    font-family: 'Nanum Pen Script', cursive;
+    font-family: 'Pretendard', sans-serif;
     background: #2e8b8b ;
     min-height: 100vh;
     display: flex;
@@ -44,7 +44,7 @@ body {
 
 .chalk-text {
     color: #f0f8ff;
-    font-family: 'Nanum Pen Script', cursive;
+    font-family: 'Pretendard', sans-serif;
 }
 
 .main-title {
@@ -68,7 +68,7 @@ margin-bottom: 4px; /* 간격 조절 */
     padding: 15px;
     color: #333;
     width: 200px;
-    font-family: 'Nanum Pen Script', cursive;
+    font-family: 'Pretendard', sans-serif;
 }
 
 
@@ -92,8 +92,7 @@ margin-bottom: 4px; /* 간격 조절 */
     padding: 10px; /* 버튼 주변 여백 */
     border-bottom: 1px solid #ccc;
     color: #2e8b8b;
-background-color: #2e8b8b;  /* 칠판색 */
-
+    background-color: #2e8b8b;  /* 칠판색 */
     font-size: 1.0em;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -112,7 +111,7 @@ background-color: #2e8b8b;  /* 칠판색 */
 }
 .schedule-item .game-button {
 padding: 15px 25px;
-font-size: 1.3em;
+font-size: 1.1em;
 background: rgba(255,255,255,0.9);
 color: #2e8b8b;
 border: none;
@@ -124,7 +123,7 @@ display: flex;
 align-items: center;
 justify-content: space-between;
 
-font-family: 'Nanum Pen Script', cursive;
+font-family: 'Pretendard', sans-serif;
 box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
@@ -141,7 +140,7 @@ box-shadow: 0 6px 15px rgba(0,0,0,0.3);
     transform: translateX(-50%);
     width: 60%;
     color: #f0f8ff;
-    font-size: 1.3em;
+    font-size: 1.2em;
     text-align: left;
     z-index: 10;
    line-height: 1.3;  
@@ -151,7 +150,7 @@ box-shadow: 0 6px 15px rgba(0,0,0,0.3);
 .game-description h3 {
     color: #add8e6;
     margin-bottom: 10px;
-    font-size: 1.4em;
+    font-size: 1.3em;
     border-bottom: 2px solid #add8e6;
     padding-bottom: 5px;
 }
@@ -188,7 +187,7 @@ box-shadow: 0 6px 15px rgba(0,0,0,0.3);
     margin: 2px;
     border-radius: 5px;
     cursor: pointer;
-    font-family: 'Nanum Pen Script', cursive;
+    font-family: 'Pretendard', sans-serif;
     font-size: 1.1em;
     transition: all 0.3s ease;
 }
@@ -243,8 +242,8 @@ box-shadow: 0 6px 15px rgba(0,0,0,0.3);
     padding: 15px 25px;
     border: none;
     border-radius: 10px;
-    font-size: 1.3em;
-    font-family: 'Nanum Pen Script', cursive;
+    font-size: 1.2em;
+    font-family: 'Pretendard', sans-serif;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
@@ -345,7 +344,7 @@ box-shadow: 0 6px 15px rgba(0,0,0,0.3);
             </div>
 
 <div class="schedule-item" >
-                <button class="game-button" onclick="location.href='https://soosoohan.github.io/worpuzzmate/'">              <span class="schedule-emoji">👥</span>
+                <button class="game-button" onclick="location.href='https://soosoohan.github.io/worpuzzmate/'">  <span class="schedule-emoji"></span>  
 <span>워퍼즈메이트</span></button>
               </div>
 <div class="schedule-item" >
@@ -372,13 +371,28 @@ box-shadow: 0 6px 15px rgba(0,0,0,0.3);
         <ul>
             <li>목표 숫자를 설정하고 게임을 시작합니다.</li>
             <li>숫자 카드와 연산 카드가 랜덤으로 주어집니다.</li>
-            <li>주어진 카드로 수식을 만들어 <strong>목표 숫자에 가장 가까운 값</strong>을 제출합니다.</li>
-            <li>실수했을 경우 <strong>초기화 버튼</strong>으로 수식을 다시 만들 수 있습니다.</li>
-            <li><strong>결과값이 서로 다를 경우</strong>, 목표 숫자에 가까운 사람이 <strong>10점</strong>을 받습니다.</li>
-            <li>총 <strong>10라운드</strong>를 진행하며, <strong>누적 점수</strong>가 더 높은 쪽이 승리합니다!</li>
-            <li><strong>연습 게임</strong>은 컴퓨터와 같은 카드를 받고, <strong>실전 게임</strong>은 다른 카드를 받습니다.</li>
+            <li>주어진 카드로 수식을 만들어 목표 숫자에 가장 가까운 값을 제출합니다.</li>
+            <li>실수했을 경우 초기화 버튼으로 수식을 다시 만들 수 있습니다.</li>
+            <li>결과값이 서로 다를 경우, 목표 숫자에 가까운 사람이 10점</strong>을 받습니다.</li>
+            <li>총 10라운드를 진행하며, 누적 점수가 더 높은 쪽이 승리합니다!</li>
+            <li>연습 게임은 컴퓨터와 같은 카드를 받고, <strong>실전 게임</strong>은 다른 카드를 받습니다.</li>
             <li>게임의 난이도에 따라 <strong>넘즐초</strong>는 쉬운 버전이고, <strong>넘즐잼</strong>은 보통 정도의 난이도이고, <strong>넘즐</strong>은 어려운 버전이고, <strong>넘즐업</strong>은 계산기가 필요한 매우 어려운 버전입니다.</li>
         </ul>
+<br>
+        <button class="main-game-button" onclick="location.href='N4.html'">
+            넘즐초
+        </button>
+        <button class="main-game-button" onclick="location.href='N1.html'">
+             넘즐잼
+        </button>
+        <button class="main-game-button" onclick="location.href='N2.html'">
+           넘즐
+        </button>
+        <button class="main-game-button" onclick="location.href='N3.html'">
+             넘즐업
+        </button>
+    
+    
     </div>
 
     <div class="game-description chalk-text hidden" id="english-description">
@@ -394,10 +408,25 @@ box-shadow: 0 6px 15px rgba(0,0,0,0.3);
             <li>Build an expression using the cards to get as close as possible to the target number.</li>
             <li>If you make a mistake, use the reset button to start your expression over.</li>
             <li>If the results differ, the one <strong>closer to the target number gets 10 points</strong>; the other gets 0.</li>
-            <li>After <strong>10 rounds</strong>, the player with the <strong>higher total score wins</strong>.</li>
-            <li><strong>Practice Mode</strong> uses the same cards as the computer, while <strong>Challenge Mode</strong> gives different cards.</li>
-            <li><strong>Numzzle Cho</strong> is easy, <strong>Numzzle jam</strong> is medium, and <strong>Numzzle</strong> is hard, <strong>Numzzle Up</strong> is very hard — you might need a calculator!</li>
+            <li>After 10 rounds</strong>, the player with the higher total score wins.</li>
+            <li>Practice Mode</strong> uses the same cards as the computer, while <strong>Challenge Mode</strong> gives different cards.</li>
+            <li>Numzzle Cho</strong> is easy, Numzzle jam is medium, and <strong>Numzzle</strong> is hard, Numzzle Up is very hard — you might need a calculator!</li>
         </ul>
+
+        <button class="main-game-button" onclick="location.href='N4.html'">
+             NUMZZLE CHO
+        </button>
+        <button class="main-game-button" onclick="location.href='N1.html'">
+             NUMZZLEJAM
+        </button>
+        <button class="main-game-button" onclick="location.href='N2.html'">
+            NUMZZLE
+        </button>
+        <button class="main-game-button" onclick="location.href='N3.html'">
+        NUMZZLE UP
+        </button>
+
+    
     </div>
     
     <div class="credits-area chalk-text">
@@ -412,20 +441,6 @@ box-shadow: 0 6px 15px rgba(0,0,0,0.3);
         </div>
     </div>
    <br><br>
-    <div class="game-menu">
-        <button class="main-game-button" onclick="location.href='N4.html'">
-            넘즐초 NUMZZLE CHO
-        </button>
-        <button class="main-game-button" onclick="location.href='N1.html'">
-            넘즐잼 NUMZZLEJAM
-        </button>
-        <button class="main-game-button" onclick="location.href='N2.html'">
-            넘즐 NUMZZLE
-        </button>
-        <button class="main-game-button" onclick="location.href='N3.html'">
-            넘즐업 NUMZZLE UP
-        </button>
-    </div>
     
     <div class="eraser"></div>
     <div class="chalk-pieces">
@@ -458,4 +473,3 @@ box-shadow: 0 6px 15px rgba(0,0,0,0.3);
 
 </body>
 </html>
-
