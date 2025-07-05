@@ -6,7 +6,7 @@
     <title>넘즐잼</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script:wght@400&display=swap');
+     @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
 
     * {
@@ -16,7 +16,7 @@
     }
 
     body {
-        font-family: 'Nanum Pen Script', cursive;
+        font-family: 'Pretendard', sans-serif;
         background: #2e8b8b;
         min-height: 100vh;
         display: flex;
@@ -34,14 +34,14 @@
 
     .chalk-text {
         color: #f0f8ff;
-        font-family: 'Nanum Pen Script', cursive;
+        font-family: 'Pretendard', sans-serif;
     }
 .main-title {
         position: absolute;
         top: 4%;
         left: 50%;
         transform: translateX(-50%);
-        font-size: 3em;
+        font-size: 2.5em;
         font-weight: bold;
         text-align: center;
         margin-bottom: 4px;
@@ -53,7 +53,7 @@
         transform: translateX(-50%);
         width: 60%;
         color: #f0f8ff;
-        font-size: 1.5em;
+        font-size: 1.2em;
         text-align: left;
         z-index: 10;
         line-height: 1.3;
@@ -62,7 +62,7 @@
     .game-description h3 {
         color: #add8e6;
         margin-bottom: 10px;
-        font-size: 1.5em;
+        font-size: 1.2em;
         border-bottom: 2px solid #add8e6;
         padding-bottom: 5px;
     }
@@ -98,7 +98,7 @@
         margin: 2px;
         border-radius: 5px;
         cursor: pointer;
-        font-family: 'Nanum Pen Script', cursive;
+        font-family: 'Pretendard', sans-serif;
         font-size: 1.1em;
         transition: all 0.3s ease;
     }
@@ -130,8 +130,8 @@
         padding: 15px 25px;
         border: none;
         border-radius: 10px;
-        font-size: 1.3em;
-        font-family: 'Nanum Pen Script', cursive;
+        font-size: 1.2em;
+        font-family: 'Pretendard', sans-serif;
         cursor: pointer;
         transition: all 0.3s ease;
         box-shadow: 0 4px 10px rgba(0,0,0,0.2);
@@ -148,11 +148,11 @@
     }
 
     
-
     .operator-card {
-        background: #ffeb3b !important;
+        background: white !important;
         color: #d84315 !important;
-    }
+                    
+}
 
     @media (max-height: 800px) {
         .blackboard {
@@ -185,7 +185,8 @@
             <ul>
             <li>넘즐잼은 주어진 숫자와 연산기호를 이용하여 목표 숫자에 가장 가까운 결과를 만드는 게임입니다.</li>
             <li>수식의 결과가 목표 숫자에 딱 맞거나 가장 근접하면 10점을 받습니다.</li>           
-            </ul>
+                        <li>  목표 숫자를 설정하고 게임을 시작하세요.</li>
+</ul>
         </div>
 
         <div class="game-description chalk-text hidden" id="english-description">
@@ -196,13 +197,14 @@
             <ul>
 <li>NUMZZLE JAM is a game where you use given numbers and operators to create an expression as close as possible to the target number.</li>
 <li>The closer you get, the more points you score!</li>
-<li></li>
+<li>Set the target number and start the game.</li>
+            
 </ul>
         </div>
 
         <div class="game-menu">
             <div class="space-y-4">
-                <label id="target-label" class="block text-2xl font-semibold mb-2">🎯 목표 숫자 (Target Number):</label>
+                <label id="target-label" class="block text-2xl text-white font-semibold mb-2">🎯 목표 숫자 (Target Number):</label>
                 <input id="targetInput" type="number" value="15" min="1" max="100"
                        class="w-full p-3 border border-gray-300 rounded-lg text-2xl" />
             </div>
@@ -218,57 +220,50 @@
         </div>
     </div>
 
-
-    
-    
-
-
 <!-- 게임 화면 -->
     <div id="gameScreen" class="hidden max-w-6xl mx-auto p-6">
         <div  style="background-color: #2e8b8b;" 추가
 
 
 <div class="text-center mb-6">
-                <h1 class="text-4xl font-bold text-white mb-2">넘즐잼 (NUMZZLE UP)</h1>
-                <p class="text-3xl  text-yellow-400 mb-4">🎯 목표: <span id="targetDisplay" class="font-bold text-pink-300"></span></p>
+                <h1 class="text-4xl text-white mb-2">넘즐잼 (NUMZZLE UP)</h1>
+                <p class="text-4xl  text-yellow-400 mb-4">🎯  <span id="targetDisplay" class="font-bold text-pink-300"></span></p>
             </div>
 
             <div class="grid grid-cols-3 gap-4 mb-6">
-                <div class="text-center p-4 bg-blue-100 rounded-lg">
-                    <h3 class="font-bold text-2xl ">라운드   Round</h3>
+                <div class="text-center p-3 bg-blue-100 rounded-lg">
+                    <h3 class=" text-2xl ">라운드   Round</h3>
                     <p id="roundDisplay" class="text-3xl"></p>
                 </div>
-                <div class="text-center p-4 bg-green-100 rounded-lg">
-                    <h3 class="font-bold text-2xl ">사용자     USER</h3>
+                <div class="text-center p-3 bg-green-100 rounded-lg">
+                    <h3 class="text-2xl ">사용자     USER</h3>
                     <p id="userScore" class="text-3xl">0</p>
                 </div>
-                <div class="text-center p-4 bg-red-100 rounded-lg">
-                    <h3 class="font-bold text-2xl ">컴퓨터    Computer</h3>
+                <div class="text-center p-3 bg-red-100 rounded-lg">
+                    <h3 class="text-2xl ">컴퓨터    Computer</h3>
                     <p id="computerScore" class="text-3xl">0</p>
                 </div>
             </div>
 
             <div class="mb-6">
-                <h3 class="text-2xl font-bold text-white mb-3">내 카드 (My Cards):</h3>
+                <h3 class="text-2xl text-white mb-3">내 카드 (Your Cards):</h3>
                 <div id="cardsArea" class="flex flex-wrap gap-2"></div>
             </div>
 
             <div class="mb-6">
-                <h3 class="text-lg font-bold text-white mb-2">내 수식 (My Expression):</h3>
-                <div id="userExpression" class="bg-white p-3 border-2 border-green-300 rounded-lg text-2xl ">
-                    (카드를 클릭하세요)
-                </div>
+                <h3 class="text-2xl text-white mb-2">내 수식 (Your Expression):</h3>
+                <div id="userExpression" class="bg-white p-3 border-2 border-green-300 rounded-lg text-2xl "> 카드를 클릭하세요.                </div>
             </div>
 
             <div class="mb-6">
-                <h3 class="text-2xl text-white font-bold mb-3">컴퓨터 카드 (Computer Cards):</h3>
+                <h3 class="text-2xl text-white  mb-3">컴퓨터 카드 (Computer's Cards):</h3>
                 <div id="computerCardsArea" class="flex flex-wrap gap-2"></div>
             </div>
 
             <div class="mb-6">
-                <h3 class="text-lg text-white font-bold mb-2">컴퓨터 수식 (Computer Expression):</h3>
+                <h3 class="text-2xl text-white  mb-2">컴퓨터 수식 (Computer's Expression):</h3>
                 <div id="computerExpression" class="bg-white p-3 border-2 border-red-300 rounded-lg text-2xl ">
-                    컴퓨터가 생각 중...<br>Computer is thinking...
+                    컴퓨터가 생각 중...
                 </div>
             </div>
 
@@ -656,8 +651,8 @@ const startGame = () => {
 
   renderCards();
   renderComputerCards();
-  document.getElementById('userExpression').textContent = '(카드를 클릭하세요)';
-  document.getElementById('computerExpression').textContent = '컴퓨터가 생각 중...\nComputer is thinking...';
+  document.getElementById('userExpression').textContent = '내 카드를 클릭하세요. Click your cards.';
+  document.getElementById('computerExpression').textContent = '컴퓨터가 생각 중...Computer is thinking...';
 
   document.getElementById('startScreen').classList.add('hidden');
   document.getElementById('gameScreen').classList.remove('hidden');
@@ -740,8 +735,8 @@ const nextRound = () => {
   renderCards();
   renderComputerCards();
   userExpression = '';
-  document.getElementById('userExpression').textContent = '(카드를 클릭하세요)';
-  document.getElementById('computerExpression').textContent = '컴퓨터가 생각 중...\nComputer is thinking...';
+  document.getElementById('userExpression').textContent = '내 카드를 클릭하세요. Click your cards.';
+  document.getElementById('computerExpression').textContent = '컴퓨터가 생각 중...Computer is thinking...';
   roundCompleted = false;
   document.getElementById('nextRoundArea').classList.add('hidden');
   document.getElementById('actionButtons').classList.remove('hidden');
