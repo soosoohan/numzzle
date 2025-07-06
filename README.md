@@ -118,9 +118,8 @@ allowing players to choose based on their skill and learning level.---
 
 ### 👤 만든 사람 | Credits
 
-
 기획·개발 : 한수수  
-개발 보조 : 재치  
+개발 보조 : 챗GPT 
 코딩 도움 : 클라우드  
 디자인 도움: 네이처리
 
