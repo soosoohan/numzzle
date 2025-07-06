@@ -52,7 +52,7 @@ body {
     top: 4%;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 3em;
+    font-size: 2.5em;
     font-weight: bold;
     text-align: center;
 margin-bottom: 4px; /* 간격 조절 */
@@ -74,13 +74,13 @@ margin-bottom: 4px; /* 간격 조절 */
 
 
 .schedule-title {
-    font-size: 1.3em;
-       color: #ddd;
+    font-size: 1.2em;
+       color: white;
     text-align: center;
     margin-bottom: 12px;
     font-weight: bold;
     padding-bottom: 6px;
- 
+    
 }
 
 .schedule-item {
@@ -137,7 +137,7 @@ box-shadow: 0 6px 15px rgba(0,0,0,0.3);
     transform: translateX(-50%);
     width: 60%;
     color: #f0f8ff;
-    font-size: 1.2em;
+    font-size: 1.1em;
     text-align: left;
     z-index: 10;
    line-height: 1.3;  
@@ -147,7 +147,7 @@ box-shadow: 0 6px 15px rgba(0,0,0,0.3);
 .game-description h3 {
     color: #add8e6;
     margin-bottom: 10px;
-    font-size: 1.3em;
+    font-size: 1.2em;
     border-bottom: 2px solid #add8e6;
     padding-bottom: 5px;
 }
@@ -372,8 +372,8 @@ box-shadow: 0 6px 15px rgba(0,0,0,0.3);
             <li>실수했을 경우 초기화 버튼으로 수식을 다시 만들 수 있습니다.</li>
             <li>결과값이 서로 다를 경우, 목표 숫자에 가까운 사람이 10점</strong>을 받습니다.</li>
             <li>총 10라운드를 진행하며, 누적 점수가 더 높은 쪽이 승리합니다!</li>
-            <li>연습 게임은 컴퓨터와 같은 카드를 받고, <strong>실전 게임</strong>은 다른 카드를 받습니다.</li>
-            <li>게임의 난이도에 따라 <strong>넘즐초</strong>는 쉬운 버전이고, <strong>넘즐잼</strong>은 보통 정도의 난이도이고, <strong>넘즐</strong>은 어려운 버전이고, <strong>넘즐업</strong>은 계산기가 필요한 매우 어려운 버전입니다.</li>
+            <li>연습 게임은 컴퓨터와 같은 카드를 받고, 실전 게임은 다른 카드를 받습니다.</li>
+            <li>게임의 난이도에 따라 넘즐초는 쉬운 버전이고, 넘즐잼은 보통 정도의 난이도이고, 넘즐은 어려운 버전이고, 넘즐업은 계산기가 필요한 매우 어려운 버전입니다.</li>
         </ul>
 <br>
         <button class="main-game-button" onclick="location.href='N4.html'">
@@ -404,12 +404,12 @@ box-shadow: 0 6px 15px rgba(0,0,0,0.3);
             <li>Use number and operator cards to build and submit an expression.</li>
             <li>Build an expression using the cards to get as close as possible to the target number.</li>
             <li>If you make a mistake, use the reset button to start your expression over.</li>
-            <li>If the results differ, the one <strong>closer to the target number gets 10 points</strong>; the other gets 0.</li>
-            <li>After 10 rounds</strong>, the player with the higher total score wins.</li>
-            <li>Practice Mode</strong> uses the same cards as the computer, while <strong>Challenge Mode</strong> gives different cards.</li>
-            <li>Numzzle Cho</strong> is easy, Numzzle jam is medium, and <strong>Numzzle</strong> is hard, Numzzle Up is very hard — you might need a calculator!</li>
+            <li>If the results differ, the one closer to the target number gets 10 points</strong>; the other gets 0.</li>
+            <li>After 10 rounds, the player with the higher total score wins.</li>
+            <li>Practice Mode</strong> uses the same cards as the computer, while Challenge Mode gives different cards.</li>
+            <li>Numzzle Cho is easy, Numzzle jam is medium, and Numzzle is hard, Numzzle Up is very hard — you might need a calculator!</li>
         </ul>
-
+<br>
         <button class="main-game-button" onclick="location.href='N4.html'">
              NUMZZLE CHO
         </button>
@@ -425,12 +425,12 @@ box-shadow: 0 6px 15px rgba(0,0,0,0.3);
 
     
     </div>
-<div class="credits-area chalk-text">
+    <div class="credits-area chalk-text">
         <div class="credits-item">
-            기획·개발: 한수수 
+            기획·개발 : 한수수 
         </div>
         <div class="credits-item">
-            개발 보조: 재치 
+            개발 보조:  챗GPT
         </div>
         <div class="credits-item">
             코딩 도움: 클라우드 
@@ -442,18 +442,18 @@ box-shadow: 0 6px 15px rgba(0,0,0,0.3);
             © 2025 한수수
         </div>
     </div>
+   <br><br>
+    
+    <div class="eraser"></div>
+    <div class="chalk-pieces">
+        <div class="chalk"></div>
+        <div class="chalk"></div>
+        <div class="chalk"></div>
+    </div>
+</div>
 
 <script>
-  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-  const isPortrait = window.innerHeight > window.innerWidth;
-  const isSmall = window.innerWidth < 800;
-
-  if (isTouchDevice && isPortrait && isSmall) {
-    // 이건 진짜 폰일 확률이 높다!
-    location.href = "https://soosoohan.github.io/math/";
-  }
-
-  function toggleLanguage(lang) {
+    function toggleLanguage(lang) {
         const koreanDesc = document.getElementById('korean-description');
         const englishDesc = document.getElementById('english-description');
         const buttons = document.querySelectorAll('.language-button');
