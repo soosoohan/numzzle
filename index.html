@@ -444,7 +444,16 @@ box-shadow: 0 6px 15px rgba(0,0,0,0.3);
     </div>
 
 <script>
-    function toggleLanguage(lang) {
+  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  const isPortrait = window.innerHeight > window.innerWidth;
+  const isSmall = window.innerWidth < 800;
+
+  if (isTouchDevice && isPortrait && isSmall) {
+    // 이건 진짜 폰일 확률이 높다!
+    location.href = "https://soosoohan.github.io/math/";
+  }
+
+  function toggleLanguage(lang) {
         const koreanDesc = document.getElementById('korean-description');
         const englishDesc = document.getElementById('english-description');
         const buttons = document.querySelectorAll('.language-button');
