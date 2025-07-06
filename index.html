@@ -453,7 +453,16 @@ box-shadow: 0 6px 15px rgba(0,0,0,0.3);
 </div>
 
 <script>
-    function toggleLanguage(lang) {
+  
+  const w = window.innerWidth;
+  const h = window.innerHeight;
+  const isPhoneScreen = w <= 850 || h <= 500; // 세로든 가로든 좁으면 폰
+  const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+  if (isTouch && isPhoneScreen) {
+    location.href = "https://soosoohan.github.io/math/";
+  }
+  function toggleLanguage(lang) {
         const koreanDesc = document.getElementById('korean-description');
         const englishDesc = document.getElementById('english-description');
         const buttons = document.querySelectorAll('.language-button');
