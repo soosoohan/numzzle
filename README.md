@@ -98,16 +98,16 @@ allowing players to choose based on their skill and learning level.---
 ## 📅 개발 타임라인 / Development Timeline
 
 - **2025-06-05 *  
-첫 번째 프로토타입 완성 후 [`/numzzle`](https://github.com/soosoohan/numzzle) 레포에 업로드.  실질적인 초기 완성 단계.  
-First prototype completed and uploaded to the [`/numzzle`](https://github.com/soosoohan/numzzle) repository.  
+첫 번째 프로토타입 완성 후 ['/numzzle'](https://github.com/soosoohan/numzzle) 레포에 업로드.  실질적인 초기 완성 단계.  
+First prototype completed and uploaded to the ['/numzzle'](https://github.com/soosoohan/numzzle) repository.  
  
 - **2025-07-05**  
 청록색 계열의 테마로 디자인을 전면 리뉴얼하고 같은 레포에 덮어씀.   그러나 모바일에서 UI가 깨지는 문제가 발생함.
  Redesigned the game with a turquoise theme and updated the same repository.   However, layout issues appeared on mobile devices.  
  
 - **2025-07-05**
- 반응형 버전을 복구하기 위해 새로운 레포 [`/math`](http://soosoohan.github.io/math) 생성 후 6월 5일 버전 업로드.
-Created a new repo [`/math`](http://soosoohan.github.io/math) to restore the responsive version from June.  
+ 반응형 버전을 복구하기 위해 새로운 레포 ['/math'](http://soosoohan.github.io/math) 생성 후 6월 5일 버전 업로드.
+Created a new repo ['/math'](http://soosoohan.github.io/math) to restore the responsive version from June.  
 
 ---
 
