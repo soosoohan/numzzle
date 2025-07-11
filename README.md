@@ -133,12 +133,16 @@ Created a new repo ['/math'](http://soosoohan.github.io/math) to restore the res
   *Guess the missing consonants to complete words, phrases, or sentences using vowels and hints*   
   👉 http://soosoohan.github.io/moeum-quiz
 
+- **넘즐 X(Numzzle X)**  
+   수학공부를 재미있게
+    👉 http://soosoohan.github.io/
+
 
 ### 👤 만든 사람 | Credits
 
 - 기획·개발 : 한수수  
 - 개발 보조 : 챗GPT 
-- 코딩 도움 : 클라우드  
+- 코딩 도움 : 클로드  
 - 디자인 도움: 네이처리
 
 ⓒ 2025 한수수. 이 게임의 모든 권리는 제작자인 한수수에게 있습니다.<br>
@@ -146,7 +150,7 @@ Created a new repo ['/math'](http://soosoohan.github.io/math) to restore the res
 
 - Created and Developed by Soosoo Han  
 - Development Assistant: ChatGPT  
-- Coding Support: Cloud  
+- Coding Support: Claude  
 - Design Support: Nature Lee
 
 <p>© 2025 Soosoo Han. All rights reserved.<br>
