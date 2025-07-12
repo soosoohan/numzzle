@@ -161,93 +161,6 @@ transform: translateY(-3px);
 box-shadow: 0 6px 15px rgba(0,0,0,0.3);
 }
 
-/* 게임 허브 화면 */
-.games-hub {
-display: none;
-padding: 20px;
-height: 100%;
-overflow-y: auto;
-}
-
-.games-hub.active {
-display: block;
-}
-
-.hub-title {
-text-align: center;
-font-size: 2.5em;
-font-weight: bold;
-margin-bottom: 30px;
-color: #f0f8ff;
-}
-
-.hub-subtitle {
-text-align: center;
-font-size: 1.2em;
-margin-bottom: 40px;
-color: #add8e6;
-}
-
-.games-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-gap: 25px;
-max-width: 1200px;
-margin: 0 auto;
-}
-
-.game-card {
-background: rgba(255,255,255,0.95);
-border-radius: 15px;
-padding: 25px;
-box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-transition: all 0.3s ease;
-cursor: pointer;
-}
-
-.game-card:hover {
-transform: translateY(-10px);
-box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-}
-
-.game-card-header {
-display: flex;
-align-items: center;
-gap: 15px;
-margin-bottom: 15px;
-}
-
-.game-emoji {
-font-size: 2.5em;
-}
-
-.game-title {
-font-size: 1.5em;
-font-weight: bold;
-color: #2e8b8b;
-}
-
-.game-description-text {
-color: #333;
-line-height: 1.5;
-margin-bottom: 15px;
-}
-
-.game-difficulty {
-background: #2e8b8b;
-color: white;
-padding: 5px 12px;
-border-radius: 15px;
-font-size: 0.9em;
-display: inline-block;
-margin-bottom: 10px;
-}
-
-.game-features {
-color: #666;
-font-size: 0.9em;
-line-height: 1.4;
-}
 
 .credits-area {
 position: absolute;
@@ -312,7 +225,7 @@ gap: 20px;
             <button class="language-button" onclick="toggleLanguage('en')">English</button>
         </div>
 
-        <button class="games-hub-btn" onclick="showGamesHub()">
+        <button class="games-hub-btn" onclick="location.href='https://soosoohan.github.io/soosooland/'">
             🎮 수수의 게임들
         </button>
         
@@ -369,134 +282,31 @@ gap: 20px;
             </ul>
             <br>
             <div style="text-align: center;">
-                <button class="main-game-button" onclick="location.href='N4.html'">
-                    NUMZZLE CHO
+              <button class="main-game-button" onclick="location.href='N4.html'">
+                    NUMZZLE CHO(easy)
                 </button>
                 <button class="main-game-button" onclick="location.href='N1.html'">
-                    NUMZZLEJAM
+                    NUMZZLE JAM(medium)
                 </button>
                 <button class="main-game-button" onclick="location.href='N2.html'">
-                    NUMZZLE
+                    NUMZZLE(hard)
                 </button>
                 <button class="main-game-button" onclick="location.href='N3.html'">
-                    NUMZZLE UP
-                </button>
+                    NUMZZLE UP(very hard)
+                </button>  
+
+
+
+
             </div>
         </div>
     </div>
 
-    <!-- 게임 허브 화면 -->
-    <div class="games-hub" id="games-hub">
-        <h1 class="hub-title">🎮 수수의 게임 터미널</h1>
-        <p class="hub-subtitle">한수수가 만든 다양한 게임들을 만나보세요!</p>
-        
-        <div class="games-grid">
-            <div class="game-card" onclick="location.href='https://soosoohan.github.io/numzzle/'">
-                <div class="game-card-header">
-                    <div class="game-emoji">🔢</div>
-                    <div class="game-title">넘즐 (NUMZZLE)</div>
-                </div>
-                <div class="game-difficulty">수학 • 계산</div>
-                <div class="game-description-text">
-                    숫자 카드로 목표값에 가까운 수식을 만드는 수학 게임! 두뇌 개발 보장!<br>
-           A math card game to build formulas close to the target number! Brain power guaranteed!
-           
-
-</div>
-                <div class="game-features">
-                    • 4가지 난이도 (넘즐초,넘즐잼, 넘즐, 넘즐업)<br>
-                    • 연습모드와 실전모드가 있음<br>
-                    • 10라운드 승부
-                </div>
-            </div>
-
-            <div class="game-card" onclick="location.href='https://soosoohan.github.io/worpuzz/'">
-                <div class="game-card-header">
-                    <div class="game-emoji">📝</div>
-                    <div class="game-title">워퍼즈(WORPUZZ) </div>
-                </div>
-                <div class="game-difficulty">어휘력, 추리력</div>
-                <div class="game-description-text">
-                    똑똑해진 컴퓨터와 퍼즐 대결! 재미와 어휘력 두 마리 토끼 잡기 보장!<br>
-               Battle a smarter computer! Boost your vocabulary and enjoy the challenge!      </div>
-                <div class="game-features">
-                    • 한국어와  영어로 가능 <br>
-• 음성상징어  사자성어 고사성어  <br>
-• 옥스포드 사전의  난이도별로 영어 단어 있음 
-
-                       </div>
-            </div>
-
-            <div class="game-card" onclick="location.href='https://soosoohan.github.io/moeum-quiz/'">
-                <div class="game-card-header">
-                    <div class="game-emoji">📚</div>
-                    <div class="game-title">모음퀴즈(Moeum Quiz)</div>
-                </div>
-                <div class="game-difficulty">어휘력, 추리력</div>
-                <div class="game-description-text">
-                    모음만 있는 문장에서  자음을 넣어 문장을 완성하는 게임. 웃음 보장!<br>
-                    A Korean puzzle game where vowels guide you to the answer!     </div>
-                <div class="game-features">
-                    • 계속 업그레이드 중<br>
-                    • 초성퀴즈나 운명의 수레바퀴와 비슷함<br>
-                    • 다양한 주제 준비중 
-                </div>
-            </div>
-
-            <div class="game-card" onclick="location.href='https://soosoohan.github.io/trinkle/'">
-                <div class="game-card-header">
-                    <div class="game-emoji">✨</div>
-                    <div class="game-title">트링클 (TRINKLE)</div>
-                </div>
-                <div class="game-difficulty">기하 수학</div>
-                <div class="game-description-text">
-                    별을 이어 삼각형을 만드는 우주 땅따먹기 전략 게임! 재미 보장!<br>
-                    A space strategy game where you connect stars to make triangles! Fun guaranteed!                </div>
-                <div class="game-features">
-                    • 시각적 패턴 인식<br>
-                    • npc와 대결할 수 있고 친구와 같이 하기도 가능 <br>
-                    • 바둑, 장기,체스 처럼 예지력 향상
-                </div>
-            </div>
-
-            <div class="game-card" onclick="location.href='https://soosoohan.github.io/worpuzzmate/'">
-                <div class="game-card-header">
-                    <div class="game-emoji">🎯</div>
-                    <div class="game-title">워퍼즈메이트(Worpuzz Mate)</div>
-                </div>
-                <div class="game-difficulty">Worpuzz Mate</div>
-                <div class="game-description-text">
-                    친구와 같이 하는 단어 찾기 게임! 두근두근 보장!<br>
-                     A word puzzle game to play with a friend! Thrills guaranteed!     </div>
-                <div class="game-features">
-                    • 워퍼즈의 2인 대결 모드<br>
-                    • 어휘력 향상, 추리력 향상<br>
-                    • 옥스포드 사전의  난이도별로 영어 단어 있음 
-
-                </div>
-            </div>
-
-          <div class="game-card" onclick="location.href='https://soosoohan.github.io/numzzlex/'">>
-                <div class="game-card-header">
-                    <div class="game-emoji">➕</div>
-                    <div class="game-title">넘즐 X<br>(NUMZZLE X)</div>
-                </div>
-                <div class="game-difficulty"> 수학 연산</div>
-                <div class="game-description-text">
-     각 라운드마다 주어진 숫자와 연산카드로 최대값을 만들고 10라운드가 끝났을 때 합계숫자가 큰 사람이 이기는 게임. <br>In each round, players create an expression that yields the highest possible value using the given cards.<br> After 10 rounds, the player who has created the greater total score wins.           </div>
-                <div class="game-features">
-                    • 넘즐과 비슷하면서 다름<br>
-                    • +,-,* 만 있음 <br>
-                    • 넘즐보다 쉬움 
-                </div>
-            </div>
-        </div>
-    </div>
-
+    
     <div class="credits-area chalk-text">
         <div class="credits-item">기획·개발 : 한수수</div>
         <div class="credits-item">개발 보조: 챗GPT</div>
-        <div class="credits-item">코딩 도움: 클로드</div>
+        <div class="credits-item">코딩 도움: 클라우드</div>
         <div class="credits-item">디자인 도움: 네이처리</div>
         <div class="credits-item">© 2025 한수수</div>
     </div>
@@ -516,7 +326,7 @@ gap: 20px;
   const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
   if (isTouch && isPhoneScreen) {
-    location.href = "https://soosoohan.github.io/math/";
+    location.href = "https://soosoohan.github.io/semoddang/";
   } 
 
 
