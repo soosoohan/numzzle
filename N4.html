@@ -334,6 +334,65 @@
         gap: 10px;
         flex-wrap: wrap;
     }
+.finger-card {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 8px;
+padding: 12px 8px;
+background: white;
+border: 2px solid #3b82f6;
+border-radius: 12px;
+min-width: 70px;
+font-size: 16px;
+font-weight: bold;
+cursor: pointer;
+transition: all 0.2s ease;
+flex: 1;
+max-width: 120px;
+}
+
+.finger-card:hover {
+transform: translateY(-2px);
+box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.finger-card.used {
+opacity: 0.5;
+background: #f0f0f0;
+border-color: #ccc;
+}
+
+.finger-emoji {
+font-size: 20px;
+line-height: 1;
+}
+
+.operator-card {
+background: white;
+border: 2px solid #ef4444;
+border-radius: 12px;
+padding: 12px 8px;
+font-size: 20px;
+font-weight: bold;
+cursor: pointer;
+transition: all 0.2s ease;
+min-width: 60px;
+text-align: center;
+flex: 1;
+max-width: 120px;
+}
+
+.operator-card:hover {
+transform: translateY(-2px);
+box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.operator-card.used {
+opacity: 0.5;
+background: #f0f0f0;
+border-color: #ccc;
+}
 
     /* 모바일 최적화 */
     @media (max-width: 768px) {
