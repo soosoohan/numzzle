@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>넘즐초</title>
+    <title>넘즐초 N4</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
-        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+           @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
 
     * {
@@ -22,47 +22,56 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 20px;
+        padding: 10px;
     }
 
     .blackboard {
-        width: 98vw;
-        height: 95vh;
+        width: 100%;
+        max-width: 100vw;
+        min-height: 100vh;
         background: #2e8b8b;
         position: relative;
+        padding: 20px;
+        overflow-x: hidden;
     }
 
     .chalk-text {
         color: #f0f8ff;
-        font-family: 'Pretendard', sans-serif;
+        font-family: 'Nanum Pen Script', cursive;
     }
-.main-title {
+
+    .main-title {
         position: absolute;
-        top: 4%;
+        top: 2%;
         left: 50%;
         transform: translateX(-50%);
-        font-size: 2.5em;
+        font-size: clamp(1.3rem, 3.7vw, 1.9rem);
         font-weight: bold;
         text-align: center;
         margin-bottom: 4px;
+        width: 100%;
+        padding: 0 10px;
     }
-.game-description {
+
+    .game-description {
         position: absolute;
-        top: 18%;
+        top: 12%;
         left: 50%;
         transform: translateX(-50%);
-        width: 60%;
+        width: 90%;
+        max-width: 600px;
         color: #f0f8ff;
-        font-size: 1.5em;
+        font-size: clamp(0.9rem, 2.5vw, 1.3rem);
         text-align: left;
         z-index: 10;
         line-height: 1.3;
+        padding: 0 20px;
     }
 
     .game-description h3 {
         color: #add8e6;
         margin-bottom: 10px;
-        font-size: 1.5em;
+        font-size: clamp(1.2rem, 3.5vw, 1.5rem);
         border-bottom: 2px solid #add8e6;
         padding-bottom: 5px;
     }
@@ -80,26 +89,27 @@
         margin-bottom: 8px;
     }
 
-    
     .language-toggle {
         position: absolute;
-        top: 15%;
-        right: 3%;
+        top: 8%;
+        right: 5%;
         background: rgba(255,255,255,0.9);
-        padding: 10px;
+        padding: 8px;
         border-radius: 8px;
         box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        z-index: 20;
     }
-.language-button {
+
+    .language-button {
         background: #2e8b8b;
         color: white;
         border: none;
-        padding: 8px 15px;
+        padding: 6px 12px;
         margin: 2px;
         border-radius: 5px;
         cursor: pointer;
         font-family: 'Pretendard', sans-serif;
-        font-size: 1.1em;
+        font-size: clamp(0.8rem, 2.5vw, 1.1rem);
         transition: all 0.3s ease;
     }
 
@@ -113,16 +123,48 @@
 
     .game-menu {
         position: absolute;
-        bottom: 6%;
+        bottom: 8%;
         left: 50%;
         transform: translateX(-50%);
         display: flex;
-        gap: 20px;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin-top: 50px;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+        width: 90%;
+        max-width: 500px;
     }
 
+    .target-input-container {
+        width: 100%;
+        text-align: center;
+    }
+
+    .target-input-container label {
+        display: block;
+        font-size: clamp(1.2rem, 4vw, 1.5rem);
+        color: white;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .target-input-container input {
+        width: 100%;
+        max-width: 200px;
+        padding: 12px;
+        border: 2px solid #add8e6;
+        border-radius: 8px;
+        font-size: clamp(1.2rem, 4vw, 1.5rem);
+        text-align: center;
+        background: white;
+    }
+
+    .button-container {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 100%;
+    }
 
     .main-game-button {
         background: rgba(255,255,255,0.9);
@@ -130,13 +172,16 @@
         padding: 15px 25px;
         border: none;
         border-radius: 10px;
-        font-size: 1.3em;
+        font-size: clamp(1rem, 3vw, 1.3rem);
         font-family: 'Pretendard', sans-serif;
         cursor: pointer;
         transition: all 0.3s ease;
         box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        min-width: 120px;
+        text-align: center;
     }
- .main-game-button:hover {
+
+    .main-game-button:hover {
         background: #f0f8ff;
         transform: translateY(-3px);
         box-shadow: 0 6px 15px rgba(0,0,0,0.3);
@@ -146,75 +191,236 @@
         display: none !important;
     }
 
-    
-
     .operator-card {
-        background: #f2e996 !important;
+        background: white !important;
         color: #d84315 !important;
+        font-size: clamp(1.5rem, 4.0vw, 2.0rem)!important;
+        }
+
+    /* 게임 화면 스타일 */
+    .game-container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 10px;
+        background: #2e8b8b;
+        min-height: 100vh;
     }
 
-.finger-card {
-display: flex;
-flex-direction: column;
-align-items: center;
-gap: 8px;
-padding: 12px;
-background: white;
-border: 2px solid #3b82f6;
-border-radius: 12px;
-min-width: 80px;
-font-size: 18px;
-font-weight: bold;
-cursor: pointer;
-transition: all 0.2s ease;
-}
+    .game-header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
 
-.finger-card:hover {
-transform: translateY(-2px);
-box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-}
+    .game-header h1 {
+        font-size: clamp(1.8rem, 5vw, 2.5rem);
+        color: white;
+        margin-bottom: 10px;
+    }
 
-.finger-card.used {
-opacity: 0.5;
-background: #f0f0f0;
-border-color: #ccc;
-}
+    .game-header p {
+        font-size: clamp(1.2rem, 4vw, 1.8rem);
+        color: #ffeb3b;
+    }
 
-.finger-emoji {
-font-size: 24px;
-line-height: 1;
-}
+    .score-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 10px;
+        margin-bottom: 20px;
+    }
 
-.operator-card {
-background: white;
-border: 2px solid #ef4444;
-border-radius: 12px;
-padding: 12px 20px;
-font-size: 24px;
-font-weight: bold;
-cursor: pointer;
-transition: all 0.2s ease;
-min-width: 60px;
-text-align: center;
-}
+    .score-card {
+        text-align: center;
+        padding: 15px;
+        background: rgba(255,255,255,0.9);
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
 
-.operator-card:hover {
-transform: translateY(-2px);
-box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
-}
+    .score-card h3 {
+        font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+        margin-bottom: 5px;
+        color: #333;
+    }
 
-.operator-card.used {
-opacity: 0.5;
-background: #f0f0f0;
-border-color: #ccc;
-}
+    .score-card p {
+        font-size: clamp(1.2rem, 3vw, 1.8rem);
+        font-weight: bold;
+        color: #333;
+    }
 
-    @media (max-height: 800px) {
+    .cards-section {
+        margin-bottom: 20px;
+    }
+
+    .cards-section h3 {
+        font-size: clamp(1.2rem, 3vw, 1.5rem);
+        color: white;
+        margin-bottom: 10px;
+    }
+
+    .cards-area {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+        gap: 8px;
+        max-width: 100%;
+    }
+
+    .card-button {
+        background: white;
+        border: 2px solid #add8e6;
+        border-radius: 8px;
+        padding: 12px 8px;
+        font-size: clamp(1rem, 3vw, 1.3rem);
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        min-height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .card-button:hover {
+        background: #f0f8ff;
+        transform: translateY(-2px);
+    }
+
+    .expression-area {
+        background: white;
+        padding: 15px;
+        border: 3px solid #add8e6;
+        border-radius: 10px;
+        font-size: clamp(1.2rem, 3vw, 1.5rem);
+        margin-bottom: 20px;
+        min-height: 60px;
+        display: flex;
+        align-items: center;
+        word-break: break-all;
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+    }
+
+    .result-area {
+        background: rgba(255,255,255,0.9);
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .result-area h2 {
+        font-size: clamp(1.5rem, 4vw, 2rem);
+        margin-bottom: 15px;
+        color: #333;
+    }
+
+    .result-area p {
+        font-size: clamp(1rem, 3vw, 1.3rem);
+        margin-bottom: 10px;
+        color: #555;
+    }
+
+    .bottom-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    /* 모바일 최적화 */
+    @media (max-width: 768px) {
         .blackboard {
-            border: none;
-            width: 100vw;
-            height: 100vh;
-            border-radius: 0;
+            padding: 10px;
+        }
+
+        .game-description {
+            top: 15%;
+            width: 95%;
+            padding: 0 10px;
+        }
+
+        .language-toggle {
+            top: 12%;
+            right: 3%;
+            padding: 6px;
+        }
+
+        .game-menu {
+            bottom: 5%;
+            width: 95%;
+        }
+
+        .button-container {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .main-game-button {
+            width: 100%;
+            max-width: 200px;
+        }
+
+        .cards-area {
+            grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
+            gap: 6px;
+        }
+
+        .action-buttons {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .action-buttons .main-game-button {
+            width: 100%;
+            max-width: 200px;
+        }
+    }
+
+    /* 태블릿 최적화 */
+    @media (min-width: 769px) and (max-width: 1024px) {
+        .cards-area {
+            grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+        }
+
+        .score-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    /* 가로 모드 모바일 */
+    @media (max-height: 600px) and (orientation: landscape) {
+        .blackboard {
+            padding: 5px;
+        }
+
+        .main-title {
+            top: 1%;
+            font-size: 1.5rem;
+        }
+
+        .game-description {
+            top: 8%;
+            font-size: 0.9rem;
+        }
+
+        .game-description h3 {
+            font-size: 1rem;
+        }
+
+        .language-toggle {
+            top: 5%;
+        }
+
+        .game-menu {
+            bottom: 2%;
         }
     }
 </style>
@@ -253,11 +459,8 @@ border-color: #ccc;
             
             <h3>📋 Game Rules</h3>
             <ul>
-<li>Number cards range from 1 to 20, and each card shows a cute emoji.</li>
 <li>You must use **at least 1 number card**, but other cards are optional!</li>
-<li>The game runs in practice mode and challenge mode, and the computer tries to find the best combination</li>
 <li>NUMZZLE is a game where you use given numbers and operators to create an expression as close as possible to the target number.</li>
-<li>The closer you get, the more points you score!</li>
 <li>Practice Mode gives you the same cards as the computer.</li>
 <li>Challenge Mode gives you different cards.</li>
 <li>Set the target number and start the game.</li>
@@ -266,20 +469,21 @@ border-color: #ccc;
         </div>
 
         <div class="game-menu">
-            <div class="space-y-4">
-                <label id="target-label" class="block text-2xl text-white font-semibold mb-2">🎯 목표 숫자 (Target Number):</label>
-                <input id="targetInput" type="number" value="15" min="1" max="100"
-                       class="w-full p-3 border border-gray-300 rounded-lg text-2xl" />
+            <div class="target-input-container">
+                <label id="target-label">🎯 목표 숫자 (Target Number):</label>
+                <input id="targetInput" type="number" value="20" min="1" max="100" />
             </div>
 
-            <button class="main-game-button" onclick="startPracticeGame()">
-                <span class="cloud-icon">☁️</span>
-                <span id="practice-text">연습<br>Practice</span>
-            </button>
-            <button class="main-game-button" onclick="startBattleGame()">
-                <span class="cloud-icon">⛅</span>
-                <span id="battle-text">실전<br>Battle</span>
-            </button>
+            <div class="button-container">
+                <button class="main-game-button" onclick="startPracticeGame()">
+                    <span>☁️</span><br>
+                    <span id="practice-text">연습<br>Practice</span>
+                </button>
+                <button class="main-game-button" onclick="startBattleGame()">
+                    <span>⛅</span><br>
+                    <span id="battle-text">실전<br>Battle</span>
+                </button>
+            </div>
         </div>
     </div>
 
@@ -320,19 +524,7 @@ border-color: #ccc;
                     내 카드를 클릭하세요.
                 </div>
             </div>
-
-            <div class="mb-6">
-                <h3 class="text-2xl text-white font-bold mb-3">컴퓨터 카드 (Computer's Cards):</h3>
-                <div id="computerCardsArea" class="flex flex-wrap gap-2"></div>
-            </div>
-
-            <div class="mb-6">
-                <h3 class="text-lg text-white font-bold mb-2">컴퓨터 수식 (Computer's Expression):</h3>
-                <div id="computerExpression" class="bg-white p-3 border-2 border-red-300 rounded-lg text-2xl ">컴퓨터가 생각 중...
-                </div>
-            </div>
-
-            <div id="actionButtons" class="flex gap-4 mb-6">
+<div id="actionButtons" class="flex gap-4 mb-6">
                 <button onclick="submitExpression()" class="main-game-button">
                     <span class="cloud-text">
                         <span class="cloud-icon">✅</span>
@@ -347,6 +539,7 @@ border-color: #ccc;
                 </button>
             </div>
 
+            
             <div id="nextRoundArea" class="hidden text-center mb-6">
                 <button onclick="nextRound()" class="main-game-button">
                     <span class="cloud-text">
@@ -356,6 +549,17 @@ border-color: #ccc;
                 </button>
             </div>
 
+            <div class="mb-6">
+                <h3 class="text-2xl text-white font-bold mb-3">컴퓨터 카드 (Computer's Cards):</h3>
+                <div id="computerCardsArea" class="flex flex-wrap gap-2"></div>
+            </div>
+
+            <div class="mb-6">
+                <h3 class="text-lg text-white font-bold mb-2">컴퓨터 수식 (Computer's Expression):</h3>
+                <div id="computerExpression" class="bg-white p-3 border-2 border-red-300 rounded-lg text-2xl ">컴퓨터가 생각 중...
+                </div>
+            </div>
+
             <div id="resultArea" class="hidden text-center p-6 bg-gray-100 rounded-lg">
                 <h2 class="text-2xl font-bold mb-4">게임 종료!</h2>
                 <p class="text-lg text-gray-600">최종 점수</p>
@@ -363,7 +567,7 @@ border-color: #ccc;
                 <p class="text-2xl">컴퓨터: <span id="finalComputerScore"></span>점</p>
             </div>
 
-             <div class="flex justify-center gap-4 mt-6">
+            <div class="flex justify-center gap-4 mt-6">
                 <button onclick="backToStart()" class="main-game-button">
                     <span class="cloud-text">
                         <span class="cloud-icon">☁️</span>
