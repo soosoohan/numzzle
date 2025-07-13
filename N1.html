@@ -6,420 +6,435 @@
     <title>넘즐잼 N1</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
-        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+           @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Pretendard', sans-serif;
+    background: #2e8b8b;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.blackboard {
+    width: 100%;
+    max-width: 100vw;
+    min-height: 100vh;
+    background: #2e8b8b;
+    position: relative;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+.chalk-text {
+    color: #f0f8ff;
+    font-family: 'Nanum Pen Script', cursive;
+}
+
+.main-title {
+    position: absolute;
+    top: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: clamp(1.3rem, 3.7vw, 1.9rem);
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 4px;
+    width: 100%;
+    padding: 0 10px;
+}
+
+.game-description {
+    position: absolute;
+    top: 12%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 600px;
+    color: #f0f8ff;
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    text-align: left;
+    z-index: 10;
+    line-height: 1.3;
+    padding: 0 20px;
+}
+
+.game-description h3 {
+    color: #add8e6;
+    margin-bottom: 10px;
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    border-bottom: 2px solid #add8e6;
+    padding-bottom: 5px;
+}
+
+.game-description p {
+    margin-bottom: 15px;
+font-size: clamp(1rem, 3vw, 1.3rem);
     }
 
-    body {
-        font-family: 'Pretendard', sans-serif;
-        background: #2e8b8b;
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 10px;
+.game-description ul {
+    margin-bottom: 15px;
+    padding-left: 20px;
+font-size: clamp(1rem, 3vw, 1.3rem);
     }
 
+.game-description li {
+    margin-bottom: 8px;
+}
+
+.language-toggle {
+    position: absolute;
+    top: 8%;
+    right: 5%;
+    background: rgba(255,255,255,0.9);
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    z-index: 20;
+}
+
+.language-button {
+    background: #2e8b8b;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    margin: 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Pretendard', sans-serif;
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    transition: all 0.3s ease;
+}
+
+.language-button:hover {
+    background: #20b2aa;
+}
+
+.language-button.active {
+    background: #ff69b4;
+}
+
+.game-menu {
+    position: absolute;
+    bottom: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    width: 90%;
+    max-width: 500px;
+}
+
+.target-input-container {
+    width: 100%;
+    text-align: center;
+}
+
+.target-input-container label {
+    display: block;
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    color: white;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.target-input-container input {
+    width: 100%;
+    max-width: 200px;
+    padding: 12px;
+    border: 2px solid #add8e6;
+    border-radius: 8px;
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    text-align: center;
+    background: white;
+}
+
+.button-container {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.main-game-button {
+    background: rgba(255,255,255,0.9);
+    color: #2e8b8b;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 10px;
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    font-family: 'Pretendard', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    min-width: 120px;
+    text-align: center;
+    flex: 1;
+}
+
+.main-game-button:hover {
+    background: #f0f8ff;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+.hidden {
+    display: none !important;
+}
+
+.operator-card {
+    background: white !important;
+    color: #d84315 !important;
+font-size: clamp(1.5rem, 4.0vw, 2.0rem)!important;
+    }
+
+/* 게임 화면 스타일 */
+.game-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
+    background: #2e8b8b;
+    min-height: 100vh;
+}
+
+.game-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.game-header h1 {
+    font-size: clamp(1.3rem, 3.7vw, 1.9rem);
+    color: white;
+    margin-bottom: 10px;
+}
+
+.game-header p {
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    color: #ffeb3b;
+}
+
+.score-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.score-card {
+    text-align: center;
+    padding: 15px;
+    background: rgba(255,255,255,0.9);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.score-card h3 {
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.score-card p {
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    font-weight: bold;
+    color: #333;
+}
+
+.cards-section {
+    margin-bottom: 20px;
+}
+
+.cards-section h3 {
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    color: white;
+    margin-bottom: 10px;
+}
+
+.cards-area {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    gap: 8px;
+    max-width: 100%;
+}
+
+.card-button {
+    background: white;
+    border: 2px solid #add8e6;
+    border-radius: 8px;
+    padding: 12px 8px;
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-button:hover {
+    background: #f0f8ff;
+    transform: translateY(-2px);
+}
+
+.expression-area {
+    background: white;
+    padding: 15px;
+    border: 3px solid #add8e6;
+    border-radius: 10px;
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    margin-bottom: 20px;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    word-break: break-all;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.result-area {
+    background: rgba(255,255,255,0.9);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.result-area h2 {
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.result-area p {
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.bottom-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* 모바일에서도 버튼들을 가로로 배치 */
+@media (max-width: 768px) {
     .blackboard {
-        width: 100%;
-        max-width: 100vw;
-        min-height: 100vh;
-        background: #2e8b8b;
-        position: relative;
-        padding: 20px;
-        overflow-x: hidden;
-    }
-
-    .chalk-text {
-        color: #f0f8ff;
-        font-family: 'Nanum Pen Script', cursive;
-    }
-
-    .main-title {
-        position: absolute;
-        top: 2%;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: clamp(1.3rem, 3.7vw, 1.9rem);
-        font-weight: bold;
-        text-align: center;
-        margin-bottom: 4px;
-        width: 100%;
-        padding: 0 10px;
+        padding: 10px;
     }
 
     .game-description {
-        position: absolute;
-        top: 12%;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 90%;
-        max-width: 600px;
-        color: #f0f8ff;
-        font-size: clamp(0.9rem, 2.5vw, 1.3rem);
-        text-align: left;
-        z-index: 10;
-        line-height: 1.3;
-        padding: 0 20px;
-    }
-
-    .game-description h3 {
-        color: #add8e6;
-        margin-bottom: 10px;
-        font-size: clamp(1.2rem, 3.5vw, 1.5rem);
-        border-bottom: 2px solid #add8e6;
-        padding-bottom: 5px;
-    }
-
-    .game-description p {
-        margin-bottom: 15px;
-    }
-
-    .game-description ul {
-        margin-bottom: 15px;
-        padding-left: 20px;
-    }
-
-    .game-description li {
-        margin-bottom: 8px;
+        top: 15%;
+        width: 95%;
+        padding: 0 10px;
     }
 
     .language-toggle {
-        position: absolute;
-        top: 8%;
-        right: 5%;
-        background: rgba(255,255,255,0.9);
-        padding: 8px;
-        border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        z-index: 20;
-    }
-
-    .language-button {
-        background: #2e8b8b;
-        color: white;
-        border: none;
-        padding: 6px 12px;
-        margin: 2px;
-        border-radius: 5px;
-        cursor: pointer;
-        font-family: 'Pretendard', sans-serif;
-        font-size: clamp(0.8rem, 2.5vw, 1.1rem);
-        transition: all 0.3s ease;
-    }
-
-    .language-button:hover {
-        background: #20b2aa;
-    }
-
-    .language-button.active {
-        background: #ff69b4;
+        top: 12%;
+        right: 3%;
+        padding: 6px;
     }
 
     .game-menu {
-        position: absolute;
-        bottom: 8%;
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        align-items: center;
-        width: 90%;
-        max-width: 500px;
+        bottom: 5%;
+        width: 95%;
     }
 
-    .target-input-container {
-        width: 100%;
-        text-align: center;
-    }
-
-    .target-input-container label {
-        display: block;
-        font-size: clamp(1.2rem, 4vw, 1.5rem);
-        color: white;
-        font-weight: bold;
-        margin-bottom: 10px;
-    }
-
-    .target-input-container input {
-        width: 100%;
-        max-width: 200px;
-        padding: 12px;
-        border: 2px solid #add8e6;
-        border-radius: 8px;
-        font-size: clamp(1.2rem, 4vw, 1.5rem);
-        text-align: center;
-        background: white;
-    }
-
+    /* 연습/실전 버튼을 가로로 배치 */
     .button-container {
-        display: flex;
-        gap: 15px;
-        justify-content: center;
-        flex-wrap: wrap;
-        width: 100%;
+        flex-direction: row; /* 세로에서 가로로 변경 */
+        align-items: center;
     }
 
     .main-game-button {
-        background: rgba(255,255,255,0.9);
-        color: #2e8b8b;
-        padding: 15px 25px;
-        border: none;
-        border-radius: 10px;
-        font-size: clamp(1rem, 3vw, 1.3rem);
-        font-family: 'Pretendard', sans-serif;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        min-width: 120px;
-        text-align: center;
-    }
-
-    .main-game-button:hover {
-        background: #f0f8ff;
-        transform: translateY(-3px);
-        box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-    }
-
-    .hidden {
-        display: none !important;
-    }
-
-    .operator-card {
-        background: white !important;
-        color: #d84315 !important;
-        font-size: clamp(1.5rem, 4.0vw, 2.0rem)!important;
-        }
-
-    /* 게임 화면 스타일 */
-    .game-container {
-        width: 100%;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 10px;
-        background: #2e8b8b;
-        min-height: 100vh;
-    }
-
-    .game-header {
-        text-align: center;
-        margin-bottom: 20px;
-    }
-
-    .game-header h1 {
-        font-size: clamp(1.8rem, 5vw, 2.5rem);
-        color: white;
-        margin-bottom: 10px;
-    }
-
-    .game-header p {
-        font-size: clamp(1.2rem, 4vw, 1.8rem);
-        color: #ffeb3b;
-    }
-
-    .score-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-        gap: 10px;
-        margin-bottom: 20px;
-    }
-
-    .score-card {
-        text-align: center;
-        padding: 15px;
-        background: rgba(255,255,255,0.9);
-        border-radius: 10px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-
-    .score-card h3 {
-        font-size: clamp(0.9rem, 2.5vw, 1.2rem);
-        margin-bottom: 5px;
-        color: #333;
-    }
-
-    .score-card p {
-        font-size: clamp(1.2rem, 3vw, 1.8rem);
-        font-weight: bold;
-        color: #333;
-    }
-
-    .cards-section {
-        margin-bottom: 20px;
-    }
-
-    .cards-section h3 {
-        font-size: clamp(1.2rem, 3vw, 1.5rem);
-        color: white;
-        margin-bottom: 10px;
+        flex: 1;
+        max-width: none; /* max-width 제거 */
+        min-width: 100px; /* 최소 너비만 설정 */
     }
 
     .cards-area {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-        gap: 8px;
-        max-width: 100%;
+        grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
+        gap: 6px;
     }
 
-    .card-button {
-        background: white;
-        border: 2px solid #add8e6;
-        border-radius: 8px;
-        padding: 12px 8px;
-        font-size: clamp(1rem, 3vw, 1.3rem);
-        font-weight: bold;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        min-height: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .card-button:hover {
-        background: #f0f8ff;
-        transform: translateY(-2px);
-    }
-
-    .expression-area {
-        background: white;
-        padding: 15px;
-        border: 3px solid #add8e6;
-        border-radius: 10px;
-        font-size: clamp(1.2rem, 3vw, 1.5rem);
-        margin-bottom: 20px;
-        min-height: 60px;
-        display: flex;
-        align-items: center;
-        word-break: break-all;
-    }
-
+    /* 제출/초기화, 다음라운드 버튼도 가로로 배치 */
     .action-buttons {
-        display: flex;
-        gap: 10px;
-        justify-content: center;
-        flex-wrap: wrap;
-        margin-bottom: 20px;
+        flex-direction: row; /* 세로에서 가로로 변경 */
+        align-items: center;
     }
 
-    .result-area {
-        background: rgba(255,255,255,0.9);
-        padding: 20px;
-        border-radius: 10px;
-        text-align: center;
-        margin-bottom: 20px;
+    .action-buttons .main-game-button {
+        flex: 1;
+        max-width: none; /* max-width 제거 */
     }
 
-    .result-area h2 {
-        font-size: clamp(1.5rem, 4vw, 2rem);
-        margin-bottom: 15px;
-        color: #333;
-    }
-
-    .result-area p {
-        font-size: clamp(1rem, 3vw, 1.3rem);
-        margin-bottom: 10px;
-        color: #555;
-    }
-
+    /* 설정/홈 버튼도 가로로 배치 */
     .bottom-buttons {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        flex-wrap: wrap;
+        flex-direction: row;
     }
 
-    /* 모바일 최적화 */
-    @media (max-width: 768px) {
-        .blackboard {
-            padding: 10px;
-        }
+    .bottom-buttons .main-game-button {
+        flex: 1;
+    }
+}
 
-        .game-description {
-            top: 15%;
-            width: 95%;
-            padding: 0 10px;
-        }
-
-        .language-toggle {
-            top: 12%;
-            right: 3%;
-            padding: 6px;
-        }
-
-        .game-menu {
-            bottom: 5%;
-            width: 95%;
-        }
-
-        .button-container {
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .main-game-button {
-            width: 100%;
-            max-width: 200px;
-        }
-
-        .cards-area {
-            grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
-            gap: 6px;
-        }
-
-        .action-buttons {
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .action-buttons .main-game-button {
-            width: 100%;
-            max-width: 200px;
-        }
+/* 태블릿 최적화 */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .cards-area {
+        grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
     }
 
-    /* 태블릿 최적화 */
-    @media (min-width: 769px) and (max-width: 1024px) {
-        .cards-area {
-            grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
-        }
+    .score-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
 
-        .score-grid {
-            grid-template-columns: repeat(3, 1fr);
-        }
+/* 가로 모드 모바일 */
+@media (max-height: 600px) and (orientation: landscape) {
+    .blackboard {
+        padding: 5px;
     }
 
-    /* 가로 모드 모바일 */
-    @media (max-height: 600px) and (orientation: landscape) {
-        .blackboard {
-            padding: 5px;
-        }
+    .main-title {
+        top: 1%;
+        font-size: clamp(1rem, 3vw, 1.3rem);
+    }
 
-        .main-title {
-            top: 1%;
-            font-size: 1.5rem;
-        }
+    .game-description {
+        top: 8%;
+        font-size: clamp(1rem, 3vw, 1.3rem);
+    }
 
-        .game-description {
-            top: 8%;
-            font-size: 0.9rem;
-        }
+    .game-description h3 {
+        font-size: clamp(1rem, 3vw, 1.3rem);
+    }
 
-        .game-description h3 {
-            font-size: 1rem;
-        }
+    .language-toggle {
+        top: 5%;
+    }
 
-        .language-toggle {
-            top: 5%;
-        }
-
-        .game-menu {
+    .game-menu {
             bottom: 2%;
         }
     }
@@ -507,15 +522,19 @@
                 </div>
             </div>
 
-            <div class="mb-6">
-                <h3 class="text-2xl text-white mb-3">내 카드 (Your Cards):</h3>
-                <div id="cardsArea" class="flex flex-wrap gap-2"></div>
+
+<div class="cards-section">
+                <h3>내 카드 (Your Cards):</h3>
+                <div id="cardsArea" class="cards-area"></div>
             </div>
 
-            <div class="mb-6">
-                <h3 class="text-2xl text-white mb-2">내 수식 (Your Expression):</h3>
-                <div id="userExpression" class="bg-white p-3 border-2 border-green-300 rounded-lg text-2xl "> 카드를 클릭하세요.                </div>
+            <div class="cards-section">
+                <h3>내 수식 (Your Expression):</h3>
+                <div id="userExpression" class="flex flex-wrap gap-2">
+                    내 카드를 클릭하세요.
+                </div>
             </div>
+
 <div id="actionButtons" class="flex gap-4 mb-6">
                 <button onclick="submitExpression()" class="main-game-button">
                     <span class="cloud-text">
