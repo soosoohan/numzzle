@@ -21,7 +21,7 @@ min-height: 100vh;
 display: flex;
 justify-content: center;
 align-items: center;
-padding: 20px;
+padding: 10px;
 }
 
 .blackboard {
@@ -29,6 +29,7 @@ width: 98vw;
 height: 95vh;
 background: #2e8b8b;
 position: relative;
+overflow-y: auto;
 }
 
 .chalk-text {
@@ -40,24 +41,31 @@ font-size: clamp(1rem, 3vw, 1.3rem);
 /* 넘즐 메인 화면 */
 .numzzle-main {
 transition: all 0.5s ease;
+padding: 15px;
+display: flex;
+flex-direction: column;
+height: 100%;
 }
 
 .main-title {
-position: absolute;
-top: 8%;
-left: 50%;
-transform: translateX(-50%);
 font-size: clamp(1.3rem, 3.7vw, 1.9rem);
 font-weight: bold;
 text-align: center;
+margin-bottom: 15px;
+color: #f0f8ff;
+}
+
+.top-buttons {
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+margin-bottom: 20px;
+gap: 10px;
 }
 
 .language-toggle {
-position: absolute;
-top: 15%;
-right: 5%;
 background: rgba(255,255,255,0.9);
-padding: 10px;
+padding: 8px;
 border-radius: 8px;
 box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
@@ -66,12 +74,12 @@ box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 background: #2e8b8b;
 color: white;
 border: none;
-padding: 8px 15px;
+padding: 6px 12px;
 margin: 2px;
 border-radius: 5px;
 cursor: pointer;
 font-family: ‘Pretendard’, sans-serif;
-font-size: 1.1em;
+font-size: clamp(1rem, 3vw, 1.3rem);
 transition: all 0.3s ease;
 }
 
@@ -84,97 +92,96 @@ background: #ff69b4;
 }
 
 .games-hub-btn {
-position: absolute;
-top: 40%;
-right: 5%;
 background: rgba(255,255,255,0.9);
 color: #2e8b8b;
 border: none;
-padding: 15px 25px;
-border-radius: 12px;
+padding: 10px 15px;
+border-radius: 8px;
 font-size: clamp(1rem, 3vw, 1.3rem);
 font-family: ‘Pretendard’, sans-serif;
 cursor: pointer;
 transition: all 0.3s ease;
-box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 display: flex;
 align-items: center;
-gap: 10px;
+gap: 5px;
 }
 
 .games-hub-btn:hover {
 background: #f0f8ff;
-transform: translateY(-3px);
-box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+transform: translateY(-2px);
+box-shadow: 0 6px 15px rgba(0,0,0,0.3);
 }
 
 .game-description {
-position: absolute;
-top: 22%;
-left: 50%;
-transform: translateX(-50%);
-width: 60%;
+flex: 1;
 color: #f0f8ff;
 font-size: clamp(1rem, 3vw, 1.3rem);
-text-align: left;
-z-index: 10;
-line-height: 1.3;
+line-height: 1.4;
+margin-bottom: 20px;
 }
 
 .game-description h3 {
 color: #add8e6;
-margin-bottom: 10px;
+margin-bottom: 8px;
 font-size: clamp(1rem, 3vw, 1.3rem);
 border-bottom: 2px solid #add8e6;
 padding-bottom: 5px;
 }
 
 .game-description p {
-margin-bottom: 15px;
+margin-bottom: 10px;
 }
 
 .game-description ul {
-margin-bottom: 15px;
-padding-left: 20px;
+margin-bottom: 10px;
+padding-left: 18px;
 }
 
 .game-description li {
-margin-bottom: 8px;
+margin-bottom: 5px;
+}
+
+.button-container {
+display: flex;
+flex-direction: column;
+gap: 8px;
+align-items: center;
+margin-bottom: 15px;
 }
 
 .main-game-button {
 background: rgba(255,255,255,0.9);
 color: #2e8b8b;
-padding: 15px 25px;
+padding: 12px 20px;
 border: none;
-border-radius: 10px;
+border-radius: 8px;
 font-size: clamp(1rem, 3vw, 1.3rem);
 font-family: ‘Pretendard’, sans-serif;
 cursor: pointer;
 transition: all 0.3s ease;
 box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-margin: 5px;
+font-weight: 600;
+width: 160px;
+max-width: 90%;
 }
 
 .main-game-button:hover {
 background: #f0f8ff;
-transform: translateY(-3px);
+transform: translateY(-2px);
 box-shadow: 0 6px 15px rgba(0,0,0,0.3);
 }
 
-
 .credits-area {
-position: absolute;
-bottom: 5%;
-right: 5%;
+text-align: right;
 color: #f0f8ff;
 font-size: clamp(1rem, 3vw, 1.3rem);
-line-height: 1.4;
-text-align: right;
+line-height: 1.3;
+margin-top: auto;
 }
 
 .credits-item {
-margin-bottom: 5px;
+margin-bottom: 3px;
 transform: rotate(-1deg);
 }
 
@@ -182,9 +189,87 @@ transform: rotate(-1deg);
 transform: rotate(0.5deg);
 }
 
-
 .hidden {
 display: none;
+}
+
+/* 데스크톱에서는 원래 스타일 유지 */
+@media (min-width: 769px) {
+.numzzle-main {
+display: block;
+padding: 20px;
+}
+
+
+.main-title {
+    position: absolute;
+    top: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    margin-bottom: 0;
+}
+
+.top-buttons {
+    display: contents;
+}
+
+.language-toggle {
+    position: absolute;
+    top: 15%;
+    right: 5%;
+    padding: 10px;
+}
+
+.language-button {
+    padding: 8px 15px;
+    font-size: 1.1em;
+}
+
+.games-hub-btn {
+    position: absolute;
+    top: 40%;
+    right: 5%;
+    padding: 15px 25px;
+    font-size: clamp(1rem, 3vw, 1.3rem);
+}
+
+.game-description {
+    position: absolute;
+    top: 22%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    font-size: clamp(1rem, 3vw, 1.3rem);
+}
+
+.game-description h3 {
+    font-size: clamp(1rem, 3vw, 1.3rem);
+}
+
+.button-container {
+    text-align: center;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.main-game-button {
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    padding: 15px 25px;
+    margin: 5px;
+    width: auto;
+}
+
+.credits-area {
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    margin-top: 0;
+}
+
+
 }
 
 @media (max-height: 800px) {
@@ -194,22 +279,6 @@ width: 100vw;
 height: 100vh;
 border-radius: 0;
 }
-}
-
-@media (max-width: 768px) {
-.games-grid {
-grid-template-columns: 1fr;
-gap: 20px;
-}
-.game-description {
-    width: 90%;
-}
-
-.hub-title {
-    font-size: 2em;
-}
-
-
 }
 </style>
 
@@ -221,15 +290,17 @@ gap: 20px;
             <h1 class="chalk-text main-title">넘즐</h1>
 
 
-        <div class="language-toggle">
-            <button class="language-button active" onclick="toggleLanguage('ko')">한국어</button>
-            <button class="language-button" onclick="toggleLanguage('en')">English</button>
-        </div>
+        <div class="top-buttons">
+            <div class="language-toggle">
+                <button class="language-button active" onclick="toggleLanguage('ko')">한국어</button>
+                <button class="language-button" onclick="toggleLanguage('en')">English</button>
+            </div>
 
-        <button class="games-hub-btn" onclick="location.href='https://soosoohan.github.io/soosooland/'">
-            🎮 수수의 게임들
-        </button>
-        
+            <button class="games-hub-btn" onclick="location.href='https://soosoohan.github.io/soosooland/'">
+                🎮 수수의 게임들
+            </button>
+        </div>
+    
         <div class="game-description chalk-text" id="korean-description">
             <h3>🎮 게임 소개</h3>
             <p>넘즐 (NUMZZLE)=넘버(NUMBER) + 퍼즐(PUZZLE)</p>
@@ -247,8 +318,8 @@ gap: 20px;
                 <li>연습 게임은 컴퓨터와 같은 카드를 받고, 실전 게임은 다른 카드를 받습니다.</li>
                 <li>게임의 난이도에 따라 넘즐초는 쉬운 버전이고, 넘즐잼은 보통 정도의 난이도이고, 넘즐은 어려운 버전이고, 넘즐업은 계산기가 필요한 매우 어려운 버전입니다.</li>
             </ul>
-            <br>
-            <div style="text-align: center;">
+
+            <div class="button-container">
                 <button class="main-game-button" onclick="location.href='N4.html'">
                     넘즐초
                 </button>
@@ -281,9 +352,9 @@ gap: 20px;
                 <li><strong>Practice Mode</strong> uses the same cards as the computer, while Challenge Mode gives different cards.</li>
                 <li>Numzzle Cho is easy, Numzzle jam is medium, and Numzzle is hard, Numzzle Up is very hard — you might need a calculator!</li>
             </ul>
-            <br>
-            <div style="text-align: center;">
-              <button class="main-game-button" onclick="location.href='N4.html'">
+
+            <div class="button-container">
+                <button class="main-game-button" onclick="location.href='N4.html'">
                     NUMZZLE CHO
                 </button>
                 <button class="main-game-button" onclick="location.href='N1.html'">
@@ -295,34 +366,23 @@ gap: 20px;
                 <button class="main-game-button" onclick="location.href='N3.html'">
                     NUMZZLE UP
                 </button>  
-
-
-
-
             </div>
         </div>
-    </div>
 
-    
-    <div class="credits-area chalk-text">
-        <div class="credits-item">기획·개발 : 한수수</div>
-        <div class="credits-item">개발 보조: 챗GPT</div>
-        <div class="credits-item">코딩 도움: 클라우드</div>
-        <div class="credits-item">디자인 도움: 네이처리</div>
-        <div class="credits-item">© 2025 한수수</div>
-    </div>
-    
-    <div class="eraser"></div>
-    <div class="chalk-pieces">
-        <div class="chalk"></div>
-        <div class="chalk"></div>
-        <div class="chalk"></div>
+        <div class="credits-area chalk-text">
+            <div class="credits-item">기획·개발 : 한수수</div>
+            <div class="credits-item">개발 보조: 챗GPT</div>
+            <div class="credits-item">코딩 도움: 클라우드</div>
+            <div class="credits-item">디자인 도움: 네이처리</div>
+            <div class="credits-item">© 2025 한수수</div>
+        </div>https://github.com/soosoohan/numzzle/edit/main/index.html
     </div>
 </div>
 
-<script>
 
-function toggleLanguage(lang) {
+<script>
+    
+    function toggleLanguage(lang) {
         const koreanDesc = document.getElementById('korean-description');
         const englishDesc = document.getElementById('english-description');
         const buttons = document.querySelectorAll('.language-button');
@@ -348,7 +408,6 @@ function toggleLanguage(lang) {
         gamesHub.classList.add('active');
     }
 </script>
-
 
 </body>
 </html>
