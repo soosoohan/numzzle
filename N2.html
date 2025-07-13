@@ -90,6 +90,7 @@ font-size: clamp(1rem, 3vw, 1.3rem);
 
 .game-description li {
     margin-bottom: 8px;
+font-size: clamp(1rem, 3vw, 1.3rem);
 }
 
 .language-toggle {
@@ -135,6 +136,7 @@ font-size: clamp(1rem, 3vw, 1.3rem);
     align-items: center;
     width: 90%;
     max-width: 500px;
+font-size: clamp(1rem, 3vw, 1.3rem);
 }
 
 .target-input-container {
@@ -232,7 +234,8 @@ font-size: clamp(1rem, 3vw, 1.3rem);
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 10px;
     margin-bottom: 20px;
-}
+font-size: clamp(1rem, 3vw, 1.3rem);
+    }
 
 .score-card {
     text-align: center;
@@ -240,7 +243,8 @@ font-size: clamp(1rem, 3vw, 1.3rem);
     background: rgba(255,255,255,0.9);
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
+font-size: clamp(1rem, 3vw, 1.3rem);
+    }
 
 .score-card h3 {
     font-size: clamp(1rem, 3vw, 1.3rem);
@@ -256,7 +260,8 @@ font-size: clamp(1rem, 3vw, 1.3rem);
 
 .cards-section {
     margin-bottom: 20px;
-}
+font-size: clamp(1rem, 3vw, 1.3rem);
+    }
 
 .cards-section h3 {
     font-size: clamp(1rem, 3vw, 1.3rem);
@@ -449,7 +454,7 @@ font-size: clamp(1rem, 3vw, 1.3rem);
         <div id="startScreen">
             <h1 class="chalk-text main-title">넘즐</h1>
 
-```
+
     <div class="language-toggle">
         <button class="language-button active" onclick="toggleLanguage('ko')">한국어</button>
         <button class="language-button" onclick="toggleLanguage('en')">English</button>
@@ -492,11 +497,11 @@ font-size: clamp(1rem, 3vw, 1.3rem);
 
         <div class="button-container">
             <button class="main-game-button" onclick="startPracticeGame()">
-                <span>☁️</span><br>
+                <span>☁️</span>
                 <span id="practice-text">연습<br>Practice</span>
             </button>
             <button class="main-game-button" onclick="startBattleGame()">
-                <span>⛅</span><br>
+                <span>⛅</span>
                 <span id="battle-text">실전<br>Battle</span>
             </button>
         </div>
@@ -540,16 +545,16 @@ font-size: clamp(1rem, 3vw, 1.3rem);
 
         <div id="actionButtons" class="action-buttons">
             <button onclick="submitExpression()" class="main-game-button">
-                ✅<br>제출<br>Submit
+                ✅제출/Submit
             </button>
             <button onclick="resetExpression()" class="main-game-button">
-                🔄<br>초기화<br>Reset
+                🔄초기화/Reset
             </button>
         </div>
 
         <div id="nextRoundArea" class="hidden action-buttons">
             <button onclick="nextRound()" class="main-game-button">
-                ➡️<br>다음 라운드<br>Next Round
+                ➡️다음 라운드/Next Round
             </button>
         </div>
 
@@ -574,10 +579,10 @@ font-size: clamp(1rem, 3vw, 1.3rem);
 
         <div class="bottom-buttons">
             <button onclick="backToStart()" class="main-game-button">
-                ☁️<br>설정으로<br>Go to Settings
+                ☁️설정으로<br>Go to Settings
             </button>
             <button onclick="location.href='index.html'" class="main-game-button">
-                🏠<br>홈으로<br>Go to Index
+                🏠홈으로<br>Go to Index
             </button>
         </div>
     </div>
