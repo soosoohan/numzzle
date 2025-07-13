@@ -37,8 +37,8 @@ body {
 
 .chalk-text {
     color: #f0f8ff;
-    font-family: 'Nanum Pen Script', cursive;
-}
+    font-family: 'Pretendard', sans-serif;
+    }
 
 .main-title {
     position: absolute;
@@ -208,7 +208,8 @@ font-size: clamp(1rem, 3vw, 1.3rem);
     padding: 10px;
     background: #2e8b8b;
     min-height: 100vh;
-}
+font-size: clamp(1rem, 3vw, 1.3rem);
+    }
 
 .game-header {
     text-align: center;
@@ -239,7 +240,8 @@ font-size: clamp(1rem, 3vw, 1.3rem);
     background: rgba(255,255,255,0.9);
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
+font-size: clamp(1rem, 3vw, 1.3rem);
+    }
 
 .score-card h3 {
     font-size: clamp(1rem, 3vw, 1.3rem);
@@ -268,7 +270,8 @@ font-size: clamp(1rem, 3vw, 1.3rem);
     grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
     gap: 8px;
     max-width: 100%;
-}
+font-size: clamp(1rem, 3vw, 1.3rem);
+    }
 
 .card-button {
     background: white;
@@ -556,11 +559,11 @@ border-color: #ccc;
 
             <div class="button-container">
                 <button class="main-game-button" onclick="startPracticeGame()">
-                    <span>☁️</span><br>
+                    <span>☁️</span>
                     <span id="practice-text">연습<br>Practice</span>
                 </button>
                 <button class="main-game-button" onclick="startBattleGame()">
-                    <span>⛅</span><br>
+                    <span>⛅</span>
                     <span id="battle-text">실전<br>Battle</span>
                 </button>
             </div>
@@ -580,15 +583,15 @@ border-color: #ccc;
 
             <div class="grid grid-cols-3 gap-4 mb-6">
                 <div class="text-center p-3 bg-blue-100 rounded-lg">
-                    <h3 class=" text-2xl ">라운드   Round</h3>
+                    <h3 class=" text-xl ">라운드   Round</h3>
                     <p id="roundDisplay" class="text-3xl"></p>
                 </div>
                 <div class="text-center p-3 bg-green-100 rounded-lg">
-                    <h3 class=" text-2xl ">사용자     USER</h3>
+                    <h3 class=" text-xl ">사용자     USER</h3>
                     <p id="userScore" class="text-3xl">0</p>
                 </div>
                 <div class="text-center p-3 bg-red-100 rounded-lg">
-                    <h3 class=" text-2xl ">컴퓨터    Computer</h3>
+                    <h3 class=" text-xl ">컴퓨터    Computer</h3>
                     <p id="computerScore" class="text-3xl">0</p>
                 </div>
             </div>
@@ -633,12 +636,12 @@ border-color: #ccc;
             </div>
 
             <div class="mb-6">
-                <h3 class="text-lg text-white  mb-3">컴퓨터 카드 (Computer's Cards):</h3>
+                <h3 class="text-2xl text-white font-bold mb-3">컴퓨터 카드 (Computer's Cards):</h3>
                 <div id="computerCardsArea" class="flex flex-wrap gap-2"></div>
             </div>
 
             <div class="mb-6">
-                <h3 class="text-lg text-white  mb-2">컴퓨터 수식 (Computer's Expression):</h3>
+                <h3 class="text-lg text-white font-bold mb-2">컴퓨터 수식 (Computer's Expression):</h3>
                 <div id="computerExpression" class="bg-white p-3 border-2 border-red-300 rounded-lg text-2xl ">컴퓨터가 생각 중...
                 </div>
             </div>
