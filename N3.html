@@ -38,8 +38,9 @@ body {
 
 .chalk-text {
     color: #f0f8ff;
-    font-family: 'Nanum Pen Script', cursive;
-}
+    font-family: 'Pretendard', sans-serif;
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    }
 
 .main-title {
     position: absolute;
@@ -76,6 +77,11 @@ body {
     border-bottom: 2px solid #add8e6;
     padding-bottom: 5px;
 }
+
+.text-center h3{
+font-size: clamp(1rem, 3vw, 1.3rem);
+    }
+
 
 .game-description p {
     margin-bottom: 15px;
@@ -135,12 +141,14 @@ font-size: clamp(1rem, 3vw, 1.3rem);
     align-items: center;
     width: 90%;
     max-width: 500px;
-}
+font-size: clamp(1rem, 3vw, 1.3rem);
+    }
 
 .target-input-container {
     width: 100%;
     text-align: center;
-}
+font-size: clamp(1rem, 3vw, 1.3rem);
+    }
 
 .target-input-container label {
     display: block;
@@ -495,11 +503,11 @@ font-size: clamp(1rem, 3vw, 1.3rem);
 
             <div class="button-container">
                 <button class="main-game-button" onclick="startPracticeGame()">
-                    <span>☁️</span><br>
+                    <span>☁️</span>
                     <span id="practice-text">연습<br>Practice</span>
                 </button>
                 <button class="main-game-button" onclick="startBattleGame()">
-                    <span>⛅</span><br>
+                    <span>⛅</span>
                     <span id="battle-text">실전<br>Battle</span>
                 </button>
             </div>
@@ -517,23 +525,23 @@ font-size: clamp(1rem, 3vw, 1.3rem);
 
             <div class="grid grid-cols-3 gap-4 mb-6">
                 <div class="text-center p-3 bg-blue-100 rounded-lg">
-                    <h3 class="text-2xl ">라운드 Round</h3>
+                    <h3 >라운드 Round</h3>
                     <p id="roundDisplay" class="text-3xl"></p>
                 </div>
                 <div class="text-center p-3 bg-green-100 rounded-lg">
-                    <h3 class="text-2xl ">사용자 USER</h3>
+                    <h3 >사용자 USER</h3>
                     <p id="userScore" class="text-3xl">0</p>
                 </div>
                 <div class="text-center p-3 bg-red-100 rounded-lg">
-                    <h3 class="text-2xl ">컴퓨터 Computer</h3>
+                    <h3 >컴퓨터 Computer</h3>
                     <p id="computerScore" class="text-3xl">0</p>
                 </div>
             </div>
 
             <div class="mb-6">
                 <h3 class="text-xl text-white mb-2">내 카드 (Your Cards):</h3>
-                <div id="cardsArea" class="flex flex-wrap gap-2"></div>
-            </div>
+                <div id="cardsArea" class="cards-area"></div>
+<div id="cardsArea" class="flex flex-wrap gap-2"></div>
 
             <div class="mb-6">
                 <h3 class="text-xl text-white mb-2">내 수식 (Your Expression):</h3>
@@ -545,13 +553,13 @@ font-size: clamp(1rem, 3vw, 1.3rem);
                 <button onclick="submitExpression()" class="main-game-button">
                     <span class="cloud-text">
                         <span class="cloud-icon">✅</span>
-                        제출<br>Submit
+                        제출/Submit
                     </span>
                 </button>
                 <button onclick="resetExpression()" class="main-game-button">
                     <span class="cloud-text">
                         <span class="cloud-icon">🔄</span>
-                        초기화<br>Reset
+                        초기화/Reset
                     </span>
                 </button>
             </div>
@@ -560,14 +568,14 @@ font-size: clamp(1rem, 3vw, 1.3rem);
                 <button onclick="nextRound()" class="main-game-button">
                     <span class="cloud-text">
                         <span class="cloud-icon">➡️</span>
-                        다음 라운드<br>Next Round
+                        다음 라운드/Next Round
                     </span>
                 </button>
             </div>
 
             <div class="mb-6">
                 <h3 class="text-xl text-white mb-2">컴퓨터의 카드 (Computer's Cards):</h3>
-                <div id="computerCardsArea" class="flex flex-wrap gap-2"></div>
+                <div id="computerCardsArea" class="cards-area"></div>
             </div>
 
             <div class="mb-6">
