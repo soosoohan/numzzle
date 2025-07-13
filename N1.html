@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -8,436 +9,449 @@
     <style>
            @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+- {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  }
 
 body {
-    font-family: 'Pretendard', sans-serif;
-    background: #2e8b8b;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
+font-family: ‘Pretendard’, sans-serif;
+background: #2e8b8b;
+min-height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 10px;
 }
 
 .blackboard {
-    width: 100%;
-    max-width: 100vw;
-    min-height: 100vh;
-    background: #2e8b8b;
-    position: relative;
-    padding: 20px;
-    overflow-x: hidden;
+width: 100%;
+max-width: 100vw;
+min-height: 100vh;
+background: #2e8b8b;
+position: relative;
+padding: 20px;
+overflow-x: hidden;
 }
 
 .chalk-text {
-    color: #f0f8ff;
-    font-family: 'Nanum Pen Script', cursive;
+color: #f0f8ff;
+font-family: ‘Pretendard’, sans-serif;
 }
 
 .main-title {
-    position: absolute;
-    top: 2%;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: clamp(1.3rem, 3.7vw, 1.9rem);
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 4px;
-    width: 100%;
-    padding: 0 10px;
+position: absolute;
+top: 2%;
+left: 50%;
+transform: translateX(-50%);
+font-size: clamp(1.3rem, 3.7vw, 1.9rem);
+font-weight: bold;
+text-align: center;
+margin-bottom: 4px;
+width: 100%;
+padding: 0 10px;
 }
 
 .game-description {
-    position: absolute;
-    top: 12%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    max-width: 600px;
-    color: #f0f8ff;
-    font-size: clamp(1rem, 3vw, 1.3rem);
-    text-align: left;
-    z-index: 10;
-    line-height: 1.3;
-    padding: 0 20px;
+position: absolute;
+top: 12%;
+left: 50%;
+transform: translateX(-50%);
+width: 90%;
+max-width: 600px;
+color: #f0f8ff;
+font-size: clamp(1rem, 3vw, 1.3rem);
+text-align: left;
+z-index: 10;
+line-height: 1.3;
+padding: 0 20px;
 }
 
 .game-description h3 {
-    color: #add8e6;
-    margin-bottom: 10px;
-    font-size: clamp(1rem, 3vw, 1.3rem);
-    border-bottom: 2px solid #add8e6;
-    padding-bottom: 5px;
+color: #add8e6;
+margin-bottom: 10px;
+font-size: clamp(1rem, 3vw, 1.3rem);
+border-bottom: 2px solid #add8e6;
+padding-bottom: 5px;
 }
 
 .game-description p {
-    margin-bottom: 15px;
+margin-bottom: 15px;
 font-size: clamp(1rem, 3vw, 1.3rem);
-    }
+}
 
 .game-description ul {
-    margin-bottom: 15px;
-    padding-left: 20px;
+margin-bottom: 15px;
+padding-left: 20px;
 font-size: clamp(1rem, 3vw, 1.3rem);
-    }
+}
 
 .game-description li {
-    margin-bottom: 8px;
+margin-bottom: 8px;
 }
 
 .language-toggle {
-    position: absolute;
-    top: 8%;
-    right: 5%;
-    background: rgba(255,255,255,0.9);
-    padding: 8px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    z-index: 20;
+position: absolute;
+top: 8%;
+right: 5%;
+background: rgba(255,255,255,0.9);
+padding: 8px;
+border-radius: 8px;
+box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+z-index: 20;
 }
 
 .language-button {
-    background: #2e8b8b;
-    color: white;
-    border: none;
-    padding: 6px 12px;
-    margin: 2px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-family: 'Pretendard', sans-serif;
-    font-size: clamp(1rem, 3vw, 1.3rem);
-    transition: all 0.3s ease;
+background: #2e8b8b;
+color: white;
+border: none;
+padding: 6px 12px;
+margin: 2px;
+border-radius: 5px;
+cursor: pointer;
+font-family: ‘Pretendard’, sans-serif;
+font-size: clamp(1rem, 3vw, 1.3rem);
+transition: all 0.3s ease;
 }
 
 .language-button:hover {
-    background: #20b2aa;
+background: #20b2aa;
 }
 
 .language-button.active {
-    background: #ff69b4;
+background: #ff69b4;
 }
 
 .game-menu {
-    position: absolute;
-    bottom: 8%;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    align-items: center;
-    width: 90%;
-    max-width: 500px;
+position: absolute;
+bottom: 8%;
+left: 50%;
+transform: translateX(-50%);
+display: flex;
+flex-direction: column;
+gap: 15px;
+align-items: center;
+width: 90%;
+max-width: 500px;
 }
 
 .target-input-container {
-    width: 100%;
-    text-align: center;
+width: 100%;
+text-align: center;
 }
 
 .target-input-container label {
-    display: block;
-    font-size: clamp(1rem, 3vw, 1.3rem);
-    color: white;
-    font-weight: bold;
-    margin-bottom: 10px;
+display: block;
+font-size: clamp(1rem, 3vw, 1.3rem);
+color: white;
+font-weight: bold;
+margin-bottom: 10px;
 }
 
 .target-input-container input {
-    width: 100%;
-    max-width: 200px;
-    padding: 12px;
-    border: 2px solid #add8e6;
-    border-radius: 8px;
-    font-size: clamp(1rem, 3vw, 1.3rem);
-    text-align: center;
-    background: white;
+width: 100%;
+max-width: 200px;
+padding: 12px;
+border: 2px solid #add8e6;
+border-radius: 8px;
+font-size: clamp(1rem, 3vw, 1.3rem);
+text-align: center;
+background: white;
 }
 
 .button-container {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 100%;
+display: flex;
+gap: 15px;
+justify-content: center;
+flex-wrap: wrap;
+width: 100%;
 }
 
 .main-game-button {
-    background: rgba(255,255,255,0.9);
-    color: #2e8b8b;
-    padding: 15px 25px;
-    border: none;
-    border-radius: 10px;
-    font-size: clamp(1rem, 3vw, 1.3rem);
-    font-family: 'Pretendard', sans-serif;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    min-width: 120px;
-    text-align: center;
-    flex: 1;
+background: rgba(255,255,255,0.9);
+color: #2e8b8b;
+padding: 15px 25px;
+border: none;
+border-radius: 10px;
+font-size: clamp(1rem, 3vw, 1.3rem);
+font-family: ‘Pretendard’, sans-serif;
+cursor: pointer;
+transition: all 0.3s ease;
+box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+min-width: 120px;
+text-align: center;
+flex: 1;
+}
+
+.text-center h3{
+font-size: clamp(1rem, 3vw, 1.3rem);
 }
 
 .main-game-button:hover {
-    background: #f0f8ff;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+background: #f0f8ff;
+transform: translateY(-3px);
+box-shadow: 0 6px 15px rgba(0,0,0,0.3);
 }
 
 .hidden {
-    display: none !important;
+display: none !important;
 }
 
 .operator-card {
-    background: white !important;
-    color: #d84315 !important;
-font-size: clamp(1.5rem, 4.0vw, 2.0rem)!important;
-    }
+background: white !important;
+color: #d84315 !important;
+font-size: clamp(1.5rem, 4.0vw, 2.0rem) !important;
+font-weight: bold !important;
+}
 
 /* 게임 화면 스타일 */
 .game-container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 10px;
-    background: #2e8b8b;
-    min-height: 100vh;
+width: 100%;
+max-width: 1200px;
+margin: 0 auto;
+padding: 10px;
+background: #2e8b8b;
+min-height: 100vh;
 }
 
 .game-header {
-    text-align: center;
-    margin-bottom: 20px;
+text-align: center;
+margin-bottom: 20px;
 }
 
 .game-header h1 {
-    font-size: clamp(1.3rem, 3.7vw, 1.9rem);
-    color: white;
-    margin-bottom: 10px;
+font-size: clamp(1.3rem, 3.7vw, 1.9rem);
+color: white;
+margin-bottom: 10px;
 }
 
 .game-header p {
-    font-size: clamp(1rem, 3vw, 1.3rem);
-    color: #ffeb3b;
+font-size: clamp(1rem, 3vw, 1.3rem);
+color: #ffeb3b;
 }
 
 .score-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 10px;
-    margin-bottom: 20px;
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+gap: 10px;
+margin-bottom: 20px;
 }
 
 .score-card {
-    text-align: center;
-    padding: 15px;
-    background: rgba(255,255,255,0.9);
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+text-align: center;
+padding: 15px;
+background: rgba(255,255,255,0.9);
+border-radius: 10px;
+box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .score-card h3 {
-    font-size: clamp(1rem, 3vw, 1.3rem);
-    margin-bottom: 5px;
-    color: #333;
+font-size: clamp(1rem, 3vw, 1.3rem);
+margin-bottom: 5px;
+color: #333;
 }
 
 .score-card p {
-    font-size: clamp(1rem, 3vw, 1.3rem);
-    font-weight: bold;
-    color: #333;
+font-size: clamp(1rem, 3vw, 1.3rem);
+font-weight: bold;
+color: #333;
 }
 
 .cards-section {
-    margin-bottom: 20px;
+margin-bottom: 20px;
 }
 
 .cards-section h3 {
-    font-size: clamp(1rem, 3vw, 1.3rem);
-    color: white;
-    margin-bottom: 10px;
+font-size: clamp(1rem, 3vw, 1.3rem);
+color: white;
+margin-bottom: 10px;
 }
 
 .cards-area {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-    gap: 8px;
-    max-width: 100%;
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+gap: 8px;
+max-width: 100%;
 }
 
 .card-button {
-    background: white;
-    border: 2px solid #add8e6;
-    border-radius: 8px;
-    padding: 12px 8px;
-    font-size: clamp(1rem, 3vw, 1.3rem);
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    min-height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+background: white;
+border: 2px solid #add8e6;
+border-radius: 8px;
+padding: 12px 8px;
+font-size: clamp(1.3rem, 3.7vw, 1.9rem);
+font-weight: bold;
+cursor: pointer;
+transition: all 0.2s ease;
+min-height: 50px;
+display: flex;
+align-items: center;
+justify-content: center;
 }
 
 .card-button:hover {
-    background: #f0f8ff;
-    transform: translateY(-2px);
+background: #f0f8ff;
+transform: translateY(-2px);
 }
 
 .expression-area {
-    background: white;
-    padding: 15px;
-    border: 3px solid #add8e6;
-    border-radius: 10px;
-    font-size: clamp(1rem, 3vw, 1.3rem);
-    margin-bottom: 20px;
-    min-height: 60px;
-    display: flex;
-    align-items: center;
-    word-break: break-all;
+background: white;
+padding: 15px;
+border: 3px solid #add8e6;
+border-radius: 10px;
+font-size: clamp(1rem, 3vw, 1.3rem);
+margin-bottom: 20px;
+min-height: 60px;
+display: flex;
+align-items: center;
+word-break: break-all;
 }
 
 .action-buttons {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
+display: flex;
+gap: 10px;
+justify-content: center;
+flex-wrap: wrap;
+margin-bottom: 20px;
 }
 
 .result-area {
-    background: rgba(255,255,255,0.9);
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    margin-bottom: 20px;
+background: rgba(255,255,255,0.9);
+padding: 20px;
+border-radius: 10px;
+text-align: center;
+margin-bottom: 20px;
 }
 
 .result-area h2 {
-    font-size: clamp(1rem, 3vw, 1.3rem);
-    margin-bottom: 15px;
-    color: #333;
+font-size: clamp(1rem, 3vw, 1.3rem);
+margin-bottom: 15px;
+color: #333;
 }
 
 .result-area p {
-    font-size: clamp(1rem, 3vw, 1.3rem);
-    margin-bottom: 10px;
-    color: #555;
+font-size: clamp(1rem, 3vw, 1.3rem);
+margin-bottom: 10px;
+color: #555;
 }
 
 .bottom-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
+display: flex;
+justify-content: center;
+gap: 10px;
+flex-wrap: wrap;
 }
 
 /* 모바일에서도 버튼들을 가로로 배치 */
 @media (max-width: 768px) {
-    .blackboard {
-        padding: 10px;
-    }
+.blackboard {
+padding: 10px;
+}
 
-    .game-description {
-        top: 15%;
-        width: 95%;
-        padding: 0 10px;
-    }
 
-    .language-toggle {
-        top: 12%;
-        right: 3%;
-        padding: 6px;
-    }
+.game-description {
+    top: 15%;
+    width: 95%;
+    padding: 0 10px;
+}
 
-    .game-menu {
-        bottom: 5%;
-        width: 95%;
-    }
+.language-toggle {
+    top: 12%;
+    right: 3%;
+    padding: 6px;
+}
 
-    /* 연습/실전 버튼을 가로로 배치 */
-    .button-container {
-        flex-direction: row; /* 세로에서 가로로 변경 */
-        align-items: center;
-    }
+.game-menu {
+    bottom: 5%;
+    width: 95%;
+}
 
-    .main-game-button {
-        flex: 1;
-        max-width: none; /* max-width 제거 */
-        min-width: 100px; /* 최소 너비만 설정 */
-    }
+/* 연습/실전 버튼을 가로로 배치 */
+.button-container {
+    flex-direction: row; /* 세로에서 가로로 변경 */
+    align-items: center;
+}
 
-    .cards-area {
-        grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
-        gap: 6px;
-    }
+.main-game-button {
+    flex: 1;
+    max-width: none; /* max-width 제거 */
+    min-width: 100px; /* 최소 너비만 설정 */
+}
 
-    /* 제출/초기화, 다음라운드 버튼도 가로로 배치 */
-    .action-buttons {
-        flex-direction: row; /* 세로에서 가로로 변경 */
-        align-items: center;
-    }
+.cards-area {
+    grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
+    gap: 6px;
+}
 
-    .action-buttons .main-game-button {
-        flex: 1;
-        max-width: none; /* max-width 제거 */
-    }
+/* 제출/초기화, 다음라운드 버튼도 가로로 배치 */
+.action-buttons {
+    flex-direction: row; /* 세로에서 가로로 변경 */
+    align-items: center;
+}
 
-    /* 설정/홈 버튼도 가로로 배치 */
-    .bottom-buttons {
-        flex-direction: row;
-    }
+.action-buttons .main-game-button {
+    flex: 1;
+    max-width: none; /* max-width 제거 */
+}
 
-    .bottom-buttons .main-game-button {
-        flex: 1;
-    }
+/* 설정/홈 버튼도 가로로 배치 */
+.bottom-buttons {
+    flex-direction: row;
+}
+
+.bottom-buttons .main-game-button {
+    flex: 1;
+}
+
+
 }
 
 /* 태블릿 최적화 */
 @media (min-width: 769px) and (max-width: 1024px) {
-    .cards-area {
-        grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
-    }
+.cards-area {
+grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+}
 
-    .score-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
+
+.score-grid {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+
 }
 
 /* 가로 모드 모바일 */
 @media (max-height: 600px) and (orientation: landscape) {
-    .blackboard {
-        padding: 5px;
-    }
+.blackboard {
+padding: 5px;
+}
 
-    .main-title {
-        top: 1%;
-        font-size: clamp(1rem, 3vw, 1.3rem);
-    }
 
-    .game-description {
-        top: 8%;
-        font-size: clamp(1rem, 3vw, 1.3rem);
-    }
+.main-title {
+    top: 1%;
+    font-size: clamp(1rem, 3vw, 1.3rem);
+}
 
-    .game-description h3 {
-        font-size: clamp(1rem, 3vw, 1.3rem);
-    }
+.game-description {
+    top: 8%;
+    font-size: clamp(1rem, 3vw, 1.3rem);
+}
 
-    .language-toggle {
-        top: 5%;
-    }
+.game-description h3 {
+    font-size: clamp(1rem, 3vw, 1.3rem);
+}
 
-    .game-menu {
-            bottom: 2%;
-        }
+.language-toggle {
+    top: 5%;
+}
+
+.game-menu {
+        bottom: 2%;
     }
+}
+
+
 </style>
 
 </head>
@@ -447,59 +461,70 @@ font-size: clamp(1.5rem, 4.0vw, 2.0rem)!important;
             <h1 class="chalk-text main-title">넘즐 잼</h1>
 
 
-        <div class="language-toggle">
-            <button class="language-button active" onclick="toggleLanguage('ko')">한국어</button>
-            <button class="language-button" onclick="toggleLanguage('en')">English</button>
-        </div>
-        
+    <div class="language-toggle">
+        <button class="language-button active" onclick="toggleLanguage('ko')">한국어</button>
+        <button class="language-button" onclick="toggleLanguage('en')">English</button>
+    </div>
+
+
 <div class="game-description chalk-text" id="korean-description">
             <h3>🎮 게임 소개</h3>
             <p>넘즐잼 (NUMZZLE JAM)=넘버(NUMBER) + 퍼즐(PUZZLE) + 잼 (JAM)</p>
             <p><br></p>
 
-            <h3>📋 게임 규칙</h3>
-            <ul>
-            <li>넘즐잼은 주어진 숫자와 연산기호를 이용하여 목표 숫자에 가장 가까운 결과를 만드는 게임입니다.</li>
-            <li>수식의 결과가 목표 숫자에 딱 맞거나 가장 근접하면 10점을 받습니다.</li>           
-                        <li>  목표 숫자를 설정하고 게임을 시작하세요.</li>
+
+        <h3>📋 게임 규칙</h3>
+        <ul>
+        <li>넘즐잼은 주어진 숫자와 연산기호를 이용하여 목표 숫자에 가장 가까운 결과를 만드는 게임입니다.</li>
+        <li>수식의 결과가 목표 숫자에 딱 맞거나 가장 근접하면 10점을 받습니다.</li>           
+                    <li>  목표 숫자를 설정하고 게임을 시작하세요.</li>
+
+
 </ul>
         </div>
 
-        <div class="game-description chalk-text hidden" id="english-description">
-            <h3>🎮 Game Overview</h3>
-            <p>NUMZZLE is a combination of "NUMBER" and "PUZZLE".</p>
-            
-            <h3>📋 Game Rules</h3>
-            <ul>
+
+    <div class="game-description chalk-text hidden" id="english-description">
+        <h3>🎮 Game Overview</h3>
+        <p>NUMZZLE is a combination of "NUMBER" and "PUZZLE".</p>
+        
+        <h3>📋 Game Rules</h3>
+        <ul>
+
+
 <li>NUMZZLE JAM is a game where you use given numbers and operators to create an expression as close as possible to the target number.</li>
 <li>The closer you get, the more points you score!</li>
 <li>Set the target number and start the game.</li>
-            
+
 </ul>
         </div>
 
-        <div class="game-menu">
-            <div class="target-input-container">
-                <label id="target-label">🎯 목표 숫자 (Target Number):</label>
-                <input id="targetInput" type="number" value="20" min="1" max="100" />
-            </div>
 
-            <div class="button-container">
-                <button class="main-game-button" onclick="startPracticeGame()">
-                    <span>☁️</span><br>
-                    <span id="practice-text">연습<br>Practice</span>
-                </button>
-                <button class="main-game-button" onclick="startBattleGame()">
-                    <span>⛅</span><br>
-                    <span id="battle-text">실전<br>Battle</span>
-                </button>
-            </div>
+    <div class="game-menu">
+        <div class="target-input-container">
+            <label id="target-label">🎯 목표 숫자 (Target Number):</label>
+            <input id="targetInput" type="number" value="20" min="1" max="100" />
+        </div>
+
+        <div class="button-container">
+            <button class="main-game-button" onclick="startPracticeGame()">
+                <span>☁️</span>
+                <span id="practice-text">연습<br>Practice</span>
+            </button>
+            <button class="main-game-button" onclick="startBattleGame()">
+                <span>⛅</span>
+                <span id="battle-text">실전<br>Battle</span>
+            </button>
         </div>
     </div>
+</div>
+
 
 <!-- 게임 화면 -->
-    <div id="gameScreen" class="hidden max-w-6xl mx-auto p-6">
-        <div  style="background-color: #2e8b8b;" 추가
+
+
+<div id="gameScreen" class="hidden max-w-6xl mx-auto p-6">
+    <div  style="background-color: #2e8b8b;" 추가
 
 
 <div class="text-center mb-6">
@@ -507,20 +532,21 @@ font-size: clamp(1.5rem, 4.0vw, 2.0rem)!important;
                 <p class="text-4xl  text-yellow-400 mb-4">🎯  <span id="targetDisplay" class="font-bold text-pink-300"></span></p>
             </div>
 
-            <div class="grid grid-cols-3 gap-4 mb-6">
+
+        <div class="grid grid-cols-3 gap-4 mb-6">
                 <div class="text-center p-3 bg-blue-100 rounded-lg">
-                    <h3 class=" text-2xl ">라운드   Round</h3>
-                    <p id="roundDisplay" class="text-3xl"></p>
-                </div>
-                <div class="text-center p-3 bg-green-100 rounded-lg">
-                    <h3 class="text-2xl ">사용자     USER</h3>
-                    <p id="userScore" class="text-3xl">0</p>
-                </div>
-                <div class="text-center p-3 bg-red-100 rounded-lg">
-                    <h3 class="text-2xl ">컴퓨터    Computer</h3>
-                    <p id="computerScore" class="text-3xl">0</p>
-                </div>
+                <h3 >라운드   Round</h3>
+                <p id="roundDisplay" class="text-2xl"></p>
             </div>
+            <div class="text-center p-3 bg-blue-100 rounded-lg">
+                <h3 >사용자     USER</h3>
+                <p id="userScore" class="text-2xl">0</p>
+            </div>
+            <div class="text-center p-3 bg-blue-100 rounded-lg">
+                <h3>컴퓨터    Computer</h3>
+                <p id="computerScore" class="text-2xl">0</p>
+            </div>
+        </div>
 
 
 <div class="cards-section">
@@ -528,24 +554,24 @@ font-size: clamp(1.5rem, 4.0vw, 2.0rem)!important;
                 <div id="cardsArea" class="cards-area"></div>
             </div>
 
-            <div class="cards-section">
-                <h3>내 수식 (Your Expression):</h3>
-                <div id="userExpression" class="flex flex-wrap gap-2">
-                    내 카드를 클릭하세요.
-                </div>
+
+        <div class="cards-section">
+            <h3>내 수식 (Your Expression):</h3>
+            <div id="userExpression" class="bg-white p-3 border-2 border-red-300 rounded-lg text-xl "> 내 카드를 클릭해서 수식을 만드세요.
             </div>
+        </div>
 
 <div id="actionButtons" class="flex gap-4 mb-6">
                 <button onclick="submitExpression()" class="main-game-button">
                     <span class="cloud-text">
                         <span class="cloud-icon">✅</span>
-                        제출<br>Submit
+                        제출 /Submit
                     </span>
                 </button>
                 <button onclick="resetExpression()" class="main-game-button">
                     <span class="cloud-text">
                         <span class="cloud-icon">🔄</span>
-                        초기화<br>Reset
+                        초기화 /Reset
                     </span>
                 </button>
             </div>
@@ -555,19 +581,19 @@ font-size: clamp(1.5rem, 4.0vw, 2.0rem)!important;
                 <button onclick="nextRound()" class="main-game-button">
                     <span class="cloud-text">
                         <span class="cloud-icon">➡️</span>
-                        다음 라운드<br>Next Round
+                        다음 라운드 /Next Round
                     </span>
                 </button>
             </div>
 
-            <div class="mb-6">
+            <div class="cards-section">
                 <h3 class="text-2xl text-white  mb-3">컴퓨터 카드 (Computer's Cards):</h3>
-                <div id="computerCardsArea" class="flex flex-wrap gap-2"></div>
+                <div id="computerCardsArea" class="cards-area"></div>
             </div>
 
-            <div class="mb-6">
+            <div class="cards-section">
                 <h3 class="text-2xl text-white  mb-2">컴퓨터 수식 (Computer's Expression):</h3>
-                <div id="computerExpression" class="bg-white p-3 border-2 border-red-300 rounded-lg text-2xl ">
+                <div id="computerExpression" class="bg-white p-3 border-2 border-red-300 rounded-lg text-xl ">
                     컴퓨터가 생각 중...
                 </div>
             </div>
