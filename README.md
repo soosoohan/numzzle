@@ -7,7 +7,15 @@
 > Numzzle = Number + Puzzle  
 > In Korean, it also sounds like “Neomu Jeulgeopda,” meaning “so much fun.”
 
----
+>---
+>
+> 🛡️ **이 게임은 저작권 등록이 진행 중입니다.**  
+> 무단 복제, 무단 이용, 상업적 사용은 법적 책임을 초래할 수 있습니다.  
+>  
+> 🛡️ **This game is currently undergoing copyright registration.**  
+> Unauthorized reproduction, use, or commercial distribution may result in legal consequences.
+>
+> ----
 
 ## 🎮 게임 개요 | Game Overview
 
