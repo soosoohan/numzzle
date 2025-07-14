@@ -4,8 +4,8 @@
 또한 한글로는 “너무 즐겁다“는 말과 비슷해,  
 공부를 게임처럼 즐겁게 하자는 의미도 담고 있습니다.
 
-> Numzzle = Number + Puzzle  
-> In Korean, it also sounds like “Neomu Jeulgeopda,” meaning “so much fun.”
+ Numzzle = Number + Puzzle  
+ In Korean, it also sounds like “Neomu Jeulgeopda,” meaning “so much fun.”
 
 >---
 >
