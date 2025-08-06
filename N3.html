@@ -13,7 +13,7 @@
 
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no" />
 <title>넘즐업</title>
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 <style>
@@ -209,10 +209,12 @@
     }
 
     .operator-card {
+        width: 60px;
+        height: 80px;
+        font-size: 24px;
         background: white !important;
         color: #d84315 !important;
-        font-size: clamp(1.5rem, 4.0vw, 2.0rem) !important;
-    }
+        }
 
     /* 게임 화면 스타일 */
     .game-container {
@@ -319,7 +321,9 @@
         border: 2px solid #add8e6;
         border-radius: 8px;
         padding: 12px 8px;
-        font-size: clamp(1rem, 3vw, 1.3rem);
+        width: 60px;
+        height: 80px;
+        font-size: 24px;
         font-weight: bold;
         cursor: pointer;
         transition: all 0.2s ease;
