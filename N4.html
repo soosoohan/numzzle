@@ -12,7 +12,7 @@
     </script>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no" />
 <title>넘즐초</title>
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 <style>
@@ -211,7 +211,10 @@ body {
 .operator-card {
     background: white !important;
     color: #d84315 !important;
-    font-size: clamp(1.5rem, 4.0vw, 2.0rem) !important;
+    width: 60px;
+        height: 80px;
+        font-size: 24px;
+        
 }
 
 /* 게임 화면 스타일 */
@@ -411,12 +414,13 @@ body {
     border: 2px solid #FFB6C1;
     border-radius: 12px;
     padding: 12px 8px;
-    font-size: clamp(1rem, 3vw, 1.3rem);
-    font-weight: bold;
-    min-width: 70px;
+    width: 60px;
+        height: 80px;
+        font-size: 24px;
+         font-weight: bold;
     text-align: center;
     flex: 1;
-    max-width: 120px;
+    
 }
 
 /* 모바일에서도 버튼들을 가로로 배치 */
