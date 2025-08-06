@@ -12,8 +12,8 @@
     </script>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>넘즐잼</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>넘즐잼</title>
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 <style>
     @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
@@ -209,9 +209,12 @@ body {
 }
 
 .operator-card {
-    background: white !important;
+    width: 60px;
+        height: 80px;
+        font-size: 24px;
+        background: white !important;
     color: #d84315 !important;
-    font-size: clamp(1.5rem, 4.0vw, 2.0rem) !important;
+    
 }
 
 /* 게임 화면 스타일 */
@@ -319,7 +322,9 @@ body {
     border: 2px solid #add8e6;
     border-radius: 8px;
     padding: 12px 8px;
-    font-size: clamp(1rem, 3vw, 1.3rem);
+    width: 60px;
+    height: 80px;
+    font-size: 24px;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.2s ease;
