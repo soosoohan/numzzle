@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="ko">
+<html lang="en">
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4YZHC1G9FN"></script>
@@ -27,7 +27,7 @@
 
 body {
     font-family: 'Pretendard', sans-serif;
-    background: #2e8b8b;
+    background:#154545;
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -36,12 +36,12 @@ body {
 }
 
 .blackboard {
-    width: 100%;
-    max-width: 100vw;
+    width: 100vw;
+    max-width: 650px;
     min-height: 100vh;
-    background: #2e8b8b;
+    background: #154545;
     position: relative;
-    padding: 20px;
+    padding: 10px;
     overflow-x: hidden;
 }
 
@@ -55,7 +55,7 @@ body {
     top: 2%;
     left: 50%;
     transform: translateX(-50%);
-    font-size: clamp(1.3rem, 3.7vw, 1.9rem);
+    font-size: 1.5rem;
     font-weight: bold;
     text-align: center;
     margin-bottom: 4px;
@@ -64,90 +64,64 @@ body {
 }
 
 .game-description {
-    position: absolute;
-    top: 12%;
-    left: 5%;
-    width: 45%;
-    max-width: 500px;
     color: #f0f8ff;
-    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    font-size: clamp(1.2rem, 3.6vw, 1.4rem);
     text-align: left;
     z-index: 10;
     line-height: 1.3;
-    padding: 0 10px;
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100%;
+        margin-bottom: 20px;
+        padding: 0 10px;
+    }
+
+
+
 }
 
 .game-description h3 {
     color: #add8e6;
     margin-bottom: 8px;
-    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    font-size: clamp(1.3rem, 3.9vw, 1.5rem);
     border-bottom: 2px solid #add8e6;
     padding-bottom: 3px;
 }
 
 .game-description p {
     margin-bottom: 12px;
-    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    font-size: clamp(1.2rem, 3.6vw, 1.4rem);
 }
 
 .game-description ul {
     margin-bottom: 12px;
     padding-left: 15px;
-    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    font-size: clamp(1.2rem, 3.6vw, 1.4rem);
 }
 
 .game-description li {
     margin-bottom: 6px;
-    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    font-size: clamp(1.2rem, 3.6vw, 1.4rem);
 }
 
-.language-toggle {
-    position: absolute;
-    top: 2%;
-    right: 2%;
-    background: rgba(255,255,255,0.95);
-    padding: 8px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    z-index: 30;
-}
-
-.language-button {
-    background: #2e8b8b;
-    color: white;
-    border: none;
-    padding: 6px 10px;
-    margin: 2px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-family: 'Pretendard', sans-serif;
-    font-size: clamp(0.8rem, 2.5vw, 1rem);
-    transition: all 0.3s ease;
-}
-
-.language-button:hover {
-    background: #20b2aa;
-}
-
-.language-button.active {
-    background: #ff69b4;
-}
 
 .game-menu {
-    position: absolute;
-    top: 12%;
-    right: 5%;
     display: flex;
     flex-direction: column;
     gap: 15px;
     align-items: center;
-    width: 45%;
     max-width: 400px;
-    font-size: clamp(1rem, 3vw, 1.3rem);
-    background: rgba(255, 255, 255, 0.1);
+    font-size: clamp(1.2rem, 3.6vw, 1.4rem);
     padding: 20px;
-    border-radius: 15px;
     backdrop-filter: blur(10px);
+        position: relative;
+        top: auto;
+        right: auto;
+        width: 100%;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
 }
 
 .target-input-container {
@@ -157,7 +131,7 @@ body {
 
 .target-input-container label {
     display: block;
-    font-size: clamp(1rem, 3vw, 1.3rem);
+    font-size: clamp(1.2rem, 3.6vw, 1.4rem);
     color: white;
     font-weight: bold;
     margin-bottom: 10px;
@@ -165,11 +139,11 @@ body {
 
 .target-input-container input {
     width: 100%;
-    max-width: 200px;
+    max-width: 500px;
     padding: 12px;
     border: 2px solid #add8e6;
     border-radius: 8px;
-    font-size: clamp(1rem, 3vw, 1.3rem);
+    font-size: clamp(1.2rem, 3.6vw, 1.4rem);
     text-align: center;
     background: white;
 }
@@ -180,23 +154,25 @@ body {
     justify-content: center;
     flex-wrap: wrap;
     width: 100%;
-}
+        align-items: center;
+    }
 
 .main-game-button {
     background: rgba(255,255,255,0.9);
-    color: #2e8b8b;
+    color: #154545;
     padding: 15px 25px;
     border: none;
     border-radius: 10px;
-    font-size: clamp(1rem, 3vw, 1.3rem);
+    font-size: clamp(1.2rem, 3.6vw, 1.4rem);
     font-family: 'Pretendard', sans-serif;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    min-width: 120px;
     text-align: center;
     flex: 1;
-}
+    max-width: none;
+    min-width: 100px;
+    }
 
 .main-game-button:hover {
     background: #f0f8ff;
@@ -212,9 +188,16 @@ body {
     background: white !important;
     color: #d84315 !important;
     width: 60px;
-        height: 80px;
-        font-size: 24px;
-        
+    height: 60px;
+    font-size: 30px;
+    align-items: center;
+    justify-content: center;
+    
+}
+.operator-card.used {
+    opacity: 0.5;
+    background: #f0f0f0;
+    border-color: #ccc;
 }
 
 /* 게임 화면 스타일 */
@@ -223,7 +206,7 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 10px;
-    background: #2e8b8b;
+    background: #154545;
     min-height: 100vh;
 }
 
@@ -233,13 +216,13 @@ body {
 }
 
 .game-header h1 {
-    font-size: clamp(1.3rem, 3.7vw, 1.9rem);
+    font-size: 1.5rem;
     color: white;
     margin-bottom: 10px;
 }
 
 .game-header p {
-    font-size: clamp(1rem, 3vw, 1.3rem);
+    font-size: clamp(1.2rem, 3.6vw, 1.4rem);
     color: #ffeb3b;
 }
 
@@ -248,7 +231,7 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 15px;
     margin-bottom: 20px;
-    font-size: clamp(1rem, 3vw, 1.3rem);
+    font-size: clamp(1.2rem, 3.6vw, 1.4rem);
 }
 
 .score-card {
@@ -257,7 +240,7 @@ body {
     background: rgba(255,255,255,0.9);
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    font-size: clamp(1rem, 3vw, 1.3rem);
+    font-size: clamp(1.2rem, 3.6vw, 1.4rem);
 }
 
 .score-card.player {
@@ -285,11 +268,11 @@ body {
 
 .cards-section {
     margin-bottom: 20px;
-    font-size: clamp(1rem, 3vw, 1.3rem);
+ font-size: clamp(1.2rem, 3.6vw, 1.4rem);
 }
 
 .cards-section h3 {
-    font-size: clamp(1rem, 3vw, 1.3rem);
+    font-size: clamp(1.2rem, 3.6vw, 1.4rem);
     color: white;
     margin-bottom: 10px;
 }
@@ -306,11 +289,11 @@ body {
     border: 2px solid #add8e6;
     border-radius: 8px;
     padding: 12px 8px;
-    font-size: clamp(1rem, 3vw, 1.3rem);
-    font-weight: bold;
+    font-size: 20px;
     cursor: pointer;
     transition: all 0.2s ease;
-    min-height: 50px;
+    height: 60px;
+    width: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -326,7 +309,7 @@ body {
     padding: 15px;
     border: 3px solid #add8e6;
     border-radius: 10px;
-    font-size: clamp(1rem, 3vw, 1.3rem);
+    font-size: clamp(1.2rem, 3.6vw, 1.4rem);
     margin-bottom: 20px;
     min-height: 60px;
     display: flex;
@@ -346,7 +329,10 @@ body {
     justify-content: center;
     flex-wrap: wrap;
     margin-bottom: 20px;
-}
+    flex-direction: row;
+    align-items: center;
+    flex:1;
+    max-width:none;}
 
 .result-area {
     background: rgba(255,255,255,0.9);
@@ -357,13 +343,13 @@ body {
 }
 
 .result-area h2 {
-    font-size: clamp(1rem, 3vw, 1.3rem);
+    font-size: clamp(1.2rem, 3.6vw, 1.4rem);
     margin-bottom: 15px;
     color: #333;
 }
 
 .result-area p {
-    font-size: clamp(1rem, 3vw, 1.3rem);
+    font-size: clamp(1.2rem, 3.6vw, 1.4rem);
     margin-bottom: 10px;
     color: #555;
 }
@@ -373,7 +359,8 @@ body {
     justify-content: center;
     gap: 10px;
     flex-wrap: wrap;
-}
+    flex-direction: row;
+    flex:1;}
 
 .finger-card {
     display: flex;
@@ -384,14 +371,15 @@ body {
     background: white;
     border: 2px solid #3b82f6;
     border-radius: 12px;
-    min-width: 80px;
-    font-size: clamp(1rem, 3vw, 1.3rem);
-    font-weight: bold;
+    width: 60px;
+    height:60px;
+    font-size: 20px;
     cursor: pointer;
     transition: all 0.2s ease;
     flex: 1;
     max-width: 120px;
-}
+    justify-content: center;
+    }
 
 .finger-card:hover {
     transform: translateY(-2px);
@@ -404,10 +392,6 @@ body {
     border-color: #ccc;
 }
 
-.finger-emoji {
-    font-size: 20px;
-    line-height: 1;
-}
 
 .computer-card {
     background: white;
@@ -415,76 +399,14 @@ body {
     border-radius: 12px;
     padding: 12px 8px;
     width: 60px;
-        height: 80px;
-        font-size: 24px;
-         font-weight: bold;
+    height: 60px;
+    font-size: 20px;
     text-align: center;
     flex: 1;
     
 }
 
-/* 모바일에서도 버튼들을 가로로 배치 */
-@media (max-width: 768px) {
-    .blackboard {
-        padding: 10px;
-    }
 
-    .game-description {
-        position: relative;
-        top: auto;
-        left: auto;
-        width: 100%;
-        margin-bottom: 20px;
-        padding: 0 10px;
-    }
-
-    .game-menu {
-        position: relative;
-        top: auto;
-        right: auto;
-        width: 100%;
-        margin: 0 auto;
-        background: rgba(255, 255, 255, 0.1);
-        padding: 20px;
-        border-radius: 15px;
-    }
-
-    .language-toggle {
-        top: 2%;
-        right: 2%;
-        padding: 6px;
-        z-index: 30;
-    }
-
-    .button-container {
-        flex-direction: row;
-        align-items: center;
-    }
-
-    .main-game-button {
-        flex: 1;
-        max-width: none;
-        min-width: 100px;
-    }
-
-    .action-buttons {
-        flex-direction: row;
-        align-items: center;
-    }
-
-    .action-buttons .main-game-button {
-        flex: 1;
-        max-width: none;
-    }
-
-    .bottom-buttons {
-        flex-direction: row;
-    }
-
-    .bottom-buttons .main-game-button {
-        flex: 1;
-    }
-}
 @media (max-width: 400px) {
 
 .cards-area {
@@ -508,7 +430,7 @@ body {
     background: rgba(255,255,255,0.9);
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    font-size: clamp(0.8rem, 2.5vw, 1.1rem);
+    font-size: 1.1rem;
 }
 .score-card.player {
     border: 6px solid #87CEEB;
@@ -525,33 +447,14 @@ body {
 <body>
     <div class="blackboard">
         <div id="startScreen">
-            <h1 class="chalk-text main-title">넘즐초</h1>
+            <h1 class="chalk-text main-title">NUMZZLE CHO</h1>
 
 
-        <div class="language-toggle">
-            <button class="language-button active" onclick="toggleLanguage('ko')">한국어</button>
-            <button class="language-button" onclick="toggleLanguage('en')">English</button>
-        </div>
         <br><br>
         
 
-<div class="game-description chalk-text" id="korean-description">
-            <h3>🎮 게임 소개</h3>
-            <p>넘즐초 (NUMZZLE CHO)=넘버(NUMBER) + 퍼즐(PUZZLE) + 초(BEGINNER)</p>
-            <p><br></p>
-
-            <h3>📋 게임 규칙</h3>
-            <ul>
-            <li>목표 숫자에 가깝게 만들기 위해 숫자 카드 3장과 연산기호 카드 2장 중
-필요한 만큼 선택해서 수식을 만들어 보세요! </li>
-            <li>수식의 결과가 목표 숫자에 딱 맞거나 가장 근접하면 10점을 받습니다.</li>           
-            <li>수식의 결과가 목표 숫자에 딱 맞거나 가장 근접하면 10점을 받습니다.</li>
-<li>연습 모드에서는 컴퓨터와 같은 카드를 받고, 실전 모드에서는 컴퓨터와 다른 카드를 받습니다.</li>
-            <li>목표 숫자를 설정하고 게임을 시작합니다.</li>
-</ul>
-        </div>
-
-<div class="game-description chalk-text hidden" id="english-description">
+<div class="game-description chalk-text">
+            
             <h3>🎮 Game Overview</h3>
             <p>NUMZZLE CHO = NUMBER + PUZZLE + CHO(BEGINNER)</p>
             
@@ -569,18 +472,18 @@ body {
 
         <div class="game-menu">
             <div class="target-input-container">
-                <label id="target-label">🎯목표숫자를 변경하고 싶으면 여기에 적으세요.</label>
+                <label id="target-label">🎯Enter the target number here.</label>
                 <input id="targetInput" type="number" value="15" min="1" max="100" />
             </div>
 
             <div class="button-container">
                 <button class="main-game-button" onclick="startPracticeGame()">
                     <span>☁️</span>
-                    <span id="practice-text">연습</span>
+                    <span id="practice-text">Practice</span>
                 </button>
                 <button class="main-game-button" onclick="startBattleGame()">
                     <span>⛅</span>
-                    <span id="battle-text">실전</span>
+                    <span id="battle-text">Challenge</span>
                 </button>
             </div>
         </div>
@@ -590,21 +493,21 @@ body {
     <div id="gameScreen" class="hidden">
         <div class="game-container">
             <div class="game-header">
-                <h1>넘즐초 (NUMZZLECHO)</h1>
-                <p>🎯목표숫자: <span id="targetDisplay" class="font-bold"></span></p>
+                <h1>NUMZZLECHO</h1>
+                <p>🎯Target Number: <span id="targetDisplay" class="font-bold"></span></p>
             </div>
 
             <div class="score-grid">
                 <div class="score-card">
-                    <h3>라운드</h3>
+                    <h3>Round</h3>
                     <p id="roundDisplay"></p>
                 </div>
                 <div class="score-card player">
-                    <h3 id="playerScoreTitle">플레이어</h3>
+                    <h3 id="playerScoreTitle">Player</h3>
                     <p id="playerScore">0</p>
                 </div>
                 <div class="score-card computer">
-                    <h3 id="computerScoreTitle">컴퓨터</h3>
+                    <h3 id="computerScoreTitle">Computer</h3>
                     <p id="computerScore">0</p>
                 </div>
             </div>
@@ -612,23 +515,23 @@ body {
             <!-- 플레이어 영역 -->
             <div class="player-section player-section">
                 <div class="cards-section">
-                    <h3 id="playerCardsTitle">플레이어의 카드 (Player's Cards):</h3>
+                    <h3 id="playerCardsTitle">Player's Cards:</h3>
                      <div id="playerCardsArea" class="cards-area"></div>
                 </div>
 
                 <div class="cards-section">
                     <h3 id="playerExpressionTitle"></h3>
                     <div id="playerExpression" class="expression-area">
-                        카드를 클릭하여 수식을 만드세요
+                        Click cards to create an equation.
                     </div>
                 </div>
 
                 <div id="playerActionButtons" class="action-buttons">
                     <button onclick="submitExpression()" class="main-game-button">
-                        ✅ 제출 / Submit
+                        ✅ Submit
                     </button>
                     <button onclick="resetExpression()" class="main-game-button">
-                        🔄 초기화 / Reset
+                        🔄 Reset
                     </button>
                 </div>
             </div>
@@ -636,37 +539,37 @@ body {
             <!-- 다음 라운드 버튼 (플레이어와 컴퓨터 사이) -->
             <div id="nextRoundArea" class="hidden next-round-section">
                 <button onclick="nextRound()" class="main-game-button">
-                    ➡️ 다음 라운드 / Next Round
+                    ➡️ Next Round
                 </button>
             </div>
 
             <!-- 컴퓨터 영역 -->
             <div class="player-section computer-section">
                 <div class="cards-section">
-                    <h3 id="computerCardsTitle">컴퓨터의 카드 (Computer's Cards):</h3>
+                    <h3 id="computerCardsTitle">Computer's Cards:</h3>
                     <div id="computerCardsArea" class="cards-area"></div>
                 </div>
 
                 <div class="cards-section">
                   <div id="computerExpression" class="expression-area">
-                        컴퓨터가 생각 중.....
+                        Computer is thinking.....
                     </div>
                 </div>
             </div>
 
             <div id="resultArea" class="hidden result-area">
-                <h2>게임 종료!</h2>
-                <p>최종 점수</p>
-                <p><span id="finalPlayerName">플레이어</span>: <span id="finalPlayerScore"></span>점</p>
-                <p><span id="finalComputerName">컴퓨터</span>: <span id="finalComputerScore"></span>점</p>
-            </div>
-
+                <h2>Game Over!</h2>
+               
+<p>Final Score</p>
+<p><span id="finalPlayerName">Player</span>: <span id="finalPlayerScore"></span> points</p>
+<p><span id="finalComputerName">Computer</span>: <span id="finalComputerScore"></span> points</p>
+</div>
             <div class="bottom-buttons">
                 <button onclick="backToStart()" class="main-game-button">
-                    ⚙️ 설정으로<br>Go to Settings
+                    ⚙️ Go to Settings
                 </button>
                 <button onclick="location.href='index.html'" class="main-game-button">
-                    🏠 홈으로<br>Go to Home
+                    🏠 Go to Home
                 </button>
             </div>
         </div>
@@ -675,34 +578,7 @@ body {
 
 
 <script>
-    function toggleLanguage(lang) {
-        const koreanDesc = document.getElementById('korean-description');
-        const englishDesc = document.getElementById('english-description');
-        const targetLabel = document.getElementById('target-label');
-        const practiceText = document.getElementById('practice-text');
-        const battleText = document.getElementById('battle-text');
-        const koBtn = document.querySelector('.language-button[onclick="toggleLanguage(\'ko\')"]');
-        const enBtn = document.querySelector('.language-button[onclick="toggleLanguage(\'en\')"]');
-        
-        if (lang === 'ko') {
-            koreanDesc.classList.remove('hidden');
-            englishDesc.classList.add('hidden');
-            targetLabel.textContent = '🎯 목표 숫자 (Target Number):';
-            practiceText.innerHTML = '연습<br>Practice';
-            battleText.innerHTML = '실전<br>Battle';
-            koBtn.classList.add('active');
-            enBtn.classList.remove('active');
-        } else {
-            koreanDesc.classList.add('hidden');
-            englishDesc.classList.remove('hidden');
-            targetLabel.textContent = '🎯 Target Number:';
-            practiceText.innerHTML = 'Practice<br>연습';
-            battleText.innerHTML = 'Battle<br>실전';
-            koBtn.classList.remove('active');
-            enBtn.classList.add('active');
-        }
-    }
-
+    
     let isPracticeMode = true;
     let targetNumber = 10;
     let currentRound = 1;
@@ -715,33 +591,7 @@ body {
     let originalUserCards = [];
     let usedCardIndices = [];
 
-    // 숫자에 따른 손가락 이모지 매핑
-    const getFingerEmoji = (num) => {
-        const emojiMap = {
-            1: '☝️',
-            2: '✌️',
-            3: '🤟',
-            4: '✌️✌️',
-            5: '✋',
-            6: '☝️✋',
-            7: '✌️✋',
-            8: '🤟✋',
-            9: '✌️✌️✋',
-            10: '✋✋',
-            11: '☝️✋✋',
-            12: '✌️✋✋',
-            13: '🤟✋✋',
-            14: '✌️✌️✋✋',
-            15: '✋✋✋',
-            16: '☝️✋✋✋',
-            17: '✌️✋✋✋',
-            18: '🤟✋✋✋',
-            19: '✌️✌️✋✋✋',
-            20: '✋✋✋✋'
-        };
-        return emojiMap[num] || '☝️';
-    };
-
+    
     // 카드덱 생성 - 넘즐초용 (1~20 숫자카드)
     const createNumberDeck = () => {
         const deck = [];
@@ -790,19 +640,14 @@ body {
         
         cardsArea.innerHTML = '';
         userCards.forEach((card, index) => {
-   if (usedCardIndices.includes(index)) {
-        return;  // 이 부분이 새로 추가됨
- }
-
+   
             const btn = document.createElement('button');
             
             if (!isNaN(card)) {
                 // 숫자 카드 - 손가락 이모지 포함
                 btn.className = `finger-card ${usedCardIndices.includes(index) ? 'used' : ''}`;
-                btn.innerHTML = `
-                    <div class="finger-emoji">${getFingerEmoji(card)}</div>
-                    <div>${card}</div>
-                `;
+btn.textContent = card;                
+
             } else {
                 // 연산자 카드
                 btn.className = `card-button operator-card ${usedCardIndices.includes(index) ? 'used' : ''}`;
@@ -962,22 +807,22 @@ body {
 
         renderCards();
         renderComputerCards();
-        document.getElementById('playerExpression').textContent = '플레이어는 카드를 클릭하여 수식을 만드세요';
-        document.getElementById('computerExpression').textContent = '컴퓨터가 생각 중.....';
+        document.getElementById('playerExpression').textContent = 'Click cards to create an equation.';
+        document.getElementById('computerExpression').textContent = 'Computer is thinking.....';
 
         document.getElementById('startScreen').classList.add('hidden');
         document.getElementById('gameScreen').classList.remove('hidden');
     };
 
     const submitExpression = () => {
-        if (!userExpression || userExpression === '플레이어는 카드를 클릭하여 수식을 만드세요') {
-            return alert('최소 1장의 숫자카드는 사용해야 합니다!\nYou must use at least 1 number card!');
+        if (!userExpression || userExpression === 'Click cards to create an equation.') {
+            return alert('You must use at least 1 number card!');
         }
         
         // 숫자카드가 최소 1장 사용되었는지 확인
         const hasNumber = usedCardIndices.some(index => !isNaN(userCards[index]));
         if (!hasNumber) {
-            return alert('최소 1장의 숫자카드는 사용해야 합니다!\nYou must use at least 1 number card!');
+            return alert('You must use at least 1 number card!');
         }
         
         try {
@@ -1043,7 +888,7 @@ body {
             
         } catch (error) {
             console.error('Expression evaluation error:', error);
-            alert('올바른 수식을 입력해주세요!');
+            alert('Please enter a valid equation.');
         }
     };
 
@@ -1068,8 +913,8 @@ body {
         renderCards();
         renderComputerCards();
         userExpression = '';
-        document.getElementById('playerExpression').textContent = '플레이어는 카드를 클릭하여 수식을 만드세요';
-        document.getElementById('computerExpression').textContent = '컴퓨터가 생각 중.....';
+        document.getElementById('playerExpression').textContent = 'Click cards to create an equation.';
+       document.getElementById('computerExpression').textContent = 'Computer is thinking.....';
         
         roundCompleted = false;
         document.getElementById('nextRoundArea').classList.add('hidden');
@@ -1081,7 +926,7 @@ body {
             userExpression = '';
             usedCardIndices = [];
             renderCards();
-            document.getElementById('playerExpression').textContent = '플레이어는 카드를 클릭하여 수식을 만드세요';
+            document.getElementById('playerExpression').textContent = 'Click cards to create an equation.';
         }
     };
 
