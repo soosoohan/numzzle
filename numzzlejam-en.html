@@ -967,6 +967,68 @@ const findBestExpression = (cards) => {
     });
   }
 
+// 기존 3자리 숫자 만들기 코드 뒤에 추가
+// 4자리 숫자 만들기
+if (numbers.length >= 4) {
+  numbers.forEach((a, i) => {
+    numbers.forEach((b, j) => {
+      numbers.forEach((c, k) => {
+        numbers.forEach((d, l) => {
+          if (i !== j && j !== k && i !== k && k !== l && i !== l && j !== l) {
+            const combined = Number(`${a}${b}${c}${d}`);
+            const diff = Math.abs(targetNumber - combined);
+            if (diff < bestDiff) {
+              bestDiff = diff;
+              bestVal = combined;
+              bestExpr = `${a}${b}${c}${d}`;
+              usedCards = [a, b, c, d];
+            }
+          }
+        });
+      });
+    });
+  });
+}
+
+// 3자리 숫자 + 연산자 + 1자리 숫자
+if (numbers.length >= 4 && operators.length >= 1) {
+  numbers.forEach((a, i) => {
+    numbers.forEach((b, j) => {
+      numbers.forEach((c, k) => {
+        numbers.forEach((d, l) => {
+          if (i !== j && j !== k && i !== k && l !== i && l !== j && l !== k) {
+            operators.forEach(op => {
+              try {
+                // 3자리 + 연산자 + 1자리 (abc + d)
+                const expr1 = `${a}${b}${c}${op}${d}`;
+                const val1 = eval(expr1);
+                const diff1 = Math.abs(targetNumber - val1);
+                if (diff1 < bestDiff) {
+                  bestDiff = diff1;
+                  bestVal = val1;
+                  bestExpr = expr1.replace(/\*/g, '×');
+                  usedCards = [a, b, c, d, op];
+                }
+
+                // 1자리 + 연산자 + 3자리 (a + bcd)
+                const expr2 = `${a}${op}${b}${c}${d}`;
+                const val2 = eval(expr2);
+                const diff2 = Math.abs(targetNumber - val2);
+                if (diff2 < bestDiff) {
+                  bestDiff = diff2;
+                  bestVal = val2;
+                  bestExpr = expr2.replace(/\*/g, '×');
+                  usedCards = [a, b, c, d, op];
+                }
+              } catch {}
+            });
+          }
+        });
+      });
+    });
+  });
+}
+
   return { expr: bestExpr, value: bestVal, usedCards };
 };
 
