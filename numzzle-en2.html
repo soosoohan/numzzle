@@ -2,7 +2,7 @@
 
 <html lang="ko">
 <head>
-    <!-- Google tag (gtag.js) -->
+     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4YZHC1G9FN"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -10,7 +10,6 @@
       gtag('js', new Date());
       gtag('config', 'G-4YZHC1G9FN');
     </script>
-
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no" />
@@ -27,7 +26,7 @@
 
     body {
         font-family: 'Pretendard', sans-serif;
-        background: #2e8b8b;
+        background: #145454;
         min-height: 100vh;
         display: flex;
         justify-content: center;
@@ -39,7 +38,7 @@
         width: 100%;
         max-width: 100vw;
         min-height: 100vh;
-        background: #2e8b8b;
+        background: #145454;
         position: relative;
         padding: 20px;
         overflow-x: hidden;
@@ -66,11 +65,11 @@
     .game-description {
         position: absolute;
         top: 12%;
-        left: 5%;
-        width: 45%;
-        max-width: 500px;
+        left: 20%;
+        width: 90%;
+        max-width: 750px;
         color: #f0f8ff;
-        font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+        font-size: clamp(1.1rem, 3.3vw, 1.3rem); 
         text-align: left;
         z-index: 10;
         line-height: 1.3;
@@ -80,75 +79,47 @@
     .game-description h3 {
         color: #add8e6;
         margin-bottom: 8px;
-        font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+        font-size: clamp(1.1rem, 3.3vw, 1.3rem); 
         border-bottom: 2px solid #add8e6;
         padding-bottom: 3px;
     }
 
     .game-description p {
         margin-bottom: 12px;
-        font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+        font-size: clamp(1.1rem, 3.3vw, 1.3rem);      
     }
 
     .game-description ul {
         margin-bottom: 12px;
         padding-left: 15px;
-        font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+        font-size: clamp(1.1rem, 3.3vw, 1.3rem); 
     }
 
     .game-description li {
         margin-bottom: 6px;
-        font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+        font-size: clamp(1.1rem, 3.3vw, 1.3rem); 
     }
 
-    .language-toggle {
-        position: absolute;
-        top: 2%;
-        right: 2%;
-        background: rgba(255,255,255,0.95);
-        padding: 8px;
-        border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        z-index: 30;
-    }
-
-    .language-button {
-        background: #2e8b8b;
-        color: white;
-        border: none;
-        padding: 6px 10px;
-        margin: 2px;
-        border-radius: 5px;
-        cursor: pointer;
-        font-family: 'Pretendard', sans-serif;
-        font-size: clamp(0.8rem, 2.5vw, 1rem);
-        transition: all 0.3s ease;
-    }
-
-    .language-button:hover {
-        background: #20b2aa;
-    }
-
-    .language-button.active {
-        background: #ff69b4;
-    }
-
+    
     .game-menu {
         position: absolute;
-        top: 12%;
+        top: 60%;
         right: 5%;
         display: flex;
         flex-direction: column;
         gap: 15px;
         align-items: center;
         width: 45%;
-        max-width: 400px;
-        font-size: clamp(1rem, 3vw, 1.3rem);
+        max-width: 750px;
+        font-size: clamp(1.1rem, 3.3vw, 1.3rem); 
         background: rgba(255, 255, 255, 0.1);
         padding: 20px;
         border-radius: 15px;
         backdrop-filter: blur(10px);
-    }
+        left: 50%;
+        transform: translateX(-50%); /* 중앙 정렬 */
+
+}
 
     .target-input-container {
         width: 100%;
@@ -157,7 +128,7 @@
 
     .target-input-container label {
         display: block;
-        font-size: clamp(1rem, 3vw, 1.3rem);
+        font-size: clamp(1.1rem, 3.3vw, 1.3rem); 
         color: white;
         font-weight: bold;
         margin-bottom: 10px;
@@ -169,7 +140,7 @@
         padding: 12px;
         border: 2px solid #add8e6;
         border-radius: 8px;
-        font-size: clamp(1rem, 3vw, 1.3rem);
+        font-size: clamp(1.1rem, 3.3vw, 1.3rem); 
         text-align: center;
         background: white;
     }
@@ -184,11 +155,11 @@
 
     .main-game-button {
         background: rgba(255,255,255,0.9);
-        color: #2e8b8b;
+        color: #145454;
         padding: 15px 25px;
         border: none;
         border-radius: 10px;
-        font-size: clamp(1rem, 3vw, 1.3rem);
+        font-size: clamp(1.1rem, 3.3vw, 1.3rem); 
         font-family: 'Pretendard', sans-serif;
         cursor: pointer;
         transition: all 0.3s ease;
@@ -210,20 +181,28 @@
 
     .operator-card {
         width: 60px;
-        height: 80px;
-        font-size: 24px;
+        height: 60px;
+        font-size: 32px !important;
         background: white !important;
         color: #d84315 !important;
         font-size: clamp(1.5rem, 4.0vw, 2.0rem) !important;
     }
 
+
+.operator-card.used {
+    opacity: 0.5;
+    background: #f0f0f0;
+    border-color: #ccc;
+}
+
+
     /* 게임 화면 스타일 */
     .game-container {
         width: 100%;
-        max-width: 1200px;
+        max-width: 750px;
         margin: 0 auto;
         padding: 10px;
-        background: #2e8b8b;
+        background: #145454;
         min-height: 100vh;
     }
 
@@ -239,7 +218,7 @@
     }
 
     .game-header p {
-        font-size: clamp(1rem, 3vw, 1.3rem);
+        font-size: clamp(1.1rem, 3.3vw, 1.3rem); 
         color: #ffeb3b;
     }
 
@@ -248,7 +227,7 @@
         grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
         gap: 10px;
         margin-bottom: 20px;
-        font-size: clamp(1rem, 3vw, 1.3rem);
+        font-size: clamp(1.1rem, 3.3vw, 1.3rem); 
     }
 
     .score-card {
@@ -257,7 +236,7 @@
         background: rgba(255,255,255,0.9);
         border-radius: 10px;
         box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        font-size: clamp(1rem, 3vw, 1.3rem);
+        font-size: clamp(1.1rem, 3.3vw, 1.3rem); 
     }
 
     .score-card.player {
@@ -301,11 +280,11 @@
 
     .cards-section {
         margin-bottom: 20px;
-        font-size: clamp(1rem, 3vw, 1.3rem);
+        font-size: clamp(1.1rem, 3.3vw, 1.3rem); 
     }
 
     .cards-section h3 {
-        font-size: clamp(1rem, 3vw, 1.3rem);
+        font-size: clamp(1.1rem, 3.3vw, 1.3rem); 
         color: white;
         margin-bottom: 10px;
     }
@@ -322,16 +301,22 @@
         border: 2px solid #add8e6;
         border-radius: 8px;
         padding: 12px 8px;
-        font-size: clamp(1rem, 3vw, 1.3rem);
+        font-size: clamp(1.1rem, 3.3vw, 1.3rem); 
         font-weight: bold;
         cursor: pointer;
         transition: all 0.2s ease;
         width: 60px;
-        height: 80px;
+        height: 60px;
         display: flex;
         align-items: center;
         justify-content: center;
     }
+
+.card-button.used {
+    opacity: 0.5;
+    background: #f0f0f0;
+    border-color: #ccc;
+ }    
 
     .card-button:hover {
         background: #f0f8ff;
@@ -343,7 +328,7 @@
         padding: 15px;
         border: 3px solid #add8e6;
         border-radius: 10px;
-        font-size: clamp(1rem, 3vw, 1.3rem);
+        font-size: clamp(1.1rem, 3.3vw, 1.3rem); 
         margin-bottom: 20px;
         min-height: 60px;
         display: flex;
@@ -370,13 +355,13 @@
     }
 
     .result-area h2 {
-        font-size: clamp(1rem, 3vw, 1.3rem);
+        font-size: clamp(1.1rem, 3.3vw, 1.3rem); 
         margin-bottom: 15px;
         color: #333;
     }
 
     .result-area p {
-        font-size: clamp(1rem, 3vw, 1.3rem);
+        font-size: clamp(1.1rem, 3.3vw, 1.3rem); 
         margin-bottom: 10px;
         color: #555;
     }
@@ -394,7 +379,7 @@
         border-radius: 10px;
         text-align: center;
         margin-bottom: 20px;
-        font-size: clamp(1rem, 3vw, 1.3rem);
+        font-size: clamp(1.1rem, 3.3vw, 1.3rem); 
         font-weight: bold;
         color: #333;
     }
@@ -469,15 +454,7 @@
 
     /* 태블릿 최적화 */
     @media (min-width: 769px) and (max-width: 1024px) {
-        .game-description {
-            width: 50%;
-            font-size: clamp(0.8rem, 2vw, 1rem);
-        }
-
-        .game-menu {
-            width: 40%;
-        }
-
+       
         .cards-area {
             grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
         }
@@ -495,19 +472,13 @@
 
         .main-title {
             top: 1%;
-            font-size: clamp(1rem, 3vw, 1.3rem);
-        }
+            }
 
         .game-description {
             position: relative;
             top: auto;
             width: 100%;
-            font-size: clamp(0.8rem, 2vw, 1rem);
             margin-bottom: 15px;
-        }
-
-        .game-description h3 {
-            font-size: clamp(0.8rem, 2vw, 1rem);
         }
 
         .language-toggle {
@@ -546,8 +517,7 @@
     background: rgba(255,255,255,0.9);
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    font-size: clamp(0.8rem, 2.5vw, 1.1rem);
-}
+    }
 .score-card.player {
     border: 6px solid #87CEEB;
 }
@@ -563,32 +533,11 @@
 <body>
     <div class="blackboard">
         <div id="startScreen">
-            <h1 class="chalk-text main-title">넘즐</h1>
+            <h1 class="chalk-text main-title">Numzzle</h1>
 
-
-        <div class="language-toggle">
-            <button class="language-button active" onclick="toggleLanguage('ko')">한국어</button>
-            <button class="language-button" onclick="toggleLanguage('en')">English</button>
-        </div>
-        <br><br>
-        <div class="game-description chalk-text" id="korean-description">
-            <h3>🎮 게임 소개</h3>
-            <p>넘즐 (NUMZZLE)=넘버(NUMBER) + 퍼즐(PUZZLE)</p>
-            <p><br></p>
-
-            <h3>📋 게임 규칙</h3>
-            <ul>
-                <li>넘즐은 주어진 숫자와 연산기호를 이용하여 목표 숫자에 가장 가까운 결과를 만드는 게임입니다.</li>
-                <li>카드 여러 장으로 여러자리숫자를 만들 수 있습니다.</li>
-                <li>수식의 결과가 목표 숫자에 딱 맞거나 가장 근접하면 10점을 받습니다.</li>
-                <li>연습 모드에서는 컴퓨터와 같은 카드를 받습니다.</li>
-                <li>실전 모드에서는 컴퓨터와 다른 카드를 받습니다.</li>
-                <li>목표 숫자를 설정하고 게임을 시작합니다.</li>
-            </ul>
-        </div>
-
-        <div class="game-description chalk-text hidden" id="english-description">
-            <h3>🎮 Game Overview</h3>
+<br><br>
+        <div class="game-description chalk-text" >
+                      <h3>🎮 Game Overview</h3>
             <p>NUMZZLE is a combination of "NUMBER" and "PUZZLE".</p>
             
             <h3>📋 Game Rules</h3>
@@ -598,23 +547,23 @@
                 <li>Practice Mode gives you the same cards as the computer.</li>
                 <li>Challenge Mode gives you different cards.</li>
                 <li>Set the target number and start the game.</li>
-            </ul>
+            </ul>  
         </div>
 
         <div class="game-menu">
             <div class="target-input-container">
-                <label id="target-label">🎯목표숫자를 변경하고 싶으면 여기에 적으세요.</label>
+                <label id="target-label">🎯Enter the target number here.</label>
                 <input id="targetInput" type="number" value="20" min="1" max="100" />
             </div>
 
             <div class="button-container">
                 <button class="main-game-button" onclick="startPracticeGame()">
                     <span>☁️</span>
-                    <span id="practice-text">연습</span>
+                    <span id="practice-text">Pratice</span>
                 </button>
                 <button class="main-game-button" onclick="startBattleGame()">
                     <span>⛅</span>
-                    <span id="battle-text">실전</span>
+                    <span id="battle-text">Challenge</span>
                 </button>
             </div>
         </div>
@@ -624,21 +573,21 @@
     <div id="gameScreen" class="hidden">
         <div class="game-container">
             <div class="game-header">
-                <h1>넘즐 (NUMZZLE)</h1>
-                <p>🎯목표숫자: <span id="targetDisplay" class="font-bold"></span></p>
+                <h1>NUMZZLE</h1>
+                <p>🎯Target number: <span id="targetDisplay" class="font-bold"></span></p>
             </div>
 
             <div class="score-grid">
                 <div class="score-card">
-                    <h3>라운드</h3>
+                    <h3>Round</h3>
                     <p id="roundDisplay"></p>
                 </div>
                 <div class="score-card player">
-                    <h3 id="playerScoreTitle">플레이어</h3>
+                    <h3 id="playerScoreTitle">Player</h3>
                     <p id="playerScore">0</p>
                 </div>
                 <div class="score-card computer">
-                    <h3 id="computerScoreTitle">컴퓨터</h3>
+                    <h3 id="computerScoreTitle">Computer</h3>
                     <p id="computerScore">0</p>
                 </div>
             </div>
@@ -646,64 +595,60 @@
             <!-- 플레이어 영역 -->
             <div class="player-section player-section">
                 <div class="cards-section">
-                    <h3 id="playerCardsTitle">플레이어의 카드 (Player's Cards):</h3>
+                    <h3 id="playerCardsTitle">Player's Cards:</h3>
                     <div id="playerCardsArea" class="cards-area"></div>
                 </div>
 
                 <div class="cards-section">
-                    <div id="playerExpression" class="expression-area">
-                        카드를 클릭하여 수식을 만드세요
-                    </div>
+                    <div id="playerExpression" class="expression-area"> Click cards to create an equation.                </div>
                 </div>
 
                 <div id="playerActionButtons" class="action-buttons">
                     <button onclick="submitExpression()" class="main-game-button">
-                        ✅ 제출 / Submit
+                        ✅ Submit
                     </button>
                     <button onclick="resetExpression()" class="main-game-button">
-                        🔄 초기화 / Reset
+                        🔄 Reset
                     </button>
                 </div>
             </div>
 <div id="nextRoundArea" class="hidden action-buttons">
                 <button onclick="nextRound()" class="main-game-button">
-                    ➡️ 다음 라운드 / Next Round
+                    ➡️ Next Round
                 </button>
             </div>
 
             <!-- 컴퓨터 영역 -->
             <div class="player-section computer-section">
                 <div class="cards-section">
-                    <h3 id="computerCardsTitle">컴퓨터의 카드 (Computer's Cards):</h3>
+                    <h3 id="computerCardsTitle">Computer's Cards:</h3>
                     <div id="computerCardsArea" class="cards-area"></div>
                 </div>
 
                 <div class="cards-section">
-                    <div id="computerExpression" class="expression-area">
-                        컴퓨터가 생각 중.....
-                    </div>
+                    <div id="computerExpression" class="expression-area">   Computer is thinking.....</div>
                 </div>
             </div>
 
             <div id="nextRoundArea" class="hidden action-buttons">
                 <button onclick="nextRound()" class="main-game-button">
-                    ➡️ 다음 라운드 / Next Round
+                    ➡️ Next Round
                 </button>
             </div>
 
             <div id="resultArea" class="hidden result-area">
-                <h2>게임 종료!</h2>
-                <p>최종 점수</p>
-                <p><span id="finalPlayerName">플레이어</span>: <span id="finalPlayerScore"></span>점</p>
-                <p><span id="finalComputerName">컴퓨터</span>: <span id="finalComputerScore"></span>점</p>
+                <h2>Game over!</h2>
+                <p>Finel Score</p>
+                <p><span id="finalPlayerName">Player</span>: <span id="finalPlayerScore"></span>points</p>
+                <p><span id="finalComputerName">Computer</span>: <span id="finalComputerScore"></span>points</p>
             </div>
 
             <div class="bottom-buttons">
                 <button onclick="backToStart()" class="main-game-button">
-                    ⚙️ 설정으로<br>Go to Settings
+                    ⚙️ Go to Settings
                 </button>
                 <button onclick="location.href='index.html'" class="main-game-button">
-                    🏠 홈으로<br>Go to Home
+                    🏠 Go to Home
                 </button>
             </div>
         </div>
@@ -711,33 +656,7 @@
 </div>
 
 <script>
-    function toggleLanguage(lang) {
-        const koreanDesc = document.getElementById('korean-description');
-        const englishDesc = document.getElementById('english-description');
-        const targetLabel = document.getElementById('target-label');
-        const practiceText = document.getElementById('practice-text');
-        const battleText = document.getElementById('battle-text');
-        const koBtn = document.querySelector('.language-button[onclick="toggleLanguage(\'ko\')"]');
-        const enBtn = document.querySelector('.language-button[onclick="toggleLanguage(\'en\')"]');
-        
-        if (lang === 'ko') {
-            koreanDesc.classList.remove('hidden');
-            englishDesc.classList.add('hidden');
-            targetLabel.textContent = '🎯 목표 숫자:';
-            practiceText.innerHTML = '연습';
-            battleText.innerHTML = '실전';
-            koBtn.classList.add('active');
-            enBtn.classList.remove('active');
-        } else {
-            koreanDesc.classList.add('hidden');
-            englishDesc.classList.remove('hidden');
-            targetLabel.textContent = '🎯 Target Number:';
-            practiceText.innerHTML = 'Practice';
-            battleText.innerHTML = 'Battle';
-            koBtn.classList.remove('active');
-            enBtn.classList.add('active');
-        }
-    }
+    
 
     let isPracticeMode = true;
     let targetNumber = 20;
@@ -777,58 +696,61 @@
         return shuffled.slice(0, count);
     };
 
-    // 카드 생성 (9장: 숫자 5장 + 연산 4장)
+    // 카드 생성 (9장: 숫자 4장 + 연산 4장)
     const generateCards = () => {
         const numberDeck = createNumberDeck();
         const operatorDeck = createOperatorDeck();
         
-        const numbers = shuffleAndDraw(numberDeck, 5);
+        const numbers = shuffleAndDraw(numberDeck, 4);
         const operators = shuffleAndDraw(operatorDeck, 4);
         
         return [...numbers, ...operators];
     };
 
-    const renderPlayerCards = () => {
-        const cardsArea = document.getElementById('playerCardsArea');
-        cardsArea.innerHTML = '';
-        userCards.forEach((card, index) => {
-            const btn = document.createElement('button');
-            btn.className = 'card-button';
+ const renderPlayerCards = () => {
+  const playerCardsArea = document.getElementById('playerCardsArea');
+  playerCardsArea.innerHTML = '';
+  userCards.forEach((card, index) => {
+    const btn = document.createElement('button');
+    btn.className = 'card-button';
+btn.textContent = card === '*' ? '×' : card === '/' ? '÷' : card;
 
-            // 표시용 텍스트 변환
-            let displayText = card;
-            if (card === '*') displayText = '×';
-            else if (card === '/') displayText = '÷';
-            
-            if (displayText === '+' || displayText === '-' || displayText === '×' || displayText === '÷') {
-                btn.classList.add('operator-card');
-            }
-
-            btn.textContent = displayText;
-            btn.onclick = () => {
-                if (!roundCompleted) {
-                    if (!isNaN(card)) {
-                        if (isBuildingNumber) {
-                            userExpression = userExpression.slice(0, -1) + userExpression.slice(-1) + card;
-                        } else {
-                            userExpression += card;
-                            isBuildingNumber = true;
-                        }
-                    } else {
-                        userExpression += displayText;
-                        isBuildingNumber = false;
-                    }
-                    
-                    // 수식만 표시 (= 결과값 없이)
-                    document.getElementById('playerExpression').textContent = userExpression;
-                    
-                    userCards.splice(index, 1);
-                    renderPlayerCards();
-                }
-            };
-            cardsArea.appendChild(btn);
-        });
+ // data-card-value 속성 추가
+    btn.setAttribute('data-card-value', card);
+    
+    // 연산자인 경우 스타일 추가
+    if (isNaN(card)) {
+      btn.classList.add('operator-card');
+    }
+    
+    btn.onclick = () => {
+      if (!roundCompleted) {
+        if (!isNaN(card)) {
+          if (isBuildingNumber) {
+            userExpression = userExpression.slice(0, -1) + userExpression.slice(-1) + card;
+          } else {
+            userExpression += card;
+            isBuildingNumber = true;
+          }
+        } else {
+          userExpression += (card === '*' ? '×' : card === '/' ? '÷' : card);
+          isBuildingNumber = false;
+        }
+      
+document.getElementById('playerExpression').textContent = userExpression;
+        
+        // 카드를 배열에서 제거하는 대신 used 클래스 추가
+        btn.classList.add('used');
+        btn.onclick = null; // 클릭 비활성화
+        
+        // userCards.splice(index, 1); // 이 줄 제거
+        // renderPlayerCards(); // 이 줄도 제거
+      }
     };
+    playerCardsArea.appendChild(btn);
+  });
+};
+
 
     const renderComputerCards = () => {
         const computerCardsArea = document.getElementById('computerCardsArea');
@@ -1035,43 +957,123 @@ const findBestExpression = (cards) => {
     });
   }
 
-  // 5개 숫자 + 4개 연산자 (모든 카드 사용)
-  if (numbers.length >= 5 && operators.length >= 4) {
-    numbers.forEach((a, i) => {
-      numbers.forEach((b, j) => {
-        numbers.forEach((c, k) => {
-          numbers.forEach((d, l) => {
-            numbers.forEach((e, m) => {
-              if (new Set([i, j, k, l, m]).size === 5) {
-                operators.forEach((op1, w) => {
-                  operators.forEach((op2, x) => {
-                    operators.forEach((op3, y) => {
-                      operators.forEach((op4, z) => {
-                        if (new Set([w, x, y, z]).size === 4) {
-                          try {
-                            const expr = `${a}${op1}${b}${op2}${c}${op3}${d}${op4}${e}`;
-                            const val = eval(expr);
-                            const diff = Math.abs(targetNumber - val);
-                            if (diff < bestDiff) {
-                              bestDiff = diff;
-                              bestVal = val;
-                              bestExpr = expr.replace(/\*/g, '×').replace(/\//g, '÷');
-                              usedCards = [a, b, c, d, e, op1, op2, op3, op4];
-                            }
-                          } catch {}
-                        }
-                      });
-                    });
-                  });
-                });
-              }
+// 3자리 숫자 + 연산자 + 1자리 숫자
+if (numbers.length >= 4 && operators.length >= 1) {
+  numbers.forEach((a, i) => {
+    numbers.forEach((b, j) => {
+      numbers.forEach((c, k) => {
+        numbers.forEach((d, l) => {
+          if (i !== j && j !== k && i !== k && l !== i && l !== j && l !== k) {
+            operators.forEach(op => {
+              try {
+                // 3자리 + 연산자 + 1자리 (abc + d)
+                const expr1 = `${a}${b}${c}${op}${d}`;
+                const val1 = eval(expr1);
+                const diff1 = Math.abs(targetNumber - val1);
+                if (diff1 < bestDiff) {
+                  bestDiff = diff1;
+                  bestVal = val1;
+                  bestExpr = expr1.replace(/\*/g, '×');
+                  usedCards = [a, b, c, d, op];
+                }
+
+                // 1자리 + 연산자 + 3자리 (a + bcd)
+                const expr2 = `${a}${op}${b}${c}${d}`;
+                const val2 = eval(expr2);
+                const diff2 = Math.abs(targetNumber - val2);
+                if (diff2 < bestDiff) {
+                  bestDiff = diff2;
+                  bestVal = val2;
+                  bestExpr = expr2.replace(/\*/g, '×');
+                  usedCards = [a, b, c, d, op];
+                }
+              } catch {}
             });
-          });
+          }
         });
       });
     });
-  }
+  });
+}
 
+// 4자리 숫자 만들기 (기존 3자리 코드 뒤에 추가)
+if (numbers.length >= 4) {
+  numbers.forEach((a, i) => {
+    numbers.forEach((b, j) => {
+      numbers.forEach((c, k) => {
+        numbers.forEach((d, l) => {
+          if (i !== j && j !== k && k !== l && i !== k && i !== l && j !== l) {
+            const combined = Number(`${a}${b}${c}${d}`);
+            const diff = Math.abs(targetNumber - combined);
+            if (diff < bestDiff) {
+              bestDiff = diff;
+              bestVal = combined;
+              bestExpr = `${a}${b}${c}${d}`;
+              usedCards = [a, b, c, d];
+            }
+          }
+        });
+      });
+    });
+  });
+}
+// 2자리 + 연산자 + 2자리
+if (numbers.length >= 4 && operators.length >= 1) {
+  numbers.forEach((a, i) => {
+    numbers.forEach((b, j) => {
+      numbers.forEach((c, k) => {
+        numbers.forEach((d, l) => {
+          if (new Set([i, j, k, l]).size === 4) {
+            operators.forEach(op => {
+              try {
+                const expr = `${a}${b}${op}${c}${d}`;
+                const val = eval(expr);
+                const diff = Math.abs(targetNumber - val);
+                if (diff < bestDiff) {
+                  bestDiff = diff;
+                  bestVal = val;
+                  bestExpr = expr.replace(/\*/g, '×').replace(/\//g, '÷');
+                  usedCards = [a, b, c, d, op];
+                }
+              } catch {}
+            });
+          }
+        });
+      });
+    });
+  });
+}
+
+// 2자리 + 연산자 + 1자리 + 연산자 + 1자리
+if (numbers.length >= 4 && operators.length >= 2) {
+  numbers.forEach((a, i) => {
+    numbers.forEach((b, j) => {
+      numbers.forEach((c, k) => {
+        numbers.forEach((d, l) => {
+          if (new Set([i, j, k, l]).size === 4) {
+            operators.forEach((op1, x) => {
+              operators.forEach((op2, y) => {
+                if (x !== y) {
+                  try {
+                    const expr = `${a}${b}${op1}${c}${op2}${d}`;
+                    const val = eval(expr);
+                    const diff = Math.abs(targetNumber - val);
+                    if (diff < bestDiff) {
+                      bestDiff = diff;
+                      bestVal = val;
+                      bestExpr = expr.replace(/\*/g, '×').replace(/\//g, '÷');
+                      usedCards = [a, b, c, d, op1, op2];
+                    }
+                  } catch {}
+                }
+              });
+            });
+          }
+        });
+      });
+    });
+  });
+}
   return { expr: bestExpr, value: bestVal, usedCards };
 };
 
@@ -1112,15 +1114,15 @@ const startPracticeGame = () => {
 
         renderPlayerCards();
         renderComputerCards();
-        document.getElementById('playerExpression').textContent = '카드를 클릭해서 수식을 만드세요.';
-        document.getElementById('computerExpression').textContent = '컴퓨터가 생각 중';
+        document.getElementById('playerExpression').textContent = 'Click cards to create an equation.';
+        document.getElementById('computerExpression').textContent = 'Computer is thinking.....';
 
         document.getElementById('startScreen').classList.add('hidden');
         document.getElementById('gameScreen').classList.remove('hidden');
     };
 
     const submitExpression = () => {
-        if (!userExpression) return alert('수식을 만들어주세요!');
+        if (!userExpression) return alert('Click cards to create an equation!');
         try {
             const evalExpression = userExpression.replace(/×/g, '*').replace(/÷/g, '/');
             const userVal = eval(evalExpression);
@@ -1181,7 +1183,7 @@ const startPracticeGame = () => {
             
             document.getElementById('playerActionButtons').classList.add('hidden');
         } catch {
-            alert('올바른 수식을 입력해주세요!');
+            alert('Please enter a valid expression!');
         }
     };
 
@@ -1206,8 +1208,8 @@ const startPracticeGame = () => {
         renderPlayerCards();
         renderComputerCards();
         userExpression = '';
-        document.getElementById('playerExpression').textContent = '플레이어는 카드를 클릭해서 수식을 만드세요.';
-        document.getElementById('computerExpression').textContent = '컴퓨터가 생각 중...';
+        document.getElementById('playerExpression').textContent = 'Click cards to create an equation.';
+        document.getElementById('computerExpression').textContent = 'Computer is thinking.....';
         roundCompleted = false;
         document.getElementById('nextRoundArea').classList.add('hidden');
         document.getElementById('playerActionButtons').classList.remove('hidden');
@@ -1219,7 +1221,7 @@ const startPracticeGame = () => {
             isBuildingNumber = false;
             userCards = [...originalUserCards];
             renderPlayerCards();
-            document.getElementById('playerExpression').textContent = '플레이어는 카드를 클릭해서 수식을 만드세요.';
+            document.getElementById('playerExpression').textContent = 'Click cards to create an equation.';
         }
     };
 
