@@ -2,7 +2,7 @@
 
 <html lang="ko">
 <head>
-    <!-- Google tag (gtag.js) -->
+   <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4YZHC1G9FN"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -10,7 +10,7 @@
       gtag('js', new Date());
       gtag('config', 'G-4YZHC1G9FN');
     </script>
-
+ 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>넘즐잼</title>
@@ -67,8 +67,8 @@ body {
     position: absolute;
     top: 12%;
     left: 5%;
-    width: 45%;
-    max-width: 500px;
+    width: 90%;
+    max-width: 750px;
     color: #f0f8ff;
     font-size: clamp(0.9rem, 2.5vw, 1.1rem);
     text-align: left;
@@ -76,7 +76,6 @@ body {
     line-height: 1.3;
     padding: 0 10px;
 }
-
 .game-description h3 {
     color: #add8e6;
     margin-bottom: 8px;
@@ -101,54 +100,25 @@ body {
     font-size: clamp(0.9rem, 2.5vw, 1.1rem);
 }
 
-.language-toggle {
-    position: absolute;
-    top: 2%;
-    right: 2%;
-    background: rgba(255,255,255,0.95);
-    padding: 8px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    z-index: 30;
-}
-
-.language-button {
-    background: #2e8b8b;
-    color: white;
-    border: none;
-    padding: 6px 10px;
-    margin: 2px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-family: 'Pretendard', sans-serif;
-    font-size: clamp(0.8rem, 2.5vw, 1rem);
-    transition: all 0.3s ease;
-}
-
-.language-button:hover {
-    background: #20b2aa;
-}
-
-.language-button.active {
-    background: #ff69b4;
-}
 
 .game-menu {
     position: absolute;
-    top: 12%;
     right: 5%;
     display: flex;
     flex-direction: column;
     gap: 15px;
     align-items: center;
-    width: 45%;
-    max-width: 400px;
+    width: 90%;
+    max-width: 750px;
     font-size: clamp(1rem, 3vw, 1.3rem);
     background: rgba(255, 255, 255, 0.1);
     padding: 20px;
     border-radius: 15px;
     backdrop-filter: blur(10px);
-}
+    top: 60%; /* 설명 아래쪽으로 이동 */
+    left: 50%;
+    transform: translateX(-50%); /* 중앙 정렬 */
+  }
 
 .target-input-container {
     width: 100%;
@@ -210,17 +180,22 @@ body {
 
 .operator-card {
     width: 60px;
-        height: 80px;
-        font-size: 24px;
-        background: white !important;
+    height: 60px;
+    font-size: 35px !important;
+    background: white !important;
     color: #d84315 !important;
     
 }
 
+.operator-card.used {
+    opacity: 0.5;
+    background: #f0f0f0;
+    border-color: #ccc;
+}
 /* 게임 화면 스타일 */
 .game-container {
     width: 100%;
-    max-width: 1200px;
+    max-width: 750px;
     margin: 0 auto;
     padding: 10px;
     background: #2e8b8b;
@@ -323,7 +298,7 @@ body {
     border-radius: 8px;
     padding: 12px 8px;
     width: 60px;
-    height: 80px;
+    height: 60px;
     font-size: 24px;
     font-weight: bold;
     cursor: pointer;
@@ -337,6 +312,12 @@ body {
 .card-button:hover {
     background: #f0f8ff;
     transform: translateY(-2px);
+}
+
+.card-button.used {
+    opacity: 0.5;
+    background: #f0f0f0;
+    border-color: #ccc;
 }
 
 .expression-area {
@@ -566,14 +547,10 @@ body {
             <h1 class="chalk-text main-title">넘즐잼</h1>
 
 
-    <div class="language-toggle">
-        <button class="language-button active" onclick="toggleLanguage('ko')">한국어</button>
-        <button class="language-button" onclick="toggleLanguage('en')">English</button>
-    </div>
     <br><br>
-    <div class="game-description chalk-text" id="korean-description">
+    <div class="game-description chalk-text">
         <h3>🎮 게임 소개</h3>
-        <p>넘즐잼 (NUMZZLE)=넘버(NUMBER) + 퍼즐(PUZZLE) +잼(JAM)</p>
+        <p>넘즐잼 =넘버(숫자) + 퍼즐 + 잼</p>
         <p><br></p>
 
         <h3>📋 게임 규칙</h3>
@@ -586,23 +563,9 @@ body {
         </ul>
     </div>
 
-    <div class="game-description chalk-text hidden" id="english-description">
-        <h3>🎮 Game Overview</h3>
-        <p>NUMZZLE JAM is a combination of "NUMBER", "PUZZLE" and "JAM"</p>
-        
-        <h3>📋 Game Rules</h3>
-        <ul>
-            <li>NUMZZLE JAM is a game where you use given numbers and operators to create an expression as close as possible to the target number.</li>
-            <li>The closer you get, the more points you score!</li>
-            <li>Practice Mode gives you the same cards as the computer.</li>
-            <li>Challenge Mode gives you different cards.</li>
-            <li>Set the target number and start the game.</li>
-        </ul>
-    </div>
-
     <div class="game-menu">
         <div class="target-input-container">
-            <label id="target-label">🎯목표숫자를 변경하고 싶으면 여기에 적으세요.</label>
+            <label id="target-label">🎯목표숫자를 적으세요.</label>
             <input id="targetInput" type="number" value="20" min="1" max="100" />
         </div>
 
@@ -623,7 +586,7 @@ body {
 <div id="gameScreen" class="hidden">
     <div class="game-container">
         <div class="game-header">
-            <h1>넘즐잼 (NUMZZLE)</h1>
+            <h1>넘즐잼</h1>
             <p>🎯목표숫자: <span id="targetDisplay" class="font-bold"></span></p>
         </div>
 
@@ -645,7 +608,7 @@ body {
         <!-- 플레이어 영역 -->
         <div class="player-section player-section">
             <div class="cards-section">
-                <h3 id="playerCardsTitle">플레이어의 카드 (Player's Cards):</h3>
+                <h3 id="playerCardsTitle">플레이어의 카드:</h3>
                 <div id="playerCardsArea" class="cards-area"></div>
             </div>
 
@@ -657,10 +620,10 @@ body {
 
             <div id="playerActionButtons" class="action-buttons">
                 <button onclick="submitExpression()" class="main-game-button">
-                    ✅ 제출 / Submit
+                    ✅ 제출
                 </button>
                 <button onclick="resetExpression()" class="main-game-button">
-                    🔄 초기화 / Reset
+                    🔄 초기화
                 </button>
             </div>
         </div>
@@ -668,7 +631,7 @@ body {
 
 <div id="nextRoundArea" class="hidden action-buttons">
                 <button onclick="nextRound()" class="main-game-button">
-                    ➡️ 다음 라운드 / Next Round
+                    ➡️ 다음 라운드
                 </button>
             </div>
 
@@ -676,7 +639,7 @@ body {
         <!-- 컴퓨터 영역 -->
         <div class="player-section computer-section">
             <div class="cards-section">
-                <h3 id="computerCardsTitle">컴퓨터의 카드 (Computer's Cards):</h3>
+                <h3 id="computerCardsTitle">컴퓨터의 카드:</h3>
                 <div id="computerCardsArea" class="cards-area"></div>
             </div>
 
@@ -697,10 +660,10 @@ body {
 
         <div class="bottom-buttons">
             <button onclick="backToStart()" class="main-game-button">
-                ⚙️ 설정으로<br>Go to Settings
+                ⚙️ 설정으로
             </button>
             <button onclick="location.href='index.html'" class="main-game-button">
-                🏠 홈으로<br>Go to Home
+                🏠 홈으로
             </button>
         </div>
     </div>
@@ -710,33 +673,7 @@ body {
 </div>
 
 <script>
-    function toggleLanguage(lang) {
-        const koreanDesc = document.getElementById('korean-description');
-        const englishDesc = document.getElementById('english-description');
-        const targetLabel = document.getElementById('target-label');
-        const practiceText = document.getElementById('practice-text');
-        const battleText = document.getElementById('battle-text');
-        const koBtn = document.querySelector('.language-button[onclick="toggleLanguage(\'ko\')"]');
-        const enBtn = document.querySelector('.language-button[onclick="toggleLanguage(\'en\')"]');
-        
-        if (lang === 'ko') {
-            koreanDesc.classList.remove('hidden');
-            englishDesc.classList.add('hidden');
-            targetLabel.textContent = '🎯 목표 숫자:';
-            practiceText.innerHTML = '연습';
-            battleText.innerHTML = '실전';
-            koBtn.classList.add('active');
-            enBtn.classList.remove('active');
-        } else {
-            koreanDesc.classList.add('hidden');
-            englishDesc.classList.remove('hidden');
-            targetLabel.textContent = '🎯 Target Number:';
-            practiceText.innerHTML = 'Practice';
-            battleText.innerHTML = 'Battle';
-            koBtn.classList.remove('active');
-            enBtn.classList.add('active');
-        }
-    }
+    
 
     let isPracticeMode = true;
     let targetNumber = 20;
@@ -785,8 +722,6 @@ const generateCards = () => {
   
   return [...numbers, ...operators];
 };
-
-// 플레이어 카드 렌더링 함수 추가
 const renderPlayerCards = () => {
   const playerCardsArea = document.getElementById('playerCardsArea');
   playerCardsArea.innerHTML = '';
@@ -794,6 +729,9 @@ const renderPlayerCards = () => {
     const btn = document.createElement('button');
     btn.className = 'card-button';
     btn.textContent = card === '*' ? '×' : card;
+    
+    // data-card-value 속성 추가
+    btn.setAttribute('data-card-value', card);
     
     // 연산자인 경우 스타일 추가
     if (isNaN(card)) {
@@ -814,13 +752,19 @@ const renderPlayerCards = () => {
           isBuildingNumber = false;
         }
         document.getElementById('playerExpression').textContent = userExpression;
-        userCards.splice(index, 1);
-        renderPlayerCards();
+        
+        // 카드를 배열에서 제거하는 대신 used 클래스 추가
+        btn.classList.add('used');
+        btn.onclick = null; // 클릭 비활성화
+        
+        // userCards.splice(index, 1); // 이 줄 제거
+        // renderPlayerCards(); // 이 줄도 제거
       }
     };
     playerCardsArea.appendChild(btn);
   });
 };
+
 
 const renderComputerCards = () => {
   const computerCardsArea = document.getElementById('computerCardsArea');
@@ -830,6 +774,9 @@ const renderComputerCards = () => {
     span.className = 'card-button';
     span.textContent = card === '*' ? '×' : card;
     
+    // data-card-value 속성 추가
+    span.setAttribute('data-card-value', card);
+    
     // 연산자인 경우 스타일 추가
     if (isNaN(card)) {
       span.classList.add('operator-card');
@@ -838,6 +785,8 @@ const renderComputerCards = () => {
     computerCardsArea.appendChild(span);
   });
 };
+
+
 
 // 컴퓨터가 최적의 답을 찾는 함수
 const findBestExpression = (cards) => {
@@ -1083,41 +1032,52 @@ const startPracticeGame = () => {
             // 컴퓨터 수식과 결과를 함께 표시
             document.getElementById('computerExpression').textContent = `${computerExpr} = ${computerVal}`;
 
-            // 사용된 카드를 정확히 제거
-            const newComputerCards = [...computerCards];
-            usedCards.forEach(usedCard => {
-                const index = newComputerCards.indexOf(usedCard);
-                if (index > -1) {
-                    newComputerCards.splice(index, 1);
-                }
-            });
-            computerCards = newComputerCards;
-            renderComputerCards();
 
-            const pointsPerRound = 10;
-            let userRoundScore = 0;
-            let computerRoundScore = 0;
+// 사용된 카드를 제거하는 대신 색깔만 변경
+usedCards.forEach(usedCard => {
+    const cardElement = document.querySelector(`[data-card-value="${usedCard}"]`);
+    if (cardElement) {
+        cardElement.classList.add('used-card');
+    }
+});
 
-            const diffUser = Math.abs(targetNumber - userVal);
-            const diffComp = Math.abs(targetNumber - computerVal);
+// 카드 제거 코드는 삭제
+// const newComputerCards = [...computerCards];
+// usedCards.forEach(usedCard => {
+//     const index = newComputerCards.indexOf(usedCard);
+//     if (index > -1) {
+//         newComputerCards.splice(index, 1);
+//     }
+// });
+// computerCards = newComputerCards;
+// renderComputerCards();
 
-            if (diffUser < diffComp) {
-                userRoundScore = pointsPerRound;
-            } else if (diffComp < diffUser) {
-                computerRoundScore = pointsPerRound;
-            } else {
-                userRoundScore = pointsPerRound;
-                computerRoundScore = pointsPerRound;
-            }
+const pointsPerRound = 10;
+let userRoundScore = 0;
+let computerRoundScore = 0;
 
-            userScore += userRoundScore;
-            computerScore += computerRoundScore;
+const diffUser = Math.abs(targetNumber - userVal);
+const diffComp = Math.abs(targetNumber - computerVal);
 
-            document.getElementById('playerScore').textContent = userScore;
-            document.getElementById('computerScore').textContent = computerScore;
-            roundCompleted = true;
+if (diffUser < diffComp) {
+    userRoundScore = pointsPerRound;
+} else if (diffComp < diffUser) {
+    computerRoundScore = pointsPerRound;
+} else {
+    userRoundScore = pointsPerRound;
+    computerRoundScore = pointsPerRound;
+}
 
-            if (currentRound === 10) {
+userScore += userRoundScore;
+computerScore += computerRoundScore;
+
+document.getElementById('playerScore').textContent = userScore;
+document.getElementById('computerScore').textContent = computerScore;
+roundCompleted = true;
+
+if (currentRound === 10) {
+
+
                 // 10라운드 종료
                 document.getElementById('finalPlayerScore').textContent = userScore;
                 document.getElementById('finalComputerScore').textContent = computerScore;
