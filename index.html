@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-     <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4YZHC1G9FN"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -43,8 +42,8 @@
   "inLanguage": ["en", "ko"]
 }
 </script>
-     <style>
-        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+<style>
+    @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
     * {
         margin: 0;
@@ -77,21 +76,6 @@
         font-size: 1.2rem;
     }
 
-    /* 페이지 전환 관련 */
-    .page {
-        display: none;
-    }
-
-    .page.active {
-        display: block;
-        animation: fadeIn 0.5s ease-in;
-    }
-
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-
     /* 뒤로가기 버튼 */
     .back-button {
         position: absolute;
@@ -113,94 +97,6 @@
         color: white;
     }
 
-    /* 첫 번째 페이지 스타일 */
-    .container {
-        padding: 15px;
-    }
-
-    h1 {
-        font-size: 1.5rem;
-        color: #FF9494;
-        margin-bottom: 25px;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        text-align: center;
-    }
-
-    .step-title {
-        font-size: 1.5em;
-        color: #FF9494;
-        margin-bottom: 20px;
-        font-weight: bold;
-    }
-
-    .description {
-        margin-bottom: 30px;
-        font-size: clamp(1.1rem, 3.3vw, 1.3rem);
-        line-height: 1.5;
-        background-color: #f7e6f3;
-        padding: 10px;
-        border-radius: 15px;
-        color: #7A2E2E;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-
-    .selection-container {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        margin-bottom: 10px;
-    }
-
-    .selection-row {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        flex-wrap: wrap;
-    }
-
-    .selection-button {
-        flex: 1;
-        min-width: 280px;
-        max-width: 350px;
-        padding: 15px 10px;
-        font-size: clamp(1.1rem, 3.3vw, 1.3rem);
-        font-weight: bold;
-        border: none;
-        border-radius: 15px;
-        background-color: #f7e6f3;
-        color: #7A2E2E;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-        position: relative;
-        overflow: hidden;
-    }
-
-    .selection-button:hover {
-        background: linear-gradient(145deg, #FF9494, #FF7373);
-        color: white;
-        transform: translateY(-3px);
-        box-shadow: 0 8px 16px rgba(255, 148, 148, 0.3);
-    }
-
-    .selection-button:active {
-        transform: translateY(-1px);
-    }
-
-    .selection-button .emoji {
-        display: block;
-        font-size: 1.8em;
-        margin-bottom: 8px;
-    }
-
-    .selection-button .subtitle {
-        font-size: clamp(1.1rem, 3.3vw, 1.3rem);
-        font-weight: normal;
-        opacity: 0.8;
-        margin-top: 5px;
-    }
-
-    /* 두 번째 페이지 스타일 */
     .numzzle-main {
         transition: all 0.5s ease;
         padding: 15px;
@@ -319,7 +215,7 @@
     .square-button {
         width: 280px;
         height: 80px;
-        background-color: #FFB3D9;
+        background-color: #2e8b8b;
         color: white;
         border: none;
         border-radius: 12px;
@@ -337,7 +233,7 @@
     }
 
     .square-button:hover {
-        background-color: #FF8FAB;
+        background-color: #20b2aa;
         transform: scale(1.05);
         box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
@@ -353,19 +249,10 @@
         background-color: #145454;
         padding: 15px;
         border-radius: 10px;
-        max-width: 300px;
+        max-width: 200px;
         margin-left: auto;
         margin-right: auto;
         text-align: center;
-    }
-
-    #page2 .square-button {
-        background-color: #2e8b8b;
-        color: white;
-    }
-
-    #page2 .credits {
-        max-width: 200px;
     }
 
     /* 모바일 대응 */
@@ -374,21 +261,16 @@
             width: 100vw;
             height: 100vh;
         }
-        
-        .selection-button {
-            min-width: 250px;
-            max-width: 300px;
-        }
     }
 
     /* 데스크톱에서는 원래 스타일 유지하되 750px에 맞게 조정 */
     @media (min-width: 769px) {
-        #page2 .numzzle-main {
+        .numzzle-main {
             display: block;
             padding: 20px;
         }
 
-        #page2 .main-title {
+        .main-title {
             position: absolute;
             top: 8%;
             left: 50%;
@@ -397,23 +279,23 @@
             font-size: 1.2rem;
         }
 
-        #page2 .top-buttons {
+        .top-buttons {
             display: contents;
         }
 
-        #page2 .language-toggle {
+        .language-toggle {
             position: absolute;
             top: 15%;
             right: 5%;
             padding: 8px;
         }
 
-        #page2 .language-button {
+        .language-button {
             padding: 6px 12px;
             font-size: 1.2rem;
         }
 
-        #page2 .game-description {
+        .game-description {
             position: absolute;
             top: 22%;
             left: 50%;
@@ -422,11 +304,11 @@
             font-size: 1.2rem;
         }
 
-        #page2 .game-description h3 {
+        .game-description h3 {
             font-size: 1.5rem;
         }
 
-        #page2 .button-container {
+        .button-container {
             text-align: center;
             flex-direction: row;
             justify-content: center;
@@ -434,13 +316,13 @@
             position: static;
         }
 
-        #page2 .main-game-button {
+        .main-game-button {
             font-size: clamp(1.1rem, 3.3vw, 1.3rem);
             padding: 12px 20px;
             width: 150px;
         }
 
-        #page2 .credits {
+        .credits {
             position: absolute;
             bottom: 3%;
             right: 5%;
@@ -460,132 +342,86 @@
         }
     }
 </style>
-
-
 </head>
 <body>
-<button class="back-button" onclick="goBack()" style="display: none;">← 뒤로가기 / ← Back</button>
+<button class="back-button" onclick="location.href='numzzle-page1.html'">← 뒤로가기 / ← Back</button>
 
 <div class="blackboard">
-    <!-- 첫 번째 페이지: 게임 선택 -->
-    <div id="page1" class="page active">
-        <div class="container">
-            <h1>넘즐 시리즈<br><span style="font-size: 1.2em; ">Numzzle Series</span></h1>
+    <div class="numzzle-main">
+        <div class="main-title" style="font-size: clamp(1.5rem, 3.7vw, 1.7rem);">넘즐</div>
 
-            <div class="description">
-                <p>숫자카드와 연산기호 카드를 이용해서 수식을 만드세요.<br>
-               
-                원하는 플레이 방식을 선택하세요!<br></p>
-                <span style="font-size: 1.1em;">Create expressions using number cards and operation symbol cards.Choose your preferred play style!</span>
-            </div>
-
-            <div class="selection-container">
-                <div class="selection-row">
-                    <button class="selection-button" onclick="goToPage2()">
-                        <span class="emoji">🤖</span>
-                        목표숫자 만들기<br>
-                        <span style="font-size: 1.1em;">Make Target Number</span>
-                        <div class="subtitle">npc와 대결 / VS NPC</div>
-                    </button> 
-                    <button class="selection-button" onclick="location.href='https://soosooland.com/numzzlex'">
-                        <span class="emoji">🎯</span>
-                        최대값 최소값 만들기<br>
-                        <span style="font-size: 1.1em;">Make Max/Min Values</span>
-                        <div class="subtitle">npc와 대결 / VS NPC</div>
-                    </button>
-               </div>
-            </div>
-
-            <div class="credits">       
-                <button class="square-button" onclick="location.href='https://soosooland.com'">
-                    즐거운 퍼즐, 수수랜드  <br> Fun puzzles, Soosooland
-                </button>
-                <p> © 2025 Soosoo Han. All rights reserved.</p>
+        <div class="top-buttons">
+            <div class="language-toggle">
+                <button class="language-button active" onclick="toggleLanguage('ko')">한국어</button>
+                <button class="language-button" onclick="toggleLanguage('en')">English</button>
             </div>
         </div>
-    </div>
 
-    <!-- 두 번째 페이지: 넘즐 게임 상세 -->
-    <div id="page2" class="page">
-        <div class="numzzle-main">
-            <div class="main-title" style="font-size: clamp(1.5rem, 3.7vw, 1.7rem);">넘즐</div>
+        <div class="game-description chalk-text" id="korean-description">
+            <h3>🎮 게임 소개</h3>
+            <p>넘즐 = 넘버(NUMBER) + 퍼즐(PUZZLE)</p>
+            <h3>📋 게임 규칙</h3>
+            <ul>
+                <li>한 라운드마다 주어진 카드로 수식을 만들고, <strong>목표 숫자에 가장 가까운 값</strong>을 만든 사람이 점수를 얻습니다.</li>
+                <li>넘즐초는 덧셈(+)과 뺄셈(-) 연산만 사용합니다. 초등학교 2학년 이상이면 게임할 수 있습니다.</li>
+                <li>넘즐잼은 덧셈(+), 뺄셈(-), 곱셈(x) 연산을 사용합니다. 초등학교 3학년 이상이면 게임할 수 있습니다.</li>
+                <li>넘즐은 덧셈(+), 뺄셈(-), 곱셈(x), 나눗셈(÷) 연산기호를 사용합니다. 초등학교 4학년 이상이면 게임할 수 있지만 사고력이 필요한 게임입니다.</li>
+                <li>넘즐업은 덧셈(+)과 뺄셈(-), 곱셈(×), 나눗셈(÷), 루트(√), 파이(π)를 사용하며 깊은 사고력과 수학적 감각이 필요합니다. 중학교 2학년 이상이면 게임할 수 있습니다.</li>
+            </ul>
+            <div class="button-container">
+                <button class="main-game-button" onclick="location.href='https://soosoofile.vercel.app/numzzlecho-ko.html'">
+                    넘즐초
+                </button>
+                <button class="main-game-button" onclick="location.href='https://soosoofile.vercel.app/numzzlejam-ko.html'">
+                    넘즐잼
+                </button>
+                <button class="main-game-button" onclick="location.href='https://soosoofile.vercel.app/numzzle-ko.html'">
+                    넘즐
+                </button>
+                <button class="main-game-button" onclick="location.href='https://soosoofile.vercel.app/numzzleup-ko.html'">
+                    넘즐업
+                </button>
+            </div>
+        </div>
 
-            <div class="top-buttons">
-                <div class="language-toggle">
-                    <button class="language-button active" onclick="toggleLanguage('ko')">한국어</button>
-                    <button class="language-button" onclick="toggleLanguage('en')">English</button>
-                </div>
-            </div>
-            <div class="game-description chalk-text" id="korean-description">
-                  <h3>🎮 게임 소개</h3>
-                <p> 넘즐 = 넘버(NUMBER) + 퍼즐(PUZZLE)</p>
-                  <h3>📋 게임 규칙</h3>
-                    <ul>
-                    <li>한 라운드마다 주어진 카드로 수식을 만들고, <strong>목표 숫자에 가장 가까운 값</strong>을 만든 사람이 점수를 얻습니다.</li>
-                    <li>넘즐초는 덧셈(+)과 뺄셈(-) 연산만 사용합니다.초등학교 2학년 이상이면 게임할 수 있습니다.</li>
-                    <li>넘즐잼은 덧셈(+), 뺄셈(-), 곱셈(x) 연산을 사용합니다. 초등학교 3학년 이상이면 게임할 수 있습니다.</li>
-                    <li>넘즐은 덧셈(+), 뺄셈(-), 곱셈(x), 나눗셈(÷) 연산기호를 사용합니다.초등학교 4학년 이상이면 게임할 수 있지만 사고력이 필요한 게임입니다.</li>
-                    <li>넘즐업은 덧셈(+)과 뺄셈(-), 곱셈(×), 나눗셈(÷), 루트(√), 파이(π)를 사용하며 깊은 사고력과 수학적 감각이 필요합니다. 중학교 2학년 이상이면 게임할 수 있습니다.</li>
-                    </ul>
-                <div class="button-container">
-                    <button class="main-game-button" onclick="location.href='https://soosoofile.vercel.app/numzzlecho-ko.html'">
-                        넘즐초
-                    </button>
-                    <button class="main-game-button" onclick="location.href='https://soosoofile.vercel.app/numzzlejam-ko.html'">
-                        넘즐잼
-                    </button>
-                    <button class="main-game-button" onclick="location.href='https://soosoofile.vercel.app/numzzle-ko.html'">
-                        넘즐
-                    </button>
-                    <button class="main-game-button" onclick="location.href='https://soosoofile.vercel.app/numzzleup-ko.html'">
-                        넘즐업
-                    </button>
-                </div>
-            </div>
-            <div class="game-description chalk-text hidden" id="english-description">
-                <h3>🎮 Game Overview</h3>
-                <p>NUMZZLE = NUMBER + PUZZLE</p>
-                <h3>📋 Game Rules</h3>
-                <ul>
+        <div class="game-description chalk-text hidden" id="english-description">
+            <h3>🎮 Game Overview</h3>
+            <p>NUMZZLE = NUMBER + PUZZLE</p>
+            <h3>📋 Game Rules</h3>
+            <ul>
                 <li>In each round, create an expression using the given cards, and the player who makes the <strong>value closest to the target number</strong> earns points.</li>     
-                <li>Numzzle Cho uses only addition (+) and subtraction (-) operations.Suitable for students in Grade 2 or above who are comfortable with basic addition and subtraction.</li>
-                <li>Numzzle Jam  uses addition (+), subtraction (-), and multiplication (x) operations. Suitable for students in Grade 3 or above who have learned multiplication tables.</li>
-                <li>Numzzle uses addition (+), subtraction (-), multiplication (x), and division (÷) operation symbols.</li> Suitable for students in Grade 4 or above. However, it's a game that requires critical thinking skills.</li>
-                <li>Numzzle Up uses addition (+), subtraction (-), multiplication (×), division (÷), square root (√), and pi (π), requiring deep thinking skills and mathematical sense.Suitable for students in Grade 8 or above.</li>                
-                </ul>
+                <li>Numzzle Cho uses only addition (+) and subtraction (-) operations. Suitable for students in Grade 2 or above who are comfortable with basic addition and subtraction.</li>
+                <li>Numzzle Jam uses addition (+), subtraction (-), and multiplication (x) operations. Suitable for students in Grade 3 or above who have learned multiplication tables.</li>
+                <li>Numzzle uses addition (+), subtraction (-), multiplication (x), and division (÷) operation symbols. Suitable for students in Grade 4 or above. However, it's a game that requires critical thinking skills.</li>
+                <li>Numzzle Up uses addition (+), subtraction (-), multiplication (×), division (÷), square root (√), and pi (π), requiring deep thinking skills and mathematical sense. Suitable for students in Grade 8 or above.</li>                
+            </ul>
 
-                <div class="button-container">
-                    <button class="main-game-button" onclick="location.href='https://soosoofile.vercel.app/numzzlecho-en.html'">
-                        NUMZZLE CHO
-                    </button>
-                    <button class="main-game-button" onclick="location.href='https://soosoofile.vercel.app/numzzlejam-en.html'">
-                        NUMZZLE JAM
-                    </button>
-                    <button class="main-game-button" onclick="location.href='https://soosoofile.vercel.app/numzzle-en.html'">
-                        NUMZZLE
-                    </button>
-                    <button class="main-game-button" onclick="location.href='https://soosoofile.vercel.app/numzzleup-en.html'">
-                        NUMZZLE UP
-                    </button>  
-                </div>
+            <div class="button-container">
+                <button class="main-game-button" onclick="location.href='https://soosoofile.vercel.app/numzzlecho-en.html'">
+                    NUMZZLE CHO
+                </button>
+                <button class="main-game-button" onclick="location.href='https://soosoofile.vercel.app/numzzlejam-en.html'">
+                    NUMZZLE JAM
+                </button>
+                <button class="main-game-button" onclick="location.href='https://soosoofile.vercel.app/numzzle-en.html'">
+                    NUMZZLE
+                </button>
+                <button class="main-game-button" onclick="location.href='https://soosoofile.vercel.app/numzzleup-en.html'">
+                    NUMZZLE UP
+                </button>  
             </div>
+        </div>
+
+        <div class="credits">       
+            <button class="square-button" onclick="location.href='https://soosooland.com'">
+                즐거운 퍼즐, 수수랜드<br>Fun puzzles, Soosooland
+            </button>
+            <p>© 2025 Soosoo Han. All rights reserved.</p>
         </div>
     </div>
 </div>
 
 <script>
-    function goToPage2() {
-        document.getElementById('page1').classList.remove('active');
-        document.getElementById('page2').classList.add('active');
-        document.querySelector('.back-button').style.display = 'block';
-    }
-
-    function goBack() {
-        document.getElementById('page2').classList.remove('active');
-        document.getElementById('page1').classList.add('active');
-        document.querySelector('.back-button').style.display = 'none';
-    }
-
     function toggleLanguage(lang) {
         const koreanDesc = document.getElementById('korean-description');
         const englishDesc = document.getElementById('english-description');
@@ -604,7 +440,5 @@
         }
     }
 </script>
-
-
 </body>
 </html>
