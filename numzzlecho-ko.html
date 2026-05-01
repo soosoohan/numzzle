@@ -878,7 +878,6 @@ btn.textContent = card;
             roundCompleted = true;
 
         
-
 if (currentRound === 10) {
     const finalPlayerScore = document.getElementById('finalPlayerScore');
     const finalComputerScore = document.getElementById('finalComputerScore');
@@ -888,11 +887,13 @@ if (currentRound === 10) {
     if (finalComputerScore) finalComputerScore.textContent = computerScore;
     if (resultArea) resultArea.classList.remove('hidden');
 
-    // 연습 모드일 때만 점수 저장 및 분포 표시
+    // 연습 모드면 컴퓨터 점수 줄 숨기기
     if (isPracticeMode) {
+        document.getElementById('finalComputerName').parentElement.style.display = 'none';
         window.saveScoreAndShowPercentile('numzzle_cho', userScore);
     }
 }
+
 
 else {
                 const nextRoundArea = document.getElementById('nextRoundArea');
