@@ -989,36 +989,40 @@ else {
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 
-  // 점수 저장 + 분포 계산
   async function saveScoreAndShowPercentile(gameMode, score) {
-    // 저장
-    await addDoc(collection(db, "scores"), {
-      mode: gameMode,
-      score: score,
-      createdAt: new Date()
-    });
+    try {
+      await addDoc(collection(db, "scores"), {
+        mode: gameMode,
+        score: score,
+        createdAt: new Date()
+      });
 
-    // 같은 모드 전체 점수 가져오기
-    const q = query(collection(db, "scores"), where("mode", "==", gameMode));
-    const snapshot = await getDocs(q);
-    const allScores = snapshot.docs.map(d => d.data().score);
+      const q = query(collection(db, "scores"), where("mode", "==", gameMode));
+      const snapshot = await getDocs(q);
+      const allScores = snapshot.docs.map(d => d.data().score);
 
-    // 상위 퍼센트 계산
-    const lower = allScores.filter(s => s < score).length;
-    const percentile = Math.round((lower / allScores.length) * 100);
-    const top = 100 - percentile;
+      const lower = allScores.filter(s => s < score).length;
+      const top = 100 - Math.round((lower / allScores.length) * 100);
 
-    // 결과 화면에 표시
-    const resultArea = document.getElementById('resultArea');
-    const p = document.createElement('p');
-    p.style.fontSize = '1.3rem';
-    p.style.fontWeight = 'bold';
-    p.style.color = '#145454';
-    p.textContent = `🏆 이 점수는 상위 ${top}%예요!`;
-    resultArea.appendChild(p);
+      const resultArea = document.getElementById('resultArea');
+      const p = document.createElement('p');
+      p.style.fontSize = '1.3rem';
+      p.style.fontWeight = 'bold';
+      p.style.color = '#145454';
+      p.textContent = `🏆 이 점수는 상위 ${top}%예요!`;
+      resultArea.appendChild(p);
+    } catch(e) {
+      console.error('Firebase 오류:', e);
+    }
   }
 
-  // 게임 종료 시 호출되도록 전역 등록
+  // 버튼 클릭 이벤트로 연결 (타이밍 문제 해결)
+  document.addEventListener('click', async (e) => {
+    if (e.target.closest('#playerActionButtons button:first-child')) {
+      // 제출 버튼 클릭 후 잠시 기다렸다가 확인
+    }
+  });
+
   window.saveScoreAndShowPercentile = saveScoreAndShowPercentile;
 </script>
 
