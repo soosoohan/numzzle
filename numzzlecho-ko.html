@@ -989,7 +989,7 @@ else {
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 
-  async function saveScoreAndShowPercentile(gameMode, score) {
+async function saveScoreAndShowPercentile(gameMode, score) {
     try {
       await addDoc(collection(db, "scores"), {
         mode: gameMode,
@@ -1000,28 +1000,46 @@ else {
       const q = query(collection(db, "scores"), where("mode", "==", gameMode));
       const snapshot = await getDocs(q);
       const allScores = snapshot.docs.map(d => d.data().score);
+      const total = allScores.length;
 
-      const lower = allScores.filter(s => s < score).length;
-      const top = 100 - Math.round((lower / allScores.length) * 100);
+      // 점수별 개수 세기
+      const scoreCount = {};
+      allScores.forEach(s => {
+        scoreCount[s] = (scoreCount[s] || 0) + 1;
+      });
 
+      // 점수 높은 순으로 정렬
+      const sorted = Object.keys(scoreCount)
+        .map(Number)
+        .sort((a, b) => b - a);
+
+      // 분포 표시
       const resultArea = document.getElementById('resultArea');
-      const p = document.createElement('p');
-      p.style.fontSize = '1.3rem';
-      p.style.fontWeight = 'bold';
-      p.style.color = '#145454';
-      p.textContent = `🏆 이 점수는 상위 ${top}%예요!`;
-      resultArea.appendChild(p);
+      
+      const title = document.createElement('p');
+      title.style.fontWeight = 'bold';
+      title.style.marginTop = '10px';
+      title.style.color = '#145454';
+      title.textContent = '📊 점수 분포';
+      resultArea.appendChild(title);
+
+      sorted.forEach(s => {
+        const pct = Math.round((scoreCount[s] / total) * 100);
+        const bar = '█'.repeat(Math.round(pct / 5)) + '░'.repeat(20 - Math.round(pct / 5));
+        
+        const p = document.createElement('p');
+        p.style.fontFamily = 'monospace';
+        p.style.fontSize = '1rem';
+        p.style.color = s == score ? '#d84315' : '#555';
+        p.style.fontWeight = s == score ? 'bold' : 'normal';
+        p.textContent = `${String(s).padStart(3)}점 ${bar} ${pct}%`;
+        resultArea.appendChild(p);
+      });
+
     } catch(e) {
       console.error('Firebase 오류:', e);
     }
   }
-
-  // 버튼 클릭 이벤트로 연결 (타이밍 문제 해결)
-  document.addEventListener('click', async (e) => {
-    if (e.target.closest('#playerActionButtons button:first-child')) {
-      // 제출 버튼 클릭 후 잠시 기다렸다가 확인
-    }
-  });
 
   window.saveScoreAndShowPercentile = saveScoreAndShowPercentile;
 </script>
