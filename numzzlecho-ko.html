@@ -974,6 +974,8 @@ else {
 </script>
 
 <!-- Firebase -->
+
+    <!-- Firebase -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
   import { getFirestore, collection, addDoc, getDocs, query, where } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
@@ -990,14 +992,20 @@ else {
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 
-async function saveScoreAndShowPercentile(gameMode, score) {
+  async function saveScoreAndShowPercentile(gameMode, score) {
     try {
+      // 기존 분포 지우기
+      const resultArea = document.getElementById('resultArea');
+      resultArea.querySelectorAll('.score-chart').forEach(el => el.remove());
+
+      // 점수 저장
       await addDoc(collection(db, "scores"), {
         mode: gameMode,
         score: score,
         createdAt: new Date()
       });
 
+      // 같은 모드 전체 점수 가져오기
       const q = query(collection(db, "scores"), where("mode", "==", gameMode));
       const snapshot = await getDocs(q);
       const allScores = snapshot.docs.map(d => d.data().score);
@@ -1014,21 +1022,23 @@ async function saveScoreAndShowPercentile(gameMode, score) {
         .map(Number)
         .sort((a, b) => b - a);
 
-      // 분포 표시
-      const resultArea = document.getElementById('resultArea');
-      
+      // 제목
       const title = document.createElement('p');
+      title.className = 'score-chart';
       title.style.fontWeight = 'bold';
       title.style.marginTop = '10px';
       title.style.color = '#145454';
       title.textContent = '📊 점수 분포';
       resultArea.appendChild(title);
 
+      // 분포 막대 표시
       sorted.forEach(s => {
         const pct = Math.round((scoreCount[s] / total) * 100);
-        const bar = '█'.repeat(Math.round(pct / 5)) + '░'.repeat(20 - Math.round(pct / 5));
-        
+        const filled = Math.round(pct / 5);
+        const bar = '█'.repeat(filled) + '░'.repeat(20 - filled);
+
         const p = document.createElement('p');
+        p.className = 'score-chart';
         p.style.fontFamily = 'monospace';
         p.style.fontSize = '1rem';
         p.style.color = s == score ? '#d84315' : '#555';
