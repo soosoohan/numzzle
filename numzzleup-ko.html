@@ -777,6 +777,32 @@ const findBestExpression = (cards) => {
             }
         }
     });
+// 6.5. 2자리수 + 연산 + 숫자 + 연산 + 숫자
+basicOps.forEach((op1, x) => {
+    basicOps.forEach((op2, y) => {
+        if (x !== y) {
+            for (let i = 0; i < numbers.length; i++) {
+                for (let j = 0; j < numbers.length; j++) {
+                    for (let k = 0; k < numbers.length; k++) {
+                        for (let l = 0; l < numbers.length; l++) {
+                            if (numbers[i] !== 'π' && numbers[j] !== 'π') {
+                                const counts = {...cardCounts};
+                                if (useCard(counts, numbers[i]) && useCard(counts, numbers[j]) &&
+                                    useCard(counts, op1) && useCard(counts, numbers[k]) &&
+                                    useCard(counts, op2) && useCard(counts, numbers[l])) {
+                                    const twoDigit = parseInt(`${numbers[i]}${numbers[j]}`);
+                                    if (twoDigit.toString()[0] !== '0') {
+                                        tryExpression(`${twoDigit}${getDisplayOp(op1)}${numbers[k]}${getDisplayOp(op2)}${numbers[l]}`);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    });
+});
 
        // 7. 3개 숫자 + 2개 연산자
     if (basicOps.length >= 2) {
