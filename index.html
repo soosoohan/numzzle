@@ -454,6 +454,7 @@
             englishDesc.classList.remove('hidden');
             buttons[1].classList.add('active');
         }
+        localStorage.setItem('soosoo-lang', lang); 
     }
 function initLanguage() {
   const saved = localStorage.getItem('soosoo-lang');
