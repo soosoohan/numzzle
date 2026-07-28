@@ -680,12 +680,10 @@ margin-top: 30px;
         }
     };
 
-  
 const findBestExpression = (cards) => {
     let bestExpr = '';
     let bestDiff = Infinity;
 
-    // 카드 사용 가능 횟수 계산
     const cardCounts = {};
     cards.forEach(card => {
         cardCounts[card] = (cardCounts[card] || 0) + 1;
@@ -709,7 +707,6 @@ const findBestExpression = (cards) => {
         return op;
     };
 
-    // 카드를 사용하는 함수
     const useCard = (counts, card) => {
         if (counts[card] > 0) {
             counts[card]--;
@@ -720,6 +717,36 @@ const findBestExpression = (cards) => {
 
     const numbers = cards.filter(c => !isNaN(c) || c === 'π');
     const operators = cards.filter(c => isNaN(c) && c !== 'π');
+    const basicOps = operators.filter(op => op !== '√'); // ← 여기로 위치 이동
+
+    // === [추가 A] 숫자π 단독 (예: "8π") ===
+    if (numbers.includes('π')) {
+        numbers.forEach(num => {
+            if (num !== 'π' && !isNaN(num)) {
+                const counts = {...cardCounts};
+                if (useCard(counts, num) && useCard(counts, 'π')) {
+                    tryExpression(`${num}π`);
+                }
+            }
+        });
+    }
+
+    // === [추가 B] 숫자π + 연산자 + 숫자 (예: "8π-3-2"의 부분식 "8π-3") ===
+    if (numbers.includes('π')) {
+        basicOps.forEach(op => {
+            numbers.forEach(numA => {
+                if (numA === 'π') return;
+                numbers.forEach(numB => {
+                    const counts = {...cardCounts};
+                    if (useCard(counts, numA) && useCard(counts, 'π') &&
+                        useCard(counts, op) && useCard(counts, numB)) {
+                        tryExpression(`${numA}π${getDisplayOp(op)}${numB}`);
+                        tryExpression(`${numB}${getDisplayOp(op)}${numA}π`);
+                    }
+                });
+            });
+        });
+    }
 
     // 1. 단일 숫자
     numbers.forEach(num => {
@@ -761,6 +788,42 @@ const findBestExpression = (cards) => {
         }
     }
 
+    // === [추가 C] 2자리/3자리 숫자 + π (예: "28π", "345π") ===
+    if (numbers.includes('π')) {
+        // 2자리 + π
+        for (let i = 0; i < numbers.length; i++) {
+            for (let j = 0; j < numbers.length; j++) {
+                if (numbers[i] !== 'π' && numbers[j] !== 'π') {
+                    const counts = {...cardCounts};
+                    if (useCard(counts, numbers[i]) && useCard(counts, numbers[j]) && useCard(counts, 'π')) {
+                        const twoDigit = parseInt(`${numbers[i]}${numbers[j]}`);
+                        if (twoDigit.toString()[0] !== '0') {
+                            tryExpression(`${twoDigit}π`);
+                        }
+                    }
+                }
+            }
+        }
+
+        // 3자리 + π
+        for (let i = 0; i < numbers.length; i++) {
+            for (let j = 0; j < numbers.length; j++) {
+                for (let k = 0; k < numbers.length; k++) {
+                    if (numbers[i] !== 'π' && numbers[j] !== 'π' && numbers[k] !== 'π') {
+                        const counts = {...cardCounts};
+                        if (useCard(counts, numbers[i]) && useCard(counts, numbers[j]) &&
+                            useCard(counts, numbers[k]) && useCard(counts, 'π')) {
+                            const threeDigit = parseInt(`${numbers[i]}${numbers[j]}${numbers[k]}`);
+                            if (threeDigit.toString()[0] !== '0') {
+                                tryExpression(`${threeDigit}π`);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     // 4. √ 연산
     if (operators.includes('√')) {
         numbers.forEach(num => {
@@ -772,7 +835,6 @@ const findBestExpression = (cards) => {
             }
         });
 
-        // 숫자 √ 숫자 패턴
         numbers.forEach(num1 => {
             numbers.forEach(num2 => {
                 if (num1 !== 'π' && num2 !== 'π') {
@@ -786,7 +848,6 @@ const findBestExpression = (cards) => {
     }
 
     // 5. 기본 연산 (2개 숫자)
-    const basicOps = operators.filter(op => op !== '√');
     basicOps.forEach(op => {
         for (let i = 0; i < numbers.length; i++) {
             for (let j = 0; j < numbers.length; j++) {
@@ -817,22 +878,24 @@ const findBestExpression = (cards) => {
             }
         }
     });
-// 6.5. 2자리수 + 연산 + 숫자 + 연산 + 숫자
-basicOps.forEach((op1, x) => {
-    basicOps.forEach((op2, y) => {
-        if (x !== y) {
-            for (let i = 0; i < numbers.length; i++) {
-                for (let j = 0; j < numbers.length; j++) {
-                    for (let k = 0; k < numbers.length; k++) {
-                        for (let l = 0; l < numbers.length; l++) {
-                            if (numbers[i] !== 'π' && numbers[j] !== 'π') {
-                                const counts = {...cardCounts};
-                                if (useCard(counts, numbers[i]) && useCard(counts, numbers[j]) &&
-                                    useCard(counts, op1) && useCard(counts, numbers[k]) &&
-                                    useCard(counts, op2) && useCard(counts, numbers[l])) {
-                                    const twoDigit = parseInt(`${numbers[i]}${numbers[j]}`);
-                                    if (twoDigit.toString()[0] !== '0') {
-                                        tryExpression(`${twoDigit}${getDisplayOp(op1)}${numbers[k]}${getDisplayOp(op2)}${numbers[l]}`);
+
+    // 6.5. 2자리수 + 연산 + 숫자 + 연산 + 숫자
+    basicOps.forEach((op1, x) => {
+        basicOps.forEach((op2, y) => {
+            if (x !== y) {
+                for (let i = 0; i < numbers.length; i++) {
+                    for (let j = 0; j < numbers.length; j++) {
+                        for (let k = 0; k < numbers.length; k++) {
+                            for (let l = 0; l < numbers.length; l++) {
+                                if (numbers[i] !== 'π' && numbers[j] !== 'π') {
+                                    const counts = {...cardCounts};
+                                    if (useCard(counts, numbers[i]) && useCard(counts, numbers[j]) &&
+                                        useCard(counts, op1) && useCard(counts, numbers[k]) &&
+                                        useCard(counts, op2) && useCard(counts, numbers[l])) {
+                                        const twoDigit = parseInt(`${numbers[i]}${numbers[j]}`);
+                                        if (twoDigit.toString()[0] !== '0') {
+                                            tryExpression(`${twoDigit}${getDisplayOp(op1)}${numbers[k]}${getDisplayOp(op2)}${numbers[l]}`);
+                                        }
                                     }
                                 }
                             }
@@ -840,11 +903,10 @@ basicOps.forEach((op1, x) => {
                     }
                 }
             }
-        }
+        });
     });
-});
 
-       // 7. 3개 숫자 + 2개 연산자
+    // 7. 3개 숫자 + 2개 연산자
     if (basicOps.length >= 2) {
         for (let i = 0; i < numbers.length; i++) {
             for (let j = 0; j < numbers.length; j++) {
@@ -853,8 +915,8 @@ basicOps.forEach((op1, x) => {
                         basicOps.forEach((op2, y) => {
                             if (x !== y) {
                                 const counts = {...cardCounts};
-                                if (useCard(counts, numbers[i]) && useCard(counts, op1) && 
-                                    useCard(counts, numbers[j]) && useCard(counts, op2) && 
+                                if (useCard(counts, numbers[i]) && useCard(counts, op1) &&
+                                    useCard(counts, numbers[j]) && useCard(counts, op2) &&
                                     useCard(counts, numbers[k])) {
                                     tryExpression(`${numbers[i]}${getDisplayOp(op1)}${numbers[j]}${getDisplayOp(op2)}${numbers[k]}`);
                                 }
@@ -877,9 +939,9 @@ basicOps.forEach((op1, x) => {
                                 basicOps.forEach((op3, z) => {
                                     if (x !== y && y !== z && x !== z) {
                                         const counts = {...cardCounts};
-                                        if (useCard(counts, numbers[i]) && useCard(counts, op1) && 
-                                            useCard(counts, numbers[j]) && useCard(counts, op2) && 
-                                            useCard(counts, numbers[k]) && useCard(counts, op3) && 
+                                        if (useCard(counts, numbers[i]) && useCard(counts, op1) &&
+                                            useCard(counts, numbers[j]) && useCard(counts, op2) &&
+                                            useCard(counts, numbers[k]) && useCard(counts, op3) &&
                                             useCard(counts, numbers[l])) {
                                             tryExpression(`${numbers[i]}${getDisplayOp(op1)}${numbers[j]}${getDisplayOp(op2)}${numbers[k]}${getDisplayOp(op3)}${numbers[l]}`);
                                         }
