@@ -111,12 +111,11 @@
 
     .language-toggle {
         position: absolute;
-        top: 20px;
-        right: 20px;
+        top: 12px;
+        right: 12px;
         background: rgba(255,255,255,0.9);
-        padding: 8px;
+        padding: 4px;
         border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         z-index: 100;
     }
 
@@ -129,7 +128,7 @@
         border-radius: 5px;
         cursor: pointer;
         font-family: 'Pretendard', sans-serif;
-        font-size: clamp(0.8rem, 2vw, 1rem);
+        font-size: clamp(1rem, 2vw, 1.2rem);
         transition: all 0.3s ease;
     }
 
@@ -215,7 +214,7 @@
         padding: 12px 20px;
         border: none;
         border-radius: 10px;
-        font-size: clamp(1rem, 3vw, 1.3rem);
+        font-size: clamp(0.9rem, 2.5vw, 1.1rem);
         font-family: 'Pretendard', sans-serif;
         cursor: pointer;
         transition: all 0.3s ease;
@@ -295,19 +294,19 @@ margin-top: 30px;
     .language-toggle {
         top: 10px;
         right: 10px;
-        padding: 6px;
+        padding: 3px;
         max-width: 150px; /* 최대 너비 제한 */
     }
     
     .language-button {
-        padding: 5px 8px;
+        padding: 5px 5px;
         font-size: 0.85rem;
         white-space: nowrap; /* 텍스트 줄바꿈 방지 */
     }
 
 
         .main-title {
-            margin-top: 60px;
+            margin-top: 45px;
         }
 
 
@@ -366,14 +365,14 @@ margin-top: 30px;
         <!-- 넘즐 메인 화면 -->
         <div class="numzzle-main" id="numzzle-main">
             <div class="language-toggle">
-                <button class="language-button active" onclick="toggleLanguage('ko')">한국어</button>
-                <button class="language-button" onclick="toggleLanguage('en')">English</button>
+                <button class="language-button active" onclick="toggleLanguage('ko')">한</button>
+                <button class="language-button" onclick="toggleLanguage('en')">EN</button>
             </div>
 
-  
-  <div class="game-description chalk-text" id="korean-description">
         
-        <h1 class="chalk-text main-title">NUMZZLE 넘즐</h1>
+  <div class="game-description chalk-text" id="korean-description">
+        <h1 class="chalk-text main-title">넘즐</h1>
+        
         
                 <h3>🎮 게임 소개</h3>
         <p>넘즐 = 넘버(NUMBER) + 퍼즐(PUZZLE)</p>
