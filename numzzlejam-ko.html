@@ -87,21 +87,10 @@ body {
     padding: 20px;
     overflow-x: hidden;
 }
-.back-button {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    padding: 8px 10px;      /* 모바일 기본 */
-    font-size: 2em;
-    font-weight: bold;
-    background-color: #145454;
-    color: #5cd6d6;
-    border-radius: 12px;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 100;
-}
+.back-button { position: fixed; top: max(48px, env(safe-area-inset-top) + 20px); left: 22px; width: 44px; height: 44px; padding: 0; font-size: 1.8em; font-weight: bold; 
+  background: rgba(255,255,255,0.9);
+    color: #145454;
+  border-radius: 12px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;z-index: 100;}
 .back-button:hover {
     background-color: #1baf8f;
     color: #fff;
@@ -495,10 +484,19 @@ margin-top: 30px;
 .score-card.computer {
     border: 6px solid #FFB6C1;
 }
+@media (max-width: 480px) {
+   
+.back-button { top: max(30px, env(safe-area-inset-top) + 10px); left: 10px; width: 40px; height: 40px; font-size: 1.5em; }
+}
 
 </style>
 </head>
 <body>
+<button class="back-button" onclick="location.href='https://soosooland.com/numzzle/index.html'">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
     <div class="blackboard">
         <div id="startScreen">
          <button class="back-button"  onclick="location.href='https://soosooland.com/numzzle/index.html'">←</button>
