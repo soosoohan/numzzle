@@ -97,6 +97,7 @@
 
     .back-button:active {transform: scale(0.92);transition: transform 0.1s;}
 
+
     /* 넘즐 메인 화면 */
     .numzzle-main {
         transition: all 0.5s ease;
@@ -105,13 +106,6 @@
         flex-direction: column;
     }
 
-    .main-title {
-        font-size: clamp(1.3rem, 3.7vw, 1.9rem);
-        font-weight: bold;
-        text-align: center;
-        margin-bottom: 20px;
-        margin-top: 20px;
-    }
 
     .language-toggle {
         position: absolute;
@@ -143,6 +137,20 @@
     .language-button.active {
         background: #ff69b4;
     }
+
+ 
+ .main-title {
+    margin: 60px 0 20px;
+    font-size: 0;
+}
+
+.main-title img {
+    display: block;
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    margin: 0 auto;
+}
 
     .games-hub-btn {
         position: absolute;
@@ -308,12 +316,6 @@ margin-top: 30px;
         white-space: nowrap; /* 텍스트 줄바꿈 방지 */
     }
 
-
-        .main-title {
-            margin-top: 45px;
-        }
-
-
         .games-hub-btn {
             position: static;
             float: right;
@@ -332,12 +334,6 @@ margin-top: 30px;
         .blackboard {
             height: auto;
             min-height: 100vh;
-        }
-
-        .main-title {
-            font-size: 2rem;
-            margin-top: 10px;
-            margin-bottom: 15px;
         }
 
         .game-description {
@@ -373,11 +369,14 @@ margin-top: 30px;
                 <button class="language-button" onclick="toggleLanguage('en')">EN</button>
             </div>
 
+           <div class="header">
+   <h1 class="main-title">
+        <img src="banner-ko.jpeg" alt="넘즐 Numzzle">
+    </h1> </div>
+
         
   <div class="game-description chalk-text" id="korean-description">
-        <h1 class="chalk-text main-title">넘즐</h1>
-        
-        
+             
                 <h3>🎮 게임 소개</h3>
         <p>넘즐 = 넘버(NUMBER) + 퍼즐(PUZZLE)</p>
         <h3>📋 게임 규칙</h3>
@@ -407,8 +406,8 @@ margin-top: 30px;
 </div>
         </div>
 
-        <div class="game-description chalk-text hidden" id="english-description"><h1 class="chalk-text main-title">NUMZZLE</h1>
-        
+        <div class="game-description chalk-text hidden" id="english-description">
+  
                  <h3>🎮 Game Overview</h3>
         <p>NUMZZLE = NUMBER + PUZZLE</p>
         <h3>📋 Game Rules</h3>
