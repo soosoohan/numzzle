@@ -76,7 +76,7 @@
         margin: 0;
         justify-content: center;
         align-items: center;
-        padding: 10px;
+        padding: 20px;
         text-align: center;
     }
 .toolbar {
@@ -132,7 +132,6 @@
         cursor: pointer;
         font-family: 'Pretendard', sans-serif;
         font-size: clamp(1rem, 2vw, 1.2rem);
-        transition: all 0.3s ease;
     }
 
     .language-button:hover {
@@ -275,6 +274,10 @@ header { display: flow-root; height: auto !important; }
 .main-title { height: auto !important; }
 .main-title img { position: static !important; float: none !important; }
 
+@media (max-width: 480px) {  
+.back-button { width: 40px;height: 40px;}
+body { padding: 10px; }
+}
 
 </style>
 </head>
